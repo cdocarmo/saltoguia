@@ -1,4 +1,13 @@
 #!/usr/bin/env python
+
+
+from os.path import abspath, dirname, join
+from site import addsitedir
+import sys
+path = addsitedir(abspath(join(dirname(__file__), '../libs/external_libs')), set())
+if path: sys.path = list(path) + sys.path
+sys.path.insert(0, abspath(join(dirname(__file__), '../apps')))
+
 from django.core.management import execute_manager
 import imp
 try:

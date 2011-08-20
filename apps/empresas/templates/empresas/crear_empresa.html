@@ -1,0 +1,64 @@
+
+{% block title %}Mantenimiento Empresa{% endblock %}
+
+
+ <h1>Crear Nueva Empresa</h1>
+<form action="" method="post" enctype="multipart/form-data">
+<fieldset>
+  <div class="box arrow">
+      
+			<p class="twocol">
+				{{ form.nombre.label_tag }}<br />
+				{{ form.nombre }}<br />
+				<span>{{ form.nombre.help_text }}</span>
+				{% if form.nombre.errors %}<span class="error_msg">{{ form.nombre.errors|join:"; " }}</span>{% endif %}
+			</p>
+			<br class="clear"/>
+			<p class="twocol">
+				{{ form.domicilio.label_tag }}<br />
+				{{ form.domicilio }}<br />
+				<span>{{ form.domicilio.help_text }}</span>
+				{% if form.domicilio.errors %}<span class="error_msg">{{ form.domicilio.errors|join:"; " }}</span>{% endif %}
+			</p>
+			<br class="clear"/>
+			<p class="twocol">
+				{{ form.telefono.label_tag }}<br />
+				{{ form.telefono }}<br />
+				<span>{{ form.telefono.help_text }}</span>
+				{% if form.telefono.errors %}<span class="error_msg">{{ form.telefono.errors|join:"; " }}</span>{% endif %}
+			</p>
+			<br class="clear"/>
+			<p class="twocol">
+				{{ form.celular.label_tag }}<br />
+				{{ form.celular }}<br />
+				<span>{{ form.celular.help_text }}</span>
+				{% if form.celular.errors %}<span class="error_msg">{{ form.celular.errors|join:"; " }}</span>{% endif %}
+			</p>
+	        <br class="clear"/>
+	        <p class="twocol">
+		        {{ form.mail.label_tag }}<br />
+		        {{ form.mail }}<br />
+		        <span>{{ form.mail.help_text }}</span>
+		        {% if form.mail.errors %}<span class="error_msg">{{ form.mail.errors|join:"; " }}</span>{% endif %}
+	        </p> 
+			<br class="clear"/>
+			<p class="twocol">
+				{{ form.descipcion.label_tag }}<br />
+				{{ form.descipcion }}<br />
+				<span>{{ form.descipcion.help_text }}</span>
+				{% if form.descipcion.errors %}<span class="error_msg">{{ form.descipcion.errors|join:"; " }}</span>{% endif %}
+			</p>
+	        
+        {{ form.step }}
+
+    
+  </div>
+  <p class="form-buttons">
+	<input class="save-button" type="submit" value="Next"/>
+	<a class="cancel-button" href="#"> "Cancel"</a>
+	</p>
+</fieldset>
+</form>
+
+
+
