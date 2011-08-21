@@ -117,6 +117,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfResponseMiddleware',
 )
 
 
@@ -178,3 +180,4 @@ TEMPLATE_DIRS = (
 ADMIN_TEMPLATE_DIRS = (
     join(PROJECT_ABSOLUTE_DIR, "templates"),
 )
+

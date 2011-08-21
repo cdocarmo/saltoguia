@@ -7,6 +7,8 @@ from django.template import RequestContext
 from empresas.models import Empresa
 from empresas.forms import *
 
+from django.contrib import messages
+from django.utils.translation import ugettext as _
 
 #@login_required
 def crear_empresa(request):
@@ -16,8 +18,9 @@ def crear_empresa(request):
         if form_Empresa.is_valid():
             empresa = form_Empresa.save(commit=False)
             empresa.save()
-
-            #return HttpResponseRedirect('/entities')
+            messages.add_message(request, messages.INFO,
+                                 mensaje('EmpresaCreada'))
+            return HttpResponseRedirect('/empresas')
 
     context = {
         'form': form_Empresa,
@@ -28,3 +31,16 @@ def crear_empresa(request):
         context_instance=RequestContext(request),
     )
 
+
+
+def mensaje(action, url=False):
+    try:
+        result = _({
+            'EmpresaCreada': "La Empresa fue creada \
+                              .",
+        }.get(action))
+
+    except KeyError:
+        result = _('Sin Mensaje')
+
+    return result
