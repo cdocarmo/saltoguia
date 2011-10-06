@@ -1,0 +1,54 @@
+<!--
+	***Company singup***
+	Falta definir la funcionalidad javascritp para darle dinamismo al
+	formulario, igualmente sirve para hacer pruebas sencillas
+-->
+{% extends base.html %}
+
+{% block content %}
+
+<h2>Ahora ingresa los datos de la nueva empresa</h2>
+<form class="forms" id="form_company_singup">
+	<div id="company_data">
+		<h3>Empresa</h3>
+		<label>Nombre</label>
+		<input type="text" name="company_name"/><br />
+		<label>R.U.C.</label>
+		<input type="text" name="company_RUC"/><br />
+		<label>Rubro</label>
+		<select size="1" name="company_sector">
+		{% for sector in sectors %}
+			<option>{ sector }</option>
+		{% end for %}
+		<!--se entiende la idea???-->
+		</select><br />
+		<label>Descripci&oacute;n de la empresa</label>
+		<textarea cols="20" rows="30" name="company_description">Una descripci&oacute;n ...</textarea><br />
+	</div>
+	<div id="owner_data">
+		<h3>Titular</h3>
+		<input type="checkbox" name="owner_new"/><br />
+		<label>Mail del titular</label>
+		<input type="text" name="owner_mail"/><br />
+		<span style="display:none">
+			<label>Nombre del titular</label>
+			<input type="text" name="owner_name"/><br />
+			<label>Password</label>
+			<input type="password" name="owner_pass"/><br />
+		</span>
+	</div>
+	<div class="service">
+		<h3>Servicios</h3>
+		<label>Nombre</label>
+		<input type="text" name="service_name_0" /><br />
+		<label>Agregar una imagen o logo que describa el servicio</label>
+		<input type="file" name="service_image"/>
+		<label>Descripci&oacute;n</label>
+		<textarea cols="20" rows="30" name="service_description_0">Una descripci&oacute;n del servicio</textarea><br />
+		<input type="button" value="Agregar otro servicio" />
+	</div>
+	<input type="submit" value="Agregar Empresa">
+	<input type="reset" value="Limpiar cajas"/>
+</form>
+	
+{% end block %}
