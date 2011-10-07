@@ -6,6 +6,10 @@ import sys
 PROJECT_ABSOLUTE_DIR = dirname(abspath(__file__))
 PROJECT_NAME = basename(PROJECT_ABSOLUTE_DIR)
 
+# Add apps/ dir to python path.
+sys.path.append(join(PROJECT_ABSOLUTE_DIR, "apps"))
+
+
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -141,8 +145,9 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'users',
     'empresas',
+    'users',
+    
 )
 
 # A sample logging configuration. The only tangible logging
@@ -168,8 +173,6 @@ LOGGING = {
     }
 }
 
-# Add apps/ dir to python path.
-sys.path.append(join(PROJECT_ABSOLUTE_DIR, "apps"))
 
 DEFAULT_CHARSET = 'utf-8'
 

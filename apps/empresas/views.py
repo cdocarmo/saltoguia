@@ -26,7 +26,7 @@ def crear_empresa(request):
         'form': form_Empresa,
     }
     return render_to_response(
-        "empresas/crear_empresa.html",
+        "empresas/ingreso-de-empresa.html",
         context,
         context_instance=RequestContext(request),
     )

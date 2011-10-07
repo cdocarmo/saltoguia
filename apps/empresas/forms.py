@@ -4,6 +4,7 @@ from empresas.models import Empresa
 from django.utils.translation import ugettext as _
 
 
+
 class EmpresaForm(forms.ModelForm):
     descipcion = forms.CharField(label="Description", required=False, widget=forms.Textarea(attrs = {'cols': '35', 'rows': '5'}))
 

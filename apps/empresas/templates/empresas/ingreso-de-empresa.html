@@ -3,7 +3,11 @@
 	Falta definir la funcionalidad javascritp para darle dinamismo al
 	formulario, igualmente sirve para hacer pruebas sencillas
 -->
-{% extends base.html %}
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}Mantenimiento Empresa{% endblock %}
 
 {% block content %}
 
@@ -17,9 +21,7 @@
 		<input type="text" name="company_RUC"/><br />
 		<label>Rubro</label>
 		<select size="1" name="company_sector">
-		{% for sector in sectors %}
-			<option>{ sector }</option>
-		{% end for %}
+
 		<!--se entiende la idea???-->
 		</select><br />
 		<label>Descripci&oacute;n de la empresa</label>
@@ -51,4 +53,4 @@
 	<input type="reset" value="Limpiar cajas"/>
 </form>
 	
-{% end block %}
+{% endblock %}
