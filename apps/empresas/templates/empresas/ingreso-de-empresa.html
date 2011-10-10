@@ -8,6 +8,9 @@
 {% load i18n %}
 
 {% block title %}Mantenimiento Empresa{% endblock %}
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="media/css/standarStyles.css" media="all" />
+{% endblock %}
 
 {% block content %}
 
@@ -15,10 +18,14 @@
 <form class="forms" id="form_company_singup">
 	<div id="company_data">
 		<h3>Empresa</h3>
-		<label>Nombre</label>
-		<input type="text" name="company_name"/><br />
-		<label>R.U.C.</label>
-		<input type="text" name="company_RUC"/><br />
+		{{ form.nombre.label_tag }}<br />
+		{{ form.nombre }}<br />
+		<span>{{ form.nombre.help_text }}</span>
+		{% if form.nombre.errors %}<span class="error_msg">{{ form.nombre.errors|join:"; " }}</span>{% endif %}
+		{{ form.documento.label_tag }}<br />
+		{{ form.documento }}<br />
+		<span>{{ form.documento.help_text }}</span>
+		{% if form.documento.errors %}<span class="error_msg">{{ form.documento.errors|join:"; " }}</span>{% endif %}
 		<label>Rubro</label>
 		<select size="1" name="company_sector">
 

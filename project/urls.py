@@ -1,3 +1,4 @@
+from django.conf import settings #GF
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
@@ -19,3 +20,10 @@ urlpatterns = patterns('',
     (r'^_admin/', include(admin.site.urls)),
     (r'^empresas/', include('empresas.urls')),
 )
+#GF
+if settings.DEBUG and settings.MEDIA_ROOT:
+    urlpatterns += patterns('',
+        (r'%s(?P<path>.*)$' % settings.MEDIA_URL.lstrip('/'), 
+            'django.views.static.serve',
+            {'document_root' : settings.MEDIA_ROOT }),)
+
