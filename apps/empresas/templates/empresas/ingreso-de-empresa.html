@@ -15,49 +15,46 @@
 {% block content %}
 
 <h2>Ahora ingresa los datos de la nueva empresa</h2>
-<form class="forms" id="form_company_singup">
+
+<form class="forms" method="post" id="form_company_singup">
 	<div id="company_data">
 		<h3>Empresa</h3>
+      
 		{{ form.nombre.label_tag }}<br />
 		{{ form.nombre }}<br />
 		<span>{{ form.nombre.help_text }}</span>
 		{% if form.nombre.errors %}<span class="error_msg">{{ form.nombre.errors|join:"; " }}</span>{% endif %}
-		{{ form.documento.label_tag }}<br />
-		{{ form.documento }}<br />
-		<span>{{ form.documento.help_text }}</span>
-		{% if form.documento.errors %}<span class="error_msg">{{ form.documento.errors|join:"; " }}</span>{% endif %}
-		<label>Rubro</label>
-		<select size="1" name="company_sector">
 
-		<!--se entiende la idea???-->
-		</select><br />
-		<label>Descripci&oacute;n de la empresa</label>
-		<textarea cols="20" rows="30" name="company_description">Una descripci&oacute;n ...</textarea><br />
-	</div>
-	<div id="owner_data">
-		<h3>Titular</h3>
-		<input type="checkbox" name="owner_new"/><br />
-		<label>Mail del titular</label>
-		<input type="text" name="owner_mail"/><br />
-		<span style="display:none">
-			<label>Nombre del titular</label>
-			<input type="text" name="owner_name"/><br />
-			<label>Password</label>
-			<input type="password" name="owner_pass"/><br />
-		</span>
-	</div>
-	<div class="service">
-		<h3>Servicios</h3>
-		<label>Nombre</label>
-		<input type="text" name="service_name_0" /><br />
-		<label>Agregar una imagen o logo que describa el servicio</label>
-		<input type="file" name="service_image"/>
-		<label>Descripci&oacute;n</label>
-		<textarea cols="20" rows="30" name="service_description_0">Una descripci&oacute;n del servicio</textarea><br />
-		<input type="button" value="Agregar otro servicio" />
-	</div>
-	<input type="submit" value="Agregar Empresa">
-	<input type="reset" value="Limpiar cajas"/>
+		{{ form.domicilio.label_tag }}<br />
+		{{ form.domicilio }}<br />
+		<span>{{ form.domicilio.help_text }}</span>
+		{% if form.domicilio.errors %}<span class="error_msg">{{ form.domicilio.errors|join:"; " }}</span>{% endif %}
+
+		{{ form.telefono.label_tag }}<br />
+		{{ form.telefono }}<br />
+		<span>{{ form.telefono.help_text }}</span>
+		{% if form.telefono.errors %}<span class="error_msg">{{ form.telefono.errors|join:"; " }}</span>{% endif %}
+
+		{{ form.celular.label_tag }}<br />
+		{{ form.celular }}<br />
+		<span>{{ form.celular.help_text }}</span>
+		{% if form.celular.errors %}<span class="error_msg">{{ form.celular.errors|join:"; " }}</span>{% endif %}
+
+	    {{ form.mail.label_tag }}<br />
+	    {{ form.mail }}<br />
+	    <span>{{ form.mail.help_text }}</span>
+	    {% if form.mail.errors %}<span class="error_msg">{{ form.mail.errors|join:"; " }}</span>{% endif %}
+
+		{{ form.descipcion.label_tag }}<br />
+		{{ form.descipcion }}<br />
+		<span>{{ form.descipcion.help_text }}</span>
+		{% if form.descipcion.errors %}<span class="error_msg">{{ form.descipcion.errors|join:"; " }}</span>{% endif %}
+
+ 	{{ form.step }}
+  	<p class="form-buttons">
+		<input class="save-button" type="submit" value="{% trans "Agregar Empresa" %}"/>
+		<a class="cancel-button" href="#">{% trans "Cancel" %}</a>
+	</p>
 </form>
 	
 {% endblock %}

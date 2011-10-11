@@ -6,19 +6,19 @@ from django.template.defaultfilters import slugify
 import datetime
 from django.contrib.auth.models import User
 
+PENDIENTE = 1
+ACTIVA = 2
+NEGADA = 3
 
+_STATUS = (
+    (PENDIENTE, _('PENDIENTE')),
+    (ACTIVA, _('ACTIVA')),
+    (NEGADA, _('NEGADA')),
+)
 
 class Empresa(models.Model):
 
-    PENDIENTE = 1
-    ACTIVA = 2
-    NEGADA = 3
 
-    STATUS_EMPRESA = (
-        (PENDIENTE, _('PENDIENTE')),
-        (ACTIVA, _('ACTIVA')),
-        (NEGADA, _('NEGADA')),
-    )
 
     EMPRESA = 1
     PERSONA = 2
@@ -37,7 +37,7 @@ class Empresa(models.Model):
     domicilio = models.CharField(max_length=255)
     slug = models.SlugField(editable=False)
     descipcion = models.TextField()
-    status = models.IntegerField(choices=STATUS_EMPRESA, default=1)
+    status = models.IntegerField(choices=_STATUS, default=1)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     fecha = models.DateTimeField(blank=True, null=True)
 
@@ -49,3 +49,25 @@ class Empresa(models.Model):
         super(Empresa, self).save(*args, **kwargs)
         
         
+class EmpresaServicio(models.Model):
+    
+    
+    #usuario = models.ForeignKey(UserProfile)
+    nombre = models.CharField(max_length=255)
+    empresa = models.ForeignKey(Empresa)
+    descipcion = models.TextField()
+    status = models.IntegerField(choices=_STATUS, default=1)
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(editable=False)
+    
+    def __unicode__(self):
+        return self.nombre
+    
+    @models.permalink
+    def get_absolute_url(self):
+        return ("empresa-servicio-detalle", [self.empresa.slug,
+                                      self.slug])      
+        
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.nombre)
+        super(EmpresaServicio, self).save(*args, **kwargs)          

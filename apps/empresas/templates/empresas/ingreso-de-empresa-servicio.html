@@ -1,0 +1,39 @@
+<!--
+	***Company singup***
+	Falta definir la funcionalidad javascritp para darle dinamismo al
+	formulario, igualmente sirve para hacer pruebas sencillas
+-->
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}Mantenimiento Empresa{% endblock %}
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="media/css/standarStyles.css" media="all" />
+{% endblock %}
+
+{% block content %}
+
+<h2>Ahora ingresa los datos del servicio</h2>
+<form class="forms" id="form_company_singup">
+	
+	<div class="service">
+		<h3>Servicios</h3>
+		{{ form.nombre.label_tag }}<br />
+		{{ form.nombre }}<br />
+		<span>{{ form.nombre.help_text }}</span>
+		{% if form.nombre.errors %}<span class="error_msg">{{ form.nombre.errors|join:"; " }}</span>{% endif %}
+
+		{{ form.descipcion.label_tag }}<br />
+		{{ form.descipcion }}<br />
+		<span>{{ form.descipcion.help_text }}</span>
+		{% if form.descipcion.errors %}<span class="error_msg">{{ form.descipcion.errors|join:"; " }}</span>{% endif %}
+
+
+	</div>
+	{{ form.step }}
+	<input type="submit" value="Agregar Empresa">
+	<input type="reset" value="Limpiar cajas"/>
+</form>
+	
+{% endblock %}
