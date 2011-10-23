@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block css%}
+	<link rel="stylesheet" type="text/css" href="/media/css/search.css" media="all" />
+{% endblock %}
+
+{% block content %}
+	<h3>Empresas, servicios y profesionales en Salto</h3>
+	<form action="" method="post" enctype="text/plain">
+		{{ form.search_word }}<br />
+		<input type="submit" value="Buscar!" id="btn-search" />
+	</form>
+{% endblock %}
