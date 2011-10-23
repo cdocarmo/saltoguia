@@ -7,8 +7,13 @@ from django.utils.translation import ugettext as _
 
 class EmpresaForm(forms.ModelForm):
     step = forms.IntegerField(widget=forms.HiddenInput, initial=1)
-    descipcion = forms.CharField(label="Description", required=False, widget=forms.Textarea(attrs = {'cols': '35', 'rows': '5'}))
-
+    nombre = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
+    domicilio = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
+    telefono = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
+    celular = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
+    mail = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
+    descripcion = forms.CharField(label="Descripcion", required=False, widget=forms.Textarea(attrs = {'cols': '35', 'rows': '5'}))
+    
     def clean_name(self):
         if Empresa.objects.filter(name__iexact=self.cleaned_data["nombre"]).count() > 0:
             if self.cleaned_data["nombre"] == self.instance.name:
@@ -19,7 +24,7 @@ class EmpresaForm(forms.ModelForm):
 
     class Meta:
         model = Empresa
-        fields = ('nombre', 'domicilio', 'telefono', 'celular', 'mail', 'descipcion', )
+        fields = ('nombre', 'domicilio', 'telefono', 'celular', 'mail', 'descripcion', )
 
 class Empresa_ServicioForm(forms.Form):
     """
@@ -30,4 +35,4 @@ class Empresa_ServicioForm(forms.Form):
     step = forms.IntegerField(widget=forms.HiddenInput, initial=2)
     class Meta:
         model = EmpresaServicio
-        fields = ('nombre', 'descipcion', )
+        fields = ('nombre', 'descripcion', )

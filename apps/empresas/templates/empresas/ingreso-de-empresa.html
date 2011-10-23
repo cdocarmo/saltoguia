@@ -9,16 +9,17 @@
 
 {% block title %}Mantenimiento Empresa{% endblock %}
 {% block css %}
-	<link rel="stylesheet" type="text/css" href="media/css/standarStyles.css" media="all" />
+	<!--<link rel="stylesheet" type="text/css" href="media/css/standarStyles.css" media="all" />-->
+	<link rel="stylesheet" type="text/css" href="media/css/formStyles.css" media="all" />
 {% endblock %}
 
 {% block content %}
 
-<h2>Ahora ingresa los datos de la nueva empresa</h2>
+<h2>¡Ahora ingresa los datos de la nueva empresa!</h2>
 
 <form class="forms" method="post" id="form_company_singup">
 	<div id="company_data">
-		<h3>Empresa</h3>
+		<h3>Nueva Empresa</h3>
       
 		{{ form.nombre.label_tag }}<br />
 		{{ form.nombre }}<br />
@@ -55,6 +56,7 @@
 		<input class="save-button" type="submit" value="{% trans "Agregar Empresa" %}"/>
 		<a class="cancel-button" href="#">{% trans "Cancel" %}</a>
 	</p>
+	</div>
 </form>
 	
 {% endblock %}

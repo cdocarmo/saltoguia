@@ -26,7 +26,7 @@ h4 {
 	text-shadow: 1px 1px #333;
 	margin:2px 0;
 	margin-bottom: 25px;
-	font-spacing: 2px;
+	/*font-spacing: 2px;*/
 }
 
 hr {
@@ -67,6 +67,15 @@ div#central_image img {
 	top: 175px;
 	margin-left: -361px;
 	z-index: 1;*/
+}
+
+div#central-content {
+	position: relative;
+	width: 880px;
+	left: 50%;
+	top: -34px;
+	margin-left: -440px;
+	z-index: 1;
 }
 
 div.content {
@@ -152,11 +161,14 @@ div.info p{
 }
 
 div#footer {
-	clear: right;
-	clear:left;
+	/*clear: right;
+	clear:left;*/
+	position:relative;
+	width:100%;
+	z-index: 1;
 	background-image: url('/media/images/bg_footer.jpg');
 	background-repeat: repeat;
-	height: 199px;
+	height: 170px;
 	padding-top: 26px;
 }
 
@@ -168,14 +180,14 @@ div#footer p{
 	font-family: Verdana, sans-Serif;
 	font-size: 10px;
 	clear: right;
-	color: white;
+	color: #333333;
 	text-align: center;
-	margin-top: 48px;
+	margin-top: 16px;
 }
 
 div#footer a {
 	margin: 0 6px;
-	color: white;
+	color: #333333;
 }
 
 div#footer div#developers {

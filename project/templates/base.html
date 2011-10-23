@@ -31,6 +31,8 @@
 	<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 	<!--<link rel="stylesheet" type="text/css" href="nivo-slider.css" media="all">-->
 	<link rel="stylesheet" type="text/css" href="media/css/styles.css" media="all">
+	{% block css %}
+	{% endblock %}
 	<script type="text/javascript">
 		function sustituteImage(src, id){
 				document.getElementById(id).src = src;
@@ -47,8 +49,10 @@
 		</div>
 	</div>
 	<hr>
-	{% block content %}
-	{% endblock %}
+	<div id="central-content">
+		{% block content %}
+		{% endblock %}
+	</div>
 	<div id="footer">
 		<div class="content">
 			<div id="developers">
