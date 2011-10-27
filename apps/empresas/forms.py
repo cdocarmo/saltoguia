@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 from empresas.models import Empresa, EmpresaServicio
 from django.utils.translation import ugettext as _
 
-
+#comentario al pedo que hay que borrar
 
 class EmpresaForm(forms.ModelForm):
     step = forms.IntegerField(widget=forms.HiddenInput, initial=1)
