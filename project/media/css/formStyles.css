@@ -1,0 +1,53 @@
+/*CSS para formularios*/
+
+form.forms h2 {
+	clear: right;
+	font-family: 'Oswald', sans-serif;
+	font-size: 22px;
+	color: #e15407;
+	font-style: italic;
+	/*text-shadow: 1px 1px #333;*/
+}
+
+form.forms h3 {
+	font-size: 18px;
+	color: #333333;
+	font-style: italic;
+	/*text-shadow: 1px 1px #333;*/
+}
+
+div#central-content {
+	background-color: white;
+	border: 1px solid #333;
+	/*margin: 0 auto 10px auto;*/
+	padding: 10px 20px;
+}
+
+form.forms {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	color: #333333;
+	font-size: 20px;
+}
+
+input.input-text {
+	border: none;
+	background-image: url("/media/images/bg_input_grey_28x320.jpg");
+	background-repeat: no-repeat;
+	width: 320px;
+	height: 28px;
+	padding: 1px 5px;
+	font-size: 18px;
+	color: #333333;
+}
+
+input.save-button {
+	border: none;
+	background-image: url("/media/images/bg_input_white_24x280.jpg");
+	background-repeat: no-repeat;
+	width: 280px;
+	height: 24px;
+}
+
+form.forms a {
+	font-size: 12px;
+}
