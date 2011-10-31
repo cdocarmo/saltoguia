@@ -34,6 +34,22 @@ hr {
 	/*z-index: 0;*/
 }
 
+div#users {
+	padding: 2px 12px;
+	background-color: #222;
+	border-bottom: 2px solid black;
+	color: #EEEEEE;
+}
+
+div#users span {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+
+div#users a {
+	color: #E15407;
+}
+
 div#wrapper_header {
 	background-image: url('/media/images/bg_body.jpg');
 	background-repeat: repeat-x;
@@ -53,6 +69,13 @@ div#header p {
 	clear: right;
 	text-align: right;
 	padding-top: 40px;
+}
+
+div#central-content {
+	background-color: white;
+	border: 1px solid #333;
+	/*margin: 0 auto 10px auto;*/
+	padding: 10px 20px;
 }
 
 div#central_image {

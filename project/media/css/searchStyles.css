@@ -5,3 +5,26 @@
 	height: 32px;
 	font-size: 22px;
 }
+
+div#central-content h3, div#central-content h4 {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	color: #434343;
+	font-size: 14px;
+	text-shadow: none;
+	font-style: oblique;
+	text-align: center;
+	margin: 22px 0 50px 0;
+}
+
+div.resultado p {
+	border-top: 2px ridge #333333;
+	padding: 5px 10px;
+	margin: 5px;
+	color: #666666;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+div.resultado b {
+	color: #E15407;
+}

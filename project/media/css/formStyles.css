@@ -16,13 +16,6 @@ form.forms h3 {
 	/*text-shadow: 1px 1px #333;*/
 }
 
-div#central-content {
-	background-color: white;
-	border: 1px solid #333;
-	/*margin: 0 auto 10px auto;*/
-	padding: 10px 20px;
-}
-
 form.forms {
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
 	color: #333333;
@@ -50,4 +43,8 @@ input.save-button {
 
 form.forms a {
 	font-size: 12px;
+}
+
+form#search-form {
+	text-align: center;
 }
