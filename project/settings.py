@@ -176,6 +176,8 @@ LOGGING = {
 
 DEFAULT_CHARSET = 'utf-8'
 
+AUTH_PROFILE_MODULE = 'users.UserProfile'
+
 # TEMPLATES
 TEMPLATE_DIRS = (
     join(PROJECT_ABSOLUTE_DIR, "templates"),

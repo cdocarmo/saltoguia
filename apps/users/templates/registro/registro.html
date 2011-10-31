@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Crear usuario{% endblock %}
+
+{% block css %}
+	<!--<link rel="stylesheet" type="text/css" href="media/css/standarStyles.css" media="all" />-->
+	<link rel="stylesheet" type="text/css" href="media/css/formStyles.css" media="all" />
+{% endblock %}
+
+{% block content %}
+	
+	<h3>Crear usuario</h3>
+	<br />
+	<form action="" method="post">
+		<div id="company_data">
+  			{{ form.as_p }}
+  			<input type="submit" value="Crear">
+		</div>
+	</form>
+
+{% endblock %}
