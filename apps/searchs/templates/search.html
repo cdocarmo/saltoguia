@@ -7,15 +7,19 @@
 	<link rel="stylesheet" type="text/css" href="/media/css/searchStyles.css" media="all" />
 {% endblock %}
 
+{% block user %}
+	<div id="users">
+		{% if user.is_authenticated %}
+		  <span>Bienvenido, {{ user.username }}..</span>
+		{% else %}
+		  <span>Bienvenido Vistante, <a href="http://localhost:8080/registro/">puedes registrarte</a> o bien, puedes <a href="http://localhost:8080/registro/">acceder...</a></span>
+		{% endif %}
+	</div>
+{% endblock %}
+
 {% block content %}
-	{% if user.is_authenticated %}
-	  <p>Bienvenido, {{ user.username }}..</p>
-	{% else %}
-	  <p>Bienvenido, Nuevo Usuario. Desea Ingresar.</p>
-	{% endif %}
-	
 	<h3>Puedes buscar empresas, servicios y profesionales en Salto...</h3>
-	<form action="" method="post" enctype="text/plain">
+	<form action="" method="post" enctype="text/plain" id="search-form">
 		{{ form.search_word }}
 		<input type="submit" value="Buscar!" id="btn-search" class="save-button"/>
 	</form>
@@ -24,10 +28,10 @@
 		<div class="resultado">
 			<!--resultado harcodeado que tiene que ser sustituido por
 				variables de la vista correspondiente-->
-			<p class="res-izquierda"><b>Chili Empanadas</b> - El nombre de la Empanada<br />. Suárez 24 - <i>Tel: 473 23314 - SMS: 099 165 425</i></p>
-			<p class="res-derecha"><b>CD Soft</b> - Diseño y Desarrollo de Software<br /> - Brasil 874 Oficina 7 - <i>Celular 099 34 06 53 - E-mail: info@cdsoft.com.uy</i></p>
-			<p class="res-izquierda"><b>HYGIES</b> - <br /> 874 - <i>Tel 473 26071</i></p>
-			<p class="res-derecha"><b>Pastas Remedi</b> - <br /> Artigas 1601 <i>Tel: 473 29016</i></p>
+			<p><b>Chili Empanadas</b> - El nombre de la Empanada<br />. Suárez 24 - <i>Tel: 473 23314 - SMS: 099 165 425</i></p>
+			<p><b>CD Soft</b> - Diseño y Desarrollo de Software<br /> - Brasil 874 Oficina 7 - <i>Celular 099 34 06 53 - E-mail: info@cdsoft.com.uy</i></p>
+			<p><b>HYGIES</b> - <br /> 874 - <i>Tel 473 26071</i></p>
+			<p><b>Pastas Remedi</b> - <br /> Artigas 1601 <i>Tel: 473 29016</i></p>
 		</div>
 	</div>
 {% endblock %}
