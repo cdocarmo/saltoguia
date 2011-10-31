@@ -1,2 +1,7 @@
-body {
+#search-box {
+	background-image: url("/media/images/search_big.jpg");
+	background-repeat: no-repeat;
+	width: 720px;
+	height: 32px;
+	font-size: 22px;
 }
