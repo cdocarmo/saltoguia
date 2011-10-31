@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+
+    <fieldset>
+        <legend>{% trans "Entrar" %}</legend>
+        <form method="post" action="/login/" id="loginform">
+            {% if error %}
+                <p id="errorholder">
+				  {% if form.errors %}
+				    <p class="error">Sorry, that's not a valid username or password</p>
+				  {% endif %}
+
+                </p>
+            {% endif %}
+            {{ form.as_p }}
+            <p>
+                <button name="login" id="login" value="entrar" type="submit"> {% trans "Entrar" %}!</button>
+            </p>
+        </form>
+    </fieldset>
+{% endblock %}
