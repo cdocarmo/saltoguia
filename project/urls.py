@@ -19,8 +19,8 @@ urlpatterns = patterns('',
     # url(r'^admin/', include(admin.site.urls)),
     url(r'^_admin/', include(admin.site.urls)),
     url(r'^empresas/', include('empresas.urls')),
-    url(r'^login/$', 'users.views.login'),
-    url(r'^registro/$', 'users.views.register'),
+    url(r'^login/$', 'users.views.login', name='login'),
+    url(r'^registro/$', 'users.views.register', name='registro'),
     
 )
 #GF

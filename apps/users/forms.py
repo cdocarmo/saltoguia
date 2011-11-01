@@ -14,6 +14,7 @@ class LoginForm(forms.Form):
 
 
 class RegisterForm(UserCreationForm):
+    username = forms.CharField(label=_(u'Usuario'), max_length=30)
     email = forms.EmailField(label = "Email")
 
     class Meta:
