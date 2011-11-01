@@ -11,6 +11,7 @@
 	<div id="users">
 		{% if user.is_authenticated %}
 		  <span>Bienvenido, {{ user.username }}..</span>
+		  {# aca tiene que ir el menu de navegacion de usuario: modificar perfil, agregar servicio, etc #}
 		{% else %}
 		  <span>Bienvenido Vistante, <a href="/registro/">puedes registrarte</a> o bien, puedes <a href="/login/">acceder...</a></span>
 		{% endif %}
