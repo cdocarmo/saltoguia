@@ -2,9 +2,10 @@
 from django.db import models
 from django.utils.translation import ugettext as _
 from django.template.defaultfilters import slugify
-
+from utilita.util import unique_slugify
 import datetime
 from django.contrib.auth.models import User
+
 
 PENDIENTE = 1
 ACTIVA = 2
@@ -40,25 +41,45 @@ class Empresa(models.Model):
     status = models.IntegerField(choices=_STATUS, default=1)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     fecha = models.DateTimeField(blank=True, null=True)
-
+    user = models.ForeignKey(User)
+    
+    
     def __unicode__(self):
         return self.nombre
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.nombre)
-        super(Empresa, self).save(*args, **kwargs)
+
+        queryset = self.__class__.objects.all()
+        if self.id:
+            queryset = queryset.exclude(id=self.id)
+        self.slug = unique_slugify(self.nombre, queryset, 'slug')
+        super(self.__class__, self).save(*args, **kwargs)
         
+
+            
         
 class EmpresaServicio(models.Model):
     
+
+    TIPO_PATROCINADO = 0
+    TIPO_NORMAL = 1
+
+    TIPO = (
+        (TIPO_PATROCINADO, _('PATROCINADO')),
+        (TIPO_NORMAL, _('NORMAL')),
+    )
+
     
-    #usuario = models.ForeignKey(UserProfile)
     nombre = models.CharField(max_length=255)
     empresa = models.ForeignKey(Empresa)
     descripcion = models.TextField()
     status = models.IntegerField(choices=_STATUS, default=1)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(editable=False)
+    tags = models.TextField()
+    tipo = models.IntegerField(choices=TIPO, default=1)
+    user = models.ForeignKey(User)
+    
     
     def __unicode__(self):
         return self.nombre

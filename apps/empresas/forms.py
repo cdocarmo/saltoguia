@@ -26,13 +26,14 @@ class EmpresaForm(forms.ModelForm):
         model = Empresa
         fields = ('nombre', 'domicilio', 'telefono', 'celular', 'mail', 'descripcion', )
 
-class Empresa_ServicioForm(forms.Form):
+class Empresa_ServicioForm(forms.ModelForm):
     """
     forms.ModelForm ---> cuando va a ser un formulario en base a un modelo
     forms.Form ---> cuando es un formulario creado y recibe parametros
     
         """
+    empresa_id = forms.ModelChoiceField(Empresa.objects.all(), widget=forms.HiddenInput)        
     step = forms.IntegerField(widget=forms.HiddenInput, initial=2)
     class Meta:
         model = EmpresaServicio
-        fields = ('nombre', 'descripcion', )
+        fields = ('nombre', 'descripcion', 'tags' )

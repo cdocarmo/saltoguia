@@ -10,11 +10,11 @@ from empresas.forms import *
 from django.contrib import messages
 from django.utils.translation import ugettext as _
 
-#@login_required
+@login_required
 def crear_empresa(request, step=1):
     step = request.POST.get('step','1')
     form_Empresa = EmpresaForm()
-    
+    #return HttpResponse(str(step))
     if request.method == "POST":
         
         if step == '1':
@@ -23,33 +23,25 @@ def crear_empresa(request, step=1):
             if form_Empresa.is_valid():
                 #return HttpResponse(str(step))
                 empresa = form_Empresa.save(commit=False)
+                empresa.user = request.user
                 empresa.save()
 
-                form = Empresa_ServicioForm()
+               
+                form = Empresa_ServicioForm(initial={'empresa_id': empresa.id})
                 return render_to_response('empresas/ingreso-de-empresa-servicio.html', 
                                           locals(), 
                                           context_instance=RequestContext(request))
         elif step == '2':
-            
 
-            form = Empresa_ServicioForm(request.POST)
-            if form.is_valid():
-                pass
-                """
-                boat_model = BoatModel(user=request.user,
-                                       last_editor=request.user,
-                                       name=form.cleaned_data['name'],
-                                       description = form.cleaned_data['description'],
-                                       length = form.cleaned_data['length'],
-                                       draft = form.cleaned_data['draft'],
-                                       beam = form.cleaned_data['beam'],
-                                       type = form.cleaned_data['type'],
-                                       designer = designer, builder = builder,
-                                       hull_material = form.cleaned_data['hull_material'],
-                                       hull_color = form.cleaned_data['hull_color'],
-                                       year_built = form.cleaned_data['year_built'])
-                boat_model.save()
-                """
+            form_Empresa_ServicioForm = Empresa_ServicioForm(request.POST)
+            
+            if form_Empresa_ServicioForm.is_valid():
+
+                empresa_servicio = form_Empresa_ServicioForm.save(commit=False)
+                empresa_servicio.user = request.user
+                empresa_servicio.empresa = form_Empresa_ServicioForm.cleaned_data['empresa_id']
+                empresa_servicio.save()                
+
                 return render_to_response('empresas/ingreso-de-empresa-servicio.html', 
                                           locals(), 
                                           context_instance=RequestContext(request))
