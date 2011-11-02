@@ -1,9 +1,19 @@
-#search-box {
+form#search-form {
+	width: 641px;
+	margin: auto;
+}
+
+input#search-box {
 	background-image: url("/media/images/search_big.jpg");
 	background-repeat: no-repeat;
-	width: 720px;
-	height: 32px;
-	font-size: 22px;
+	width: 580px;
+	height: 39px;
+	font-size: 24px;
+	float:left;
+}
+
+input#btn-search {
+	
 }
 
 div#central-content h3, div#central-content h4 {
