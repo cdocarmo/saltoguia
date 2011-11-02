@@ -4,9 +4,9 @@ from django.http import HttpResponseRedirect, HttpResponse, Http404,\
                         HttpResponseGone
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
-from empresas.models import Empresa
+from empresas.models import Empresa, EmpresaServicio
 from empresas.forms import *
-
+from django.contrib.auth.models import User
 from django.contrib import messages
 from django.utils.translation import ugettext as _
 
@@ -67,3 +67,32 @@ def mensaje(action, url=False):
         result = _('Sin Mensaje')
 
     return result
+
+
+
+def ver_empresa(request, username):
+
+    user = get_object_or_404(User, username=username)
+
+    empresa = get_object_or_404(Empresa, user=user)
+ 
+    servicios = EmpresaServicio.objects.filter(empresa=empresa)
+ 
+    return render_to_response('empresas/ver_empresa.html', locals(), context_instance=RequestContext(request))
+
+
+def empresa_servicio_detalle(request, empresa_slug, servicio_slug):
+    pass
+    """
+    boat_model = get_object_or_404(BoatModel, slug = slug)
+
+    administrator = boat_model.administered_by(request.user)
+
+    content_type = ContentType.objects.get_for_model(boat_model)
+    pools = Pool.objects.filter(content_type__pk=content_type.id, object_id=boat_model.id).order_by('-created_at')
+    pool_count = Pool.objects.filter(content_type__pk=content_type.id, object_id=boat_model.id).count()
+    pool_show_all = pool_count > 6
+
+
+    return render_to_response('boats/boat_model_detail.html', locals(), context_instance=RequestContext(request))
+    """
