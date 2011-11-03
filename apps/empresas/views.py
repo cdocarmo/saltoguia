@@ -74,24 +74,16 @@ def mensaje(action, url=False):
 def ver_empresa(request):
     try:        
         empresa = Empresa.objects.get(user=request.user)
-        servicios = EmpresaServicio.objects.filter(empresa=empresa) 
+        servicios = EmpresaServicio.objects.filter(empresa=empresa)
         return render_to_response('empresas/ver_empresa.html', locals(), context_instance=RequestContext(request))
     except ObjectDoesNotExist:        
         return HttpResponseRedirect(reverse('crear-empresa'))
         
         
 def empresa_servicio_detalle(request, empresa_slug, servicio_slug):
-    pass
-    """
-    boat_model = get_object_or_404(BoatModel, slug = slug)
+       
+    empresa = get_object_or_404(Empresa, slug = empresa_slug)
+    servicio = EmpresaServicio.objects.get(empresa=empresa, slug = servicio_slug)
 
-    administrator = boat_model.administered_by(request.user)
-
-    content_type = ContentType.objects.get_for_model(boat_model)
-    pools = Pool.objects.filter(content_type__pk=content_type.id, object_id=boat_model.id).order_by('-created_at')
-    pool_count = Pool.objects.filter(content_type__pk=content_type.id, object_id=boat_model.id).count()
-    pool_show_all = pool_count > 6
-
-
-    return render_to_response('boats/boat_model_detail.html', locals(), context_instance=RequestContext(request))
-    """
+    return render_to_response('empresas/ver_servicio.html', locals(), context_instance=RequestContext(request))
+    
