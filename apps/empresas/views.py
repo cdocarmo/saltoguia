@@ -9,6 +9,7 @@ from empresas.forms import *
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.utils.translation import ugettext as _
+from django.core.exceptions import ObjectDoesNotExist
 
 @login_required
 def crear_empresa(request, step=1):
@@ -69,18 +70,16 @@ def mensaje(action, url=False):
     return result
 
 
-
-def ver_empresa(request, username):
-
-    user = get_object_or_404(User, username=username)
-
-    empresa = get_object_or_404(Empresa, user=user)
- 
-    servicios = EmpresaServicio.objects.filter(empresa=empresa)
- 
-    return render_to_response('empresas/ver_empresa.html', locals(), context_instance=RequestContext(request))
-
-
+@login_required
+def ver_empresa(request):
+    try:        
+        empresa = Empresa.objects.get(user=request.user)
+        servicios = EmpresaServicio.objects.filter(empresa=empresa) 
+        return render_to_response('empresas/ver_empresa.html', locals(), context_instance=RequestContext(request))
+    except ObjectDoesNotExist:        
+        return HttpResponseRedirect(reverse('crear-empresa'))
+        
+        
 def empresa_servicio_detalle(request, empresa_slug, servicio_slug):
     pass
     """
