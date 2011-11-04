@@ -47,6 +47,10 @@ class Empresa(models.Model):
     def __unicode__(self):
         return self.nombre
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ("empresa", [self.slug])
+    
     def save(self, *args, **kwargs):
 
         queryset = self.__class__.objects.all()

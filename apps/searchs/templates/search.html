@@ -29,12 +29,21 @@
 	<h4>...o simplemente ojear la lista de abajo.</h4>
 	<div class="resultados-patrocinados">
 		<div class="resultado">
+	   {% for servicio in servicios %}
+	   		<p>
+	   			<b><a href="{{ servicio.empresa.get_absolute_url }}"> {{ servicio.empresa.nombre }}</a>
+	   			</b> - <a href="{{ servicio.get_absolute_url }}"> {{ servicio.nombre }} </a> <br />
+	   			Direccion.: {{ servicio.empresa.domicilio }} <br />
+	   			<i>
+		   			Telefono.: {{ servicio.empresa.telefono }} - Celular.: {{ servicio.empresa.domicilio }}<br />
+		   			Mail.: {{ servicio.empresa.mail }}
+   				</i>
+   			</p>
+
+	   {% endfor %}  			
 			<!--resultado harcodeado que tiene que ser sustituido por
 				variables de la vista correspondiente-->
-			<p><b>Chili Empanadas</b> - El nombre de la Empanada<br />. Suárez 24 - <i>Tel: 473 23314 - SMS: 099 165 425</i></p>
-			<p><b>CD Soft</b> - Diseño y Desarrollo de Software<br /> - Brasil 874 Oficina 7 - <i>Celular 099 34 06 53 - E-mail: info@cdsoft.com.uy</i></p>
-			<p><b>HYGIES</b> - <br /> 874 - <i>Tel 473 26071</i></p>
-			<p><b>Pastas Remedi</b> - <br /> Artigas 1601 <i>Tel: 473 29016</i></p>
+
 		</div>
 	</div>
 {% endblock %}

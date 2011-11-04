@@ -15,8 +15,10 @@
     <p><strong>{% trans "Description" %}: </strong> {{ servicio.descripcion }}</p>
 	<p><strong>{% trans "Tags" %}: </strong> {{ servicio.tags }}</p>
 </div>
-<p class="form-buttons">
-	<input class="save-button" type="submit" value="{% trans "Modificar" %}"/>
-	<a class="cancel-button" href="#">{% trans "Cancel" %}</a>
-</p>
+{% ifequal servicio.user request.user  %}
+	<p class="form-buttons">
+		<input class="save-button" type="submit" value="{% trans "Modificar" %}"/>
+		<a class="cancel-button" href="#">{% trans "Cancel" %}</a>
+	</p>
+{% endifequal %}
 {% endblock %}

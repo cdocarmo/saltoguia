@@ -13,6 +13,9 @@ from django.core.exceptions import ObjectDoesNotExist
 
 @login_required
 def crear_empresa(request, step=1):
+    empresa = Empresa.objects.get(user=request.user)
+    if empresa:
+        return HttpResponseRedirect(reverse('ver-empresa'))
     step = request.POST.get('step','1')
     form_Empresa = EmpresaForm()
     #return HttpResponse(str(step))
@@ -57,6 +60,7 @@ def crear_empresa(request, step=1):
 
 
 
+
 def mensaje(action, url=False):
     try:
         result = _({
@@ -79,7 +83,7 @@ def ver_empresa(request):
     except ObjectDoesNotExist:        
         return HttpResponseRedirect(reverse('crear-empresa'))
         
-        
+
 def empresa_servicio_detalle(request, empresa_slug, servicio_slug):
        
     empresa = get_object_or_404(Empresa, slug = empresa_slug)
@@ -87,3 +91,34 @@ def empresa_servicio_detalle(request, empresa_slug, servicio_slug):
 
     return render_to_response('empresas/ver_servicio.html', locals(), context_instance=RequestContext(request))
     
+
+@login_required
+def nuevo_servicio(request, empresa_slug):
+       
+    empresa = get_object_or_404(Empresa, slug = empresa_slug)
+    form = Empresa_ServicioForm(initial={'empresa_id': empresa.id})
+    
+    if request.method == "POST":
+        form_Empresa_ServicioForm = Empresa_ServicioForm(request.POST)
+        
+        if form_Empresa_ServicioForm.is_valid():
+    
+            empresa_servicio = form_Empresa_ServicioForm.save(commit=False)
+            empresa_servicio.user = request.user
+            empresa_servicio.empresa = form_Empresa_ServicioForm.cleaned_data['empresa_id']
+            empresa_servicio.save()                
+    
+            return HttpResponseRedirect(reverse('ver-empresa'))
+
+            
+    return render_to_response('empresas/ingreso-de-empresa-servicio.html', 
+                              locals(), 
+                              context_instance=RequestContext(request))                   
+
+def empresa(request, empresa_slug):
+    try:        
+        empresa = get_object_or_404(Empresa, slug = empresa_slug)
+        servicios = EmpresaServicio.objects.filter(empresa=empresa)
+        return render_to_response('empresas/ver_empresa.html', locals(), context_instance=RequestContext(request))
+    except ObjectDoesNotExist:        
+        raise Http404

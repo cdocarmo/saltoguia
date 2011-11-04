@@ -16,6 +16,10 @@
 	<p><strong>{% trans "E-Mail" %}: </strong> {{ empresa.mail }}</p>
 	<p><strong>{% trans "Descripcion" %}: </strong> {{ empresa.descripcion }}</p>
  
+	{% ifequal empresa.user request.user  %}
+    	<p><a href="{% url nuevo-servicio empresa.slug %}">Agregar Servicios</a></p>
+	{% endifequal %}
+	
  	<h3>Servicios</h3>
  	
    {% for servicio in servicios %}
