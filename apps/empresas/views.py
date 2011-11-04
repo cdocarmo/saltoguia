@@ -18,11 +18,10 @@ def crear_empresa(request, step=1):
     if step == '1': 
         try:
             empresa = Empresa.objects.get(user=request.user)
-            if empresa:
-                return HttpResponseRedirect(reverse('ver-empresa'))
         except ObjectDoesNotExist:        
-            pass    
-    
+            empresa = None    
+        if empresa:
+            return HttpResponseRedirect(reverse('ver-empresa'))
     form_Empresa = EmpresaForm()
     #return HttpResponse(str(step))
     if request.method == "POST":
