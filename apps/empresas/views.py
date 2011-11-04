@@ -94,8 +94,10 @@ def empresa_servicio_detalle(request, empresa_slug, servicio_slug):
 
 @login_required
 def nuevo_servicio(request, empresa_slug):
-       
-    empresa = get_object_or_404(Empresa, slug = empresa_slug)
+    try:
+        empresa = Empresa.objects.get(slug = empresa_slug, user = request.user)
+    except ObjectDoesNotExist:        
+        return HttpResponseRedirect(reverse('crear-empresa'))        
     form = Empresa_ServicioForm(initial={'empresa_id': empresa.id})
     
     if request.method == "POST":
