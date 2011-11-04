@@ -20,8 +20,7 @@ def login(request):
         HttpResponseRedirect('/')    
     login_form = LoginForm(auto_id=True)
     
-    if request.method == 'POST':
-        
+    if request.method == 'POST':        
         login_form = LoginForm(request.POST, auto_id=True)
         if login_form.is_valid():
             username = request.POST['usuario']
@@ -42,6 +41,11 @@ def login(request):
         context,
         context_instance=RequestContext(request),
     )
+
+def logout(request):
+    auth.logout(request)
+    return HttpResponseRedirect("/")
+
 
 
 def register(request):

@@ -13,14 +13,19 @@ from django.core.exceptions import ObjectDoesNotExist
 
 @login_required
 def crear_empresa(request, step=1):
-    empresa = Empresa.objects.get(user=request.user)
-    if empresa:
-        return HttpResponseRedirect(reverse('ver-empresa'))
     step = request.POST.get('step','1')
+
+    if step == '1': 
+        try:
+            empresa = Empresa.objects.get(user=request.user)
+            if empresa:
+                return HttpResponseRedirect(reverse('ver-empresa'))
+        except ObjectDoesNotExist:        
+            pass    
+    
     form_Empresa = EmpresaForm()
     #return HttpResponse(str(step))
     if request.method == "POST":
-        
         if step == '1':
             form_Empresa = EmpresaForm(request.POST)
             
@@ -28,24 +33,18 @@ def crear_empresa(request, step=1):
                 #return HttpResponse(str(step))
                 empresa = form_Empresa.save(commit=False)
                 empresa.user = request.user
-                empresa.save()
-
-               
+                empresa.save()               
                 form = Empresa_ServicioForm(initial={'empresa_id': empresa.id})
                 return render_to_response('empresas/ingreso-de-empresa-servicio.html', 
                                           locals(), 
                                           context_instance=RequestContext(request))
         elif step == '2':
-
-            form_Empresa_ServicioForm = Empresa_ServicioForm(request.POST)
-            
+            form_Empresa_ServicioForm = Empresa_ServicioForm(request.POST)            
             if form_Empresa_ServicioForm.is_valid():
-
                 empresa_servicio = form_Empresa_ServicioForm.save(commit=False)
                 empresa_servicio.user = request.user
                 empresa_servicio.empresa = form_Empresa_ServicioForm.cleaned_data['empresa_id']
-                empresa_servicio.save()                
-
+                empresa_servicio.save()
                 return render_to_response('empresas/ingreso-de-empresa-servicio.html', 
                                           locals(), 
                                           context_instance=RequestContext(request))

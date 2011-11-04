@@ -7,19 +7,19 @@ import datetime
 from django.contrib.auth.models import User
 
 
-PENDIENTE = 1
-ACTIVA = 2
-NEGADA = 3
-
-_STATUS = (
-    (PENDIENTE, _('PENDIENTE')),
-    (ACTIVA, _('ACTIVA')),
-    (NEGADA, _('NEGADA')),
-)
 
 class Empresa(models.Model):
 
 
+    PENDIENTE = 1
+    ACTIVA = 2
+    NEGADA = 3
+    
+    _STATUS = (
+        (PENDIENTE, _('PENDIENTE')),
+        (ACTIVA, _('ACTIVA')),
+        (NEGADA, _('NEGADA')),
+    )
 
     EMPRESA = 1
     PERSONA = 2
@@ -64,6 +64,16 @@ class Empresa(models.Model):
         
 class EmpresaServicio(models.Model):
     
+
+    PENDIENTE = 1
+    ACTIVA = 2
+    NEGADA = 3
+    
+    _STATUS = (
+        (PENDIENTE, _('PENDIENTE')),
+        (ACTIVA, _('ACTIVA')),
+        (NEGADA, _('NEGADA')),
+    )
 
     TIPO_PATROCINADO = 0
     TIPO_NORMAL = 1

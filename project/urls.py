@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     url(r'^empresas/', include('empresas.urls')),
     url(r'^login/$', 'users.views.login', name='login'),
     url(r'^registro/$', 'users.views.register', name='registro'),
+    url(r'^logout/$', 'users.views.logout', name='logout'),
     
 )
 #GF
