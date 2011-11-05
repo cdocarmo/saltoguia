@@ -1,5 +1,5 @@
 from django.contrib.admin import site, ModelAdmin, TabularInline, StackedInline
-from empresas.models import Empresa, EmpresaServicio
+from empresa.models import Empresa, EmpresaServicio
 
 
 

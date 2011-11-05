@@ -1,6 +1,6 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _, ungettext
-from empresas.models import Empresa, EmpresaServicio
+from empresa.models import Empresa, EmpresaServicio
 from django.utils.translation import ugettext as _
 
 #comentario al pedo que hay que borrar
