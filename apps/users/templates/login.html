@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 {% load i18n %}
+
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="media/css/formStyles.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="media/css/userBrownserStyles.css" media="all" />
+{% endblock %}
+
+{% block js %}
+	<script type="text/javascript" src="/media/js/dropdown.js"></script>
+{% endblock %}
+
 {% block user %}
 	<div id="users">
 		{% if user.is_authenticated %}
@@ -17,12 +27,12 @@
 		{% endif %}
 	</div>
 {% endblock %}
-{% block content %}
 
-    <fieldset>
-        <legend>{% trans "Entrar" %}</legend>
+{% block content %}
         <form method="post" action="/login/" id="loginform">
-            {% if error %}
+        	<fieldset>
+        		<legend>{% trans "Entrar" %}</legend>
+        		{% if error %}
                 <p id="errorholder">
 				  {% if form.errors %}
 				    <p class="error">Sorry, that's not a valid username or password</p>
@@ -30,10 +40,10 @@
 
                 </p>
             {% endif %}
-            {{ form.as_p }}
+            {{ form.as_br }}
             <p>
                 <button name="login" id="login" value="entrar" type="submit"> {% trans "Entrar" %}!</button>
-            </p>
+            </p
+        	</fieldset>
         </form>
-    </fieldset>
 {% endblock %}
