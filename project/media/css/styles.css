@@ -39,15 +39,21 @@ div#users {
 	background-color: #222;
 	border-bottom: 2px solid black;
 	color: #EEEEEE;
+	height: 36px;
 }
 
 div#users span {
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size: 10px;
+	font-size: 12px;
 }
 
 div#users a {
 	color: #E15407;
+}
+
+div#users a:hover {
+	color: #FF1100;	
+	text-decoration: underline;
 }
 
 div#wrapper_header {

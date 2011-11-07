@@ -1,0 +1,90 @@
+ul.dropdown{  
+    width: 224px;  
+    border: 1px solid #000;  
+    border-radius: 5px;  
+    -moz-border-radius: 5px;  
+    -webkit-border-radius: 5px;  
+    background: #1a1a1a;  
+    margin: 0;
+    padding-left: 24px;
+    float: left;
+    list-style: none;
+    
+}  
+ul.dropdown li{  
+    display: none;   
+}  
+ul.dropdown li.active{  
+    display: block;  
+    color: #8c8c8c;  
+    font-size: 12px;  
+    /*padding: 5px;*/  
+    color: #555;  
+    border-top: 1px solid #313131;  
+    border-radius: 4px;  
+    -moz-border-radius: 4px;  
+    -webkit-border-radius: 4px; 
+}  
+
+ul.dropdown li.active span{
+	vertical-align:0%;
+}
+
+ul.dropdown li.active img{
+	vertical-align:middle;
+	margin-right: 13px;
+}
+
+span#user-name{  
+    background: transparent url("/media/images/dropdown.png") no-repeat scroll right center;  
+    padding-right: 24px;  
+    color: white;  
+}  
+ul.dropdown li a{  
+    display: block;  
+    text-decoration: none;  
+    padding: 8px 8px 8px 10px;  
+    background: #1e1e1e;  
+    border-bottom: 1px solid #171717;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12px;  
+}  
+ul.dropdown li.last a{  
+    border:0;  
+}  
+ul.dropdown li.first a{  
+    border-top: 3px solid #131313;  
+}  
+ul.dropdown li a:hover{  
+    background: #232323;  
+    color: #fff;  
+    padding-left: 11px;  
+} 
+
+/****LOGOUT***/
+
+ul.access {
+	width: 484px;
+} 
+
+ul.access li a{  
+    display: inline;  
+    text-decoration: none;  
+    padding: 8px 8px 8px 10px;  
+    background: #1a1a1a;
+    border-bottom: 1px solid #171717;  
+} 
+ 
+ul.access li.last a{  
+    border:0;  
+}
+  
+ul.access li.first a{  
+    border-top: 3px solid #131313;  
+}
+  
+ul.access li a:hover{  
+    background: #1a1a1a;  
+    padding-left: 10px;  
+} 
+
