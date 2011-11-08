@@ -8,9 +8,20 @@ from django.contrib.auth.forms import UserCreationForm
 
 class LoginForm(forms.Form):
     usuario = forms.CharField(label=_(u'Usuario'), max_length=100, widget=forms.TextInput(attrs={'class':'input-text'}))
-    password = forms.CharField(label=_(u'Password'), widget=forms.PasswordInput)
+    password = forms.CharField(label=_(u'Password'), widget=forms.PasswordInput(attrs={'class':'input-text'}))
 
-
+    def as_br(self):
+        """
+        GF
+        Based in as_p, from superclass forms.py.
+        Returns this form rendered as HTML <br />s.
+        """
+        return self._html_output(
+            normal_row = u'%(label)s <br />%(field)s%(help_text)s <br />',
+            error_row = u'%s',
+            row_ender = '',
+            help_text_html = u' <span class="helptext">%s</span>',
+            errors_on_separate_row = True)
 
 
 class RegisterForm(UserCreationForm):

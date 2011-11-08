@@ -28,6 +28,7 @@ ul.dropdown li.active{
 
 ul.dropdown li.active span{
 	vertical-align:0%;
+	cursor: default; 
 }
 
 ul.dropdown li.active img{
@@ -47,7 +48,7 @@ ul.dropdown li a{
     background: #1e1e1e;  
     border-bottom: 1px solid #171717;
     font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-    font-size: 12px;  
+    font-size: 12px; 
 }  
 ul.dropdown li.last a{  
     border:0;  
