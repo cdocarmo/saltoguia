@@ -5,15 +5,18 @@
 
 {% block css %}
 	<link rel="stylesheet" type="text/css" href="media/css/standarStyles.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="media/css/userBrownserStyles.css" media="all" />
 {% endblock %}
-
+{% block js %}
+	<script type="text/javascript" src="/media/js/dropdown.js"></script>
+{% endblock %}
 {% block user %}
 	<div id="users">
 		{% if user.is_authenticated %}
 			<ul class="dropdown">
 				<li class="active"><img src="/media/images/engranaje.png" alt="Icono engranaje"/><span>Bienvenido, </span><span id="user-name">{{ user.username }}...</span></li>
 				<li class="first"><a href="#">Modificar perfil</a></li>
-				<li><a href="/empresa/">Agregar servicio</a></li>
+				<li><a href="{% url nuevo-servicio empresa.slug %}">Agregar servicio</a></li>
 				<li><a href="#">Otra posible opci&oacute;n</a></li>
 				<li class="last"><a href="/logout/">Salir</a></li>
 			</ul>
