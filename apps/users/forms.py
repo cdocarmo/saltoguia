@@ -25,11 +25,11 @@ class LoginForm(forms.Form):
 
 
 class RegisterForm(UserCreationForm):
-    username = forms.CharField(label=_(u'Usuario'), max_length=30, widget=forms.TextInput(attrs={'class':'input-text'}))
-    email = forms.EmailField(label = "Email", widget=forms.TextInput(attrs={'class':'input-text'}))
+    username = forms.CharField(label=_(u'*Usuario'), max_length=30, widget=forms.TextInput(attrs={'class':'input-text'}))
+    email = forms.EmailField(label = "*Email", widget=forms.TextInput(attrs={'class':'input-text'}))
     #override password1 and password2 from UserCreationForm
-    password1 = forms.CharField(label=_("Password"), widget=forms.PasswordInput(attrs={'class':'input-text'}))
-    password2 = forms.CharField(label=_("Password confirmation"), widget=forms.PasswordInput(attrs={'class':'input-text'}),
+    password1 = forms.CharField(label=_("*Password"), widget=forms.PasswordInput(attrs={'class':'input-text'}))
+    password2 = forms.CharField(label=_("*Password confirmation"), widget=forms.PasswordInput(attrs={'class':'input-text'}),
         help_text = _("Enter the same password as above, for verification."))
     
     def as_br(self):

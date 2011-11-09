@@ -1,5 +1,14 @@
 /*CSS para formularios*/
 
+fieldset {
+	padding: 20px 10px;
+	width: 840px;;
+}
+
+h2#form-description {
+	margin-right: 50px;
+}
+
 form.forms h2 {
 	clear: right;
 	font-family: 'Oswald', sans-serif;
@@ -14,6 +23,10 @@ form.forms h3 {
 	color: #333333;
 	font-style: italic;
 	/*text-shadow: 1px 1px #333;*/
+}
+
+form.forms legend {
+	color: #e15407;
 }
 
 form.forms {
@@ -39,6 +52,15 @@ input.save-button {
 	background-repeat: no-repeat;
 	width: 280px;
 	height: 24px;
+	margin-top: 30px;
+}
+
+textarea.txt-area {
+	border: none;
+	background-image: url("/media/images/bg_textarea.jpg");
+	background-repeat: no-repeat;
+	width: 320px;
+	height: 100px;
 }
 
 form.forms a {
@@ -47,4 +69,9 @@ form.forms a {
 
 form#search-form {
 	text-align: center;
+}
+
+span.helptext{
+	font-size: 10px;
+	color: #000000;
 }

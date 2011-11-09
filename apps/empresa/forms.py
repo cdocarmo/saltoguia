@@ -10,7 +10,7 @@ class EmpresaForm(forms.ModelForm):
     telefono = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
     celular = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
     mail = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
-    descripcion = forms.CharField(label="Descripcion", required=False, widget=forms.Textarea(attrs = {'cols': '35', 'rows': '5'}))
+    descripcion = forms.CharField(label="Descripcion", required=False, widget=forms.Textarea(attrs = {'class':'txt-area', 'cols': '35', 'rows': '5'}))
     
     def clean_name(self):
         if Empresa.objects.filter(name__iexact=self.cleaned_data["nombre"]).count() > 0:

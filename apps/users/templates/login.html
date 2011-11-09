@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-        <form method="post" action="/login/" id="loginform">
+        <form method="post" action="/login/" id="loginform" class="forms">
         	<fieldset>
         		<legend>{% trans "Entrar" %}</legend>
         		{% if error %}
@@ -15,13 +15,10 @@
 				  {% if form.errors %}
 				    <p class="error">Sorry, that's not a valid username or password</p>
 				  {% endif %}
-
                 </p>
             {% endif %}
             {{ form.as_br }}
-            <p>
-                <button name="login" id="login" value="entrar" type="submit"> {% trans "Entrar" %}!</button>
-            </p
+                <input name="login" id="login" class="save-button" value="{% trans "Entrar" %}!" type="submit">
         	</fieldset>
         </form>
 {% endblock %}
