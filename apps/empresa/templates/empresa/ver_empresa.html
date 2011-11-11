@@ -6,22 +6,29 @@
 {% block css %}
 	<link rel="stylesheet" type="text/css" href="media/css/formStyles.css" media="all" />
 	<link rel="stylesheet" type="text/css" href="media/css/userBrownserStyles.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="media/css/pageDetail.css" media="all" />
 {% endblock %}
 
 {% block content %}
 <div id="company_data">
 	<div id="company">
-		<div id="logo">
-			<img src="" alt="Logo de la empresa" />
-			<div id="data">
-				<h3>{{ empresa.nombre }}</h3>
-    			<p><strong>{% trans "Description" %}: </strong> {{ empresa.domicilio }}</p>
-				<p><strong>{% trans "Telefono" %}: </strong> {{ empresa.telefono }}</p>
-				<p><strong>{% trans "Celular" %}: </strong> {{ empresa.celuldar }}</p>
-				<p><strong>{% trans "E-Mail" %}: </strong> {{ empresa.mail }}</p>
-				<p><strong>{% trans "Descripcion" %}: </strong> {{ empresa.descripcion }}</p>
-			</div>
+		<div id="data">
+			<h3>{{ empresa.nombre }}</h3>
+    		<p><strong>{% trans "Domicilio" %}: </strong> {{ empresa.domicilio }}</p>
+			<p><strong>{% trans "Telefono" %}: </strong> {{ empresa.telefono }}</p>
+			<p><strong>{% trans "Celular" %}: </strong> {{ empresa.celuldar }}</p>
+			<p><strong>{% trans "E-Mail" %}: </strong> {{ empresa.mail }}</p>
+			<p><strong>{% trans "Description" %}: </strong> {{ empresa.descripcion }}</p>
 		</div>
+		<div id="logo">
+			<img src="media/images/no-logo.jpg" alt="Logo de la empresa" />
+		</div>
+	</div>
+	<div id="tab-service-map">
+		<ul>
+			<li><a href="#">Servicios</a></li>
+			<li><a href="#">Mapa</a></li>
+		</ul>
 	</div>
 	<div id="services">
 		<h3>Servicios</h3>

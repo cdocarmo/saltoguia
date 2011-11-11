@@ -1,0 +1,36 @@
+/******page detail******/
+
+div#logo {
+	width: 100px;
+}
+
+div#data {
+	float: right;
+	width: 760px;
+}
+
+div#tab-service-map {
+	clear: right;
+	width: 100%;
+	background-color: #222;
+	padding: 15px 0;
+	margin: auto;
+}
+
+div#tab-service-map ul{
+	list-style: none;
+	padding: 0;
+	margin: 0 10px;
+}
+
+div#tab-service-map li {
+	display: inline;
+	padding: 0 36px;
+}
+
+div#tab-service-map a {
+	color: #eee;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	text-decoration: none;
+}
