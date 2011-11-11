@@ -43,7 +43,7 @@ class Empresa(models.Model):
     fecha = models.DateTimeField(blank=True, null=True)
     user = models.ForeignKey(User)
     logo = ImageWithThumbsField(upload_to='images/logos', 
-                                sizes=((210,140),(80,80),(50,50),(125,125),(300,300),(200,200)),
+                                sizes=((80,80),(50,50),(125,125),(200,200)),
                                 blank=True, null=True)
     
     def __unicode__(self):
