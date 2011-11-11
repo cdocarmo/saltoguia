@@ -16,9 +16,9 @@
 			<h3>{{ empresa.nombre }}</h3>
     		<p><strong>{% trans "Domicilio" %}: </strong> {{ empresa.domicilio }}</p>
 			<p><strong>{% trans "Telefono" %}: </strong> {{ empresa.telefono }}</p>
-			<p><strong>{% trans "Celular" %}: </strong> {{ empresa.celuldar }}</p>
+			<p><strong>{% trans "Celular" %}: </strong> {{ empresa.celular }}</p>
 			<p><strong>{% trans "E-Mail" %}: </strong> {{ empresa.mail }}</p>
-			<p><strong>{% trans "Description" %}: </strong> {{ empresa.descripcion }}</p>
+			<p><strong>{% trans "Descripcion" %}: </strong> {{ empresa.descripcion }}</p>
 		</div>
 		<div id="logo">
 			<img src="media/images/no-logo.jpg" alt="Logo de la empresa" />
@@ -26,7 +26,7 @@
 	</div>
 	<div id="tab-service-map">
 		<ul>
-			<li><a href="#">Servicios</a></li>
+			<li id="selected"><a href="#">Servicios</a></li>
 			<li><a href="#">Mapa</a></li>
 		</ul>
 	</div>
