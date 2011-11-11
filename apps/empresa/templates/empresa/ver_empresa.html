@@ -10,20 +10,23 @@
 
 {% block content %}
 <div id="company_data">
-    <h3>{{ empresa.nombre }}</h3>
-    <p><strong>{% trans "Description" %}: </strong> {{ empresa.domicilio }}</p>
-	<p><strong>{% trans "Telefono" %}: </strong> {{ empresa.telefono }}</p>
-	<p><strong>{% trans "Celular" %}: </strong> {{ empresa.celuldar }}</p>
-	<p><strong>{% trans "E-Mail" %}: </strong> {{ empresa.mail }}</p>
-	<p><strong>{% trans "Descripcion" %}: </strong> {{ empresa.descripcion }}</p>
- 
-	{% ifequal empresa.user request.user  %}
-    	<p><a href="{% url nuevo-servicio empresa.slug %}">Agregar Servicios</a></p>
-	{% endifequal %}
-
- 	<h3>Servicios</h3>
+	<div id="company">
+		<div id="logo">
+			<img src="" alt="Logo de la empresa" />
+			<div id="data">
+				<h3>{{ empresa.nombre }}</h3>
+    			<p><strong>{% trans "Description" %}: </strong> {{ empresa.domicilio }}</p>
+				<p><strong>{% trans "Telefono" %}: </strong> {{ empresa.telefono }}</p>
+				<p><strong>{% trans "Celular" %}: </strong> {{ empresa.celuldar }}</p>
+				<p><strong>{% trans "E-Mail" %}: </strong> {{ empresa.mail }}</p>
+				<p><strong>{% trans "Descripcion" %}: </strong> {{ empresa.descripcion }}</p>
+			</div>
+		</div>
+	</div>
+	<div id="services">
+		<h3>Servicios</h3>
  	
-   {% for servicio in servicios %}
+   		{% for servicio in servicios %}
 		<a href="{{ servicio.get_absolute_url }}">
 		<div style="float:left;padding: 4px">
 		{{ servicio }}<br />
@@ -31,6 +34,10 @@
 
 		</div>
    {% endfor %}  
+	</div>
+	{% ifequal empresa.user request.user  %}
+    	<p><a href="{% url nuevo-servicio empresa.slug %}">Agregar Servicios</a></p>
+	{% endifequal %}
 
 </div>
 
