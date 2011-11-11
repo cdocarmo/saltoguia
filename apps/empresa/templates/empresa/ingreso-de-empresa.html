@@ -17,10 +17,20 @@
 
 <h2 id="form-description">¡Ahora ingresa los datos <br /> la nueva empresa!</h2>
 
-<form class="forms" method="post" id="form_company_singup">
+<form class="forms" method="post" id="form_company_singup" enctype="multipart/form-data">
 	<fieldset id="company_data">
 		<legend>Nueva Empresa</legend>
-      
+
+		<p class="upload-avatar">
+			{{ form.logo.label_tag }}<br/>
+			
+			{{ form.logo }}{% if logo.field.required %} <span title="{% trans "This field is required" %}">*</span>{% endif %}<br />
+			<span>{{ form.logo.help_text }}</span>
+			{% if form.logo.errors %} 
+				<span class="error_msg">{{ form.logo.errors|join:"; " }}</span>
+		    {% endif %}  
+		  </p>
+	        
 		{{ form.nombre.label_tag }}<br />
 		{{ form.nombre }}<br />
 		<span>{{ form.nombre.help_text }}</span>
@@ -30,6 +40,17 @@
 		{{ form.domicilio }}<br />
 		<span>{{ form.domicilio.help_text }}</span>
 		{% if form.domicilio.errors %}<span class="error_msg">{{ form.domicilio.errors|join:"; " }}</span>{% endif %}
+
+		{{ form.tipo.label_tag }}<br />
+		{{ form.tipo }}<br />
+		<span>{{ form.tipo.help_text }}</span>
+		{% if form.tipo.errors %}<span class="error_msg">{{ form.tipo.errors|join:"; " }}</span>{% endif %}
+
+		{{ form.documento.label_tag }}<br />
+		{{ form.documento }}<br />
+		<span>{{ form.documento.help_text }}</span>
+		{% if form.documento.errors %}<span class="error_msg">{{ form.documento.errors|join:"; " }}</span>{% endif %}
+
 
 		{{ form.telefono.label_tag }}<br />
 		{{ form.telefono }}<br />
