@@ -1,50 +1,133 @@
 /******page detail******/
 
+div.ficha-empresa {
+	float: right;
+	width: 300px;	
+}
+
+div#promo-inscripcion {
+	width: 200px;
+	height: 300px;
+	padding: 10px 20px;
+	background: url("/media/images/boton-nueva-ficha.jpg") no-repeat 20px 20px;
+}
+
+div#promo-inscripcion a{
+	display: block;
+	text-decoration: none;
+	text-align: center;
+	height: 280px;
+	color: #ddd;
+	text-shadow: 1px 1px #333;
+}
+
+div#promo-inscripcion span{
+	display: block;
+}
+
+div#promo-inscripcion span#deseas {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	margin:30px 0 120px 0;
+}
+
+div#inscribite {
+	font-size: 22px;
+	margin-top: 20px;
+}
+
 div#logo {
 	width: 100px;
+	margin: 20px 30px 0 0;
 }
 
 div#data {
-	float: right;
-	width: 760px;
+	width: 490px;
 }
 
 div#data h3 {
 	text-transform: uppercase;
+	padding: 0 0 4px 4px;
+	border-bottom: 1px solid #333;
 }
 
 div#data p {
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
 	font-size: 12px;
+	padding-left: 4px;
+}
+
+div#data p strong {
+	width: 120px;
+	display: inline-block;
 }
 
 div#tab-service-map {
+	width: auto;
+	height: 36px;
 	clear: right;
-	width: 100%;
 	background-color: #222;
-	padding: 14px 0;
-	margin: auto;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
 }
 
-div#tab-service-map ul{
-	list-style: none;
-	padding: 0;
-	margin: 0 10px;
+div#tab-service-map .inbar {
+	display: block;
+	height: 36px;
 }
 
-div#tab-service-map li {
-	display: inline;
-	padding: 15px 36px;
-	height: 30px;
+div#tab-service-map ul, div#tab-service-map li{
+	border: 0 none;
+	height: 36px;
+	line-height: 36px;
+	list-style: none outside none;
+	margin: 0;
+	padding: 0;	
+}
+
+div#tab-service-map ul li {
+	display: block;
+	float: left;
+	line-height: 36px;
 }
 
 div#tab-service-map a {
-	color: #eee;
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size: 16px;
 	text-decoration: none;
+	display: block;
+	color: white;
 }
 
-li#selected {
-	background: url("/media/images/indicador.jpg") center 9px no-repeat;
+span.inbar ul li a span {
+	height: 36px;
+	line-height: 36px;
+	/*margin-left: 20px;
+	padding: 0 20px 0 0;*/
+	padding: 0 30px;
+}
+
+a#selected {
+	background: url("/media/images/indicador.jpg") #e15407 center center no-repeat;
+}
+
+div#services h3 {
+	visibility: hidden;
+	font-size: 8px;
+}
+
+div.services-results {
+	padding: 10px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+div.par {
+	background-color: #eef;
+}
+
+div.services-results a {
+	display: inline-block;
+	width: 220px;
+}
+
+a.service-name {
+	text-decoration: none;
+	color: #333;
 }

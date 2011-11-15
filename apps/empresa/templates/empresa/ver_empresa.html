@@ -12,7 +12,13 @@
 {% block content %}
 <div id="company_data">
 	<div id="company">
-		<div id="data">
+		<div class="ficha-empresa" id="promo-inscripcion">
+			<a href="#">
+				<span id="deseas">¿Deseas que tu informaci&oacute;n aparezca tambi&eacute;n aqu&iacute;?</span>
+				<span id="inscribite">¡Inscribite <br />ahora mismo!</span>
+			</a>
+		</div>
+		<div class="ficha-empresa" id="data">
 			<h3>{{ empresa.nombre }}</h3>
     		<p><strong>{% trans "Domicilio" %}: </strong> {{ empresa.domicilio }}</p>
 			<p><strong>{% trans "Telefono" %}: </strong> {{ empresa.telefono }}</p>
@@ -20,7 +26,7 @@
 			<p><strong>{% trans "E-Mail" %}: </strong> {{ empresa.mail }}</p>
 			<p><strong>{% trans "Descripcion" %}: </strong> {{ empresa.descripcion }}</p>
 		</div>
-		<div id="logo">
+		<div class="ficha-empresa" id="logo">
 			{% if empresa.logo %}
 				<img src="{{ empresa.logo.url_80x80 }}" alt="Logo de la empresa" />
 
@@ -30,20 +36,21 @@
 		</div>
 	</div>
 	<div id="tab-service-map">
-		<ul>
-			<li id="selected"><a href="#">Servicios</a></li>
-			<li><a href="#">Mapa</a></li>
-		</ul>
+		<span class="inbar">
+			<ul>
+				<li><a href="#" id="selected"><span>Servicios</span></a></li>
+				<li><a href="#"><span>Mapa</span></a></li>
+			</ul>
+		</span>
 	</div>
 	<div id="services">
 		<h3>Servicios</h3>
- 	
    		{% for servicio in servicios %}
-		<a href="{{ servicio.get_absolute_url }}">
-		<div style="float:left;padding: 4px">
-		{{ servicio }}<br />
-		Created by: <a href="{{ servicio.user.get_absolute_url }}">{{ servicio.user }}</a><br />
-
+   		<div class="services-results {% cycle 'par' 'impar' %}">
+			<a class="service-name" href="{{ servicio.get_absolute_url }}">
+				{{ servicio }}
+			</a>
+			Created by: <a href="{{ servicio.user.get_absolute_url }}">{{ servicio.user }}</a>
 		</div>
    {% endfor %}  
 	</div>
