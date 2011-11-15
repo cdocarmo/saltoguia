@@ -5,7 +5,7 @@ from django.template.defaultfilters import slugify
 from utilita.util import unique_slugify
 import datetime
 from django.contrib.auth.models import User
-
+from utilita.thumbs import ImageWithThumbsField
 
 
 class Empresa(models.Model):
@@ -30,19 +30,21 @@ class Empresa(models.Model):
     )
 
     nombre = models.CharField(max_length=255)
-    telefono = models.CharField(max_length=30)
-    celular = models.CharField(max_length=30)
+    telefono = models.CharField(max_length=30, blank=True, null=True)
+    celular = models.CharField(max_length=30, blank=True, null=True)
     tipo = models.IntegerField(choices=TIPO_EMPRESA, default=1)
-    documento = models.CharField(max_length=255)
+    documento = models.CharField(max_length=255, blank=True, null=True)
     mail = models.EmailField(blank=False, unique=True) 
     domicilio = models.CharField(max_length=255)
     slug = models.SlugField(editable=False)
-    descripcion = models.TextField()
+    descripcion = models.TextField(blank=True, null=True)
     status = models.IntegerField(choices=_STATUS, default=1)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     fecha = models.DateTimeField(blank=True, null=True)
     user = models.ForeignKey(User)
-    
+    logo = ImageWithThumbsField(upload_to='images/logos', 
+                                sizes=((80,80),(50,50),(125,125),(200,200)),
+                                blank=True, null=True)
     
     def __unicode__(self):
         return self.nombre

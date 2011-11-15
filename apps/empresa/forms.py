@@ -2,6 +2,7 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _, ungettext
 from empresa.models import Empresa, EmpresaServicio
 from django.utils.translation import ugettext as _
+from utilita.thumbs import ImageWithThumbsField
 
 class EmpresaForm(forms.ModelForm):
     step = forms.IntegerField(widget=forms.HiddenInput, initial=1)
@@ -10,7 +11,13 @@ class EmpresaForm(forms.ModelForm):
     telefono = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
     celular = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
     mail = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
-    descripcion = forms.CharField(label="Descripcion", required=False, widget=forms.Textarea(attrs = {'class':'txt-area', 'cols': '35', 'rows': '5'}))
+    descripcion = forms.CharField(label="Descripcion", 
+                                  required=False, 
+                                  widget=forms.Textarea(attrs = 
+                                                        {'class':'txt-area', 
+                                                         'cols': '35', 'rows': '5'}))
+    tipo = forms.ChoiceField(choices=Empresa.TIPO_EMPRESA)
+    documento = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
     
     def clean_name(self):
         if Empresa.objects.filter(name__iexact=self.cleaned_data["nombre"]).count() > 0:
@@ -22,7 +29,8 @@ class EmpresaForm(forms.ModelForm):
 
     class Meta:
         model = Empresa
-        fields = ('nombre', 'domicilio', 'telefono', 'celular', 'mail', 'descripcion', )
+        fields = ('nombre', 'domicilio', 'telefono', 'celular', 
+                  'mail', 'descripcion', 'logo', 'documento', 'tipo')
 
 class Empresa_ServicioForm(forms.ModelForm):
     """

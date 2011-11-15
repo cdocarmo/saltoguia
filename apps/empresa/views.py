@@ -25,12 +25,11 @@ def crear_empresa(request, step=1):
     #return HttpResponse(str(step))
     if request.method == "POST":
         if step == '1':
-            form_Empresa = EmpresaForm(request.POST)
-            
+            form_Empresa = EmpresaForm(request.POST, request.FILES)
             if form_Empresa.is_valid():
-                #return HttpResponse(str(step))
                 empresa = form_Empresa.save(commit=False)
                 empresa.user = request.user
+             
                 empresa.save()               
                 form = Empresa_ServicioForm(initial={'empresa_id': empresa.id})
                 return render_to_response('empresa/ingreso-de-empresa-servicio.html', 

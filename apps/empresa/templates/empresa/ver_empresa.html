@@ -21,7 +21,12 @@
 			<p><strong>{% trans "Descripcion" %}: </strong> {{ empresa.descripcion }}</p>
 		</div>
 		<div id="logo">
-			<img src="media/images/no-logo.jpg" alt="Logo de la empresa" />
+			{% if empresa.logo %}
+				<img src="{{ empresa.logo.url_80x80 }}" alt="Logo de la empresa" />
+
+			{% else %}				
+				<img src="media/images/no-logo.jpg" alt="Logo de la empresa" />
+			{% endif %}
 		</div>
 	</div>
 	<div id="tab-service-map">
