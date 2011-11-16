@@ -50,7 +50,7 @@
 			<a class="service-name" href="{{ servicio.get_absolute_url }}">
 				{{ servicio }}
 			</a>
-			Created by: <a href="{{ servicio.user.get_absolute_url }}">{{ servicio.user }}</a>
+			{{ servicio.descripcion }}
 		</div>
    {% endfor %}  
 	</div>

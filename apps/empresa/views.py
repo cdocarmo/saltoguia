@@ -42,7 +42,9 @@ def crear_empresa(request, step=1):
                 empresa_servicio.user = request.user
                 empresa_servicio.empresa = form_Empresa_ServicioForm.cleaned_data['empresa_id']
                 empresa_servicio.save()
-                return render_to_response('empresa/ingreso-de-empresa-servicio.html', 
+                return HttpResponseRedirect(reverse('ver-empresa'))
+            
+                return render_to_response('empresa/ver_empresa.html', 
                                           locals(), 
                                           context_instance=RequestContext(request))
     context = {
@@ -95,7 +97,7 @@ def nuevo_servicio(request, empresa_slug):
     try:
         empresa = Empresa.objects.get(slug = empresa_slug, user = request.user)
     except ObjectDoesNotExist:        
-        return HttpResponseRedirect(reverse('crear-empresa'))        
+        return HttpResponseRedirect(reverse('crear-empresa'))
     form = Empresa_ServicioForm(initial={'empresa_id': empresa.id})
     
     if request.method == "POST":
