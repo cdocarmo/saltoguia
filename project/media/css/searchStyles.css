@@ -26,8 +26,9 @@ div#central-content h3, div#central-content h4 {
 	margin: 22px 0 50px 0;
 }
 
-div.resultado p {
-	border-top: 2px ridge #333333;
+div.resultado ul{
+	list-style: none;	
+	border-top: 1px solid #999;
 	padding: 5px 10px;
 	margin: 5px;
 	color: #666666;
@@ -35,6 +36,20 @@ div.resultado p {
 	font-size: 12px;
 }
 
+div.resultado li {
+	padding: 0;
+	width: 400px;
+}
+
 div.resultado b {
 	color: #E15407;
+}
+
+li.resultado-web {
+	color: #008000;
+}
+
+li.resultado-logo {
+	float: right;
+	width: 80px !important;
 }

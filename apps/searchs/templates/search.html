@@ -16,24 +16,32 @@
 		{{ form.search }}
 		<input type="image" value="Go" id="btn-search" src="/media/images/btn_search_dark.jpg"/>
 	</form>
-	<h4>...o simplemente ojear la lista de abajo.</h4>
 	<div class="resultados-patrocinados">
+		<h4>...o simplemente ojear la lista de abajo.</h4>
 		<div class="resultado">
 	   {% for servicio in servicios %}
-	   		<p>
-	   			<b><a href="{{ servicio.empresa.get_absolute_url }}"> {{ servicio.empresa.nombre }}</a>
-	   			</b> - <a href="{{ servicio.get_absolute_url }}"> {{ servicio.nombre }} </a> <br />
-	   			Direccion.: {{ servicio.empresa.domicilio }} <br />
-	   			<i>
-		   			Telefono.: {{ servicio.empresa.telefono }} - Celular.: {{ servicio.empresa.celular }}<br />
-		   			Mail.: {{ servicio.empresa.mail }}
-   				</i>
-   			</p>
-
+	   		<ul>
+	   			<li class="resultado-logo">
+	   				<img src="/media/images/no-logo.jpg" alt="Sin logo">
+	   			</li>
+	   			<li>
+	   				<a href="{{ servicio.empresa.get_absolute_url }}"> {{ servicio.empresa.nombre }}</a>
+	   			- <a href="{{ servicio.get_absolute_url }}"> {{ servicio.nombre }} </a>
+	   			</li>
+	   			<li>
+	   				Direccion.: {{ servicio.empresa.domicilio }}
+	   			</li>
+	   			<li>
+	   				<i>Telefono.: {{ servicio.empresa.telefono }} - Celular.: {{ servicio.empresa.celular }}</i>
+	   			</li>
+	   			<li>
+	   				<i>Mail.: {{ servicio.empresa.mail }}</i>
+	   			</li>
+	   			<li class="resultado-web">
+	   				<i>No tiene web</i>
+	   			</li>
+	   		</ul>
 	   {% endfor %}  			
-			<!--resultado harcodeado que tiene que ser sustituido por
-				variables de la vista correspondiente-->
-
 		</div>
 	</div>
 {% endblock %}

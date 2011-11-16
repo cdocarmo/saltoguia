@@ -12,24 +12,32 @@
 {% block content %}
 <div id="company_data">
 	<div id="company">
-		<div class="ficha-empresa" id="promo-inscripcion">
-			<a href="#">
+			{% ifequal empresa.user request.user %}
+			<div class="ficha-empresa" id="promo-resultados-patrocinados">
+				<h2>¿Conoces los beneficios de tener "resultados patrocinados" en tu cuenta de SaltoGu&iacute;a?</h2>
+				<a href="#">
+					<span>¡Haz clic para informarte!</span>
+				</a>
+			</div>	
+			{% else %}
+			<div class="ficha-empresa" id="promo-inscripcion">
+				<a href="#">
 				<span id="deseas">¿Deseas que tu informaci&oacute;n aparezca tambi&eacute;n aqu&iacute;?</span>
 				<span id="inscribite">¡Inscribite <br />ahora mismo!</span>
-			</a>
-		</div>
+				</a>
+			</div>
+			{% endifequal %}
 		<div class="ficha-empresa" id="data">
 			<h3>{{ empresa.nombre }}</h3>
-    		<p><strong>{% trans "Domicilio" %}: </strong> {{ empresa.domicilio }}</p>
-			<p><strong>{% trans "Telefono" %}: </strong> {{ empresa.telefono }}</p>
-			<p><strong>{% trans "Celular" %}: </strong> {{ empresa.celular }}</p>
-			<p><strong>{% trans "E-Mail" %}: </strong> {{ empresa.mail }}</p>
-			<p><strong>{% trans "Descripcion" %}: </strong> {{ empresa.descripcion }}</p>
+    		<p class="items"><strong>{% trans "Domicilio" %}: </strong> {{ empresa.domicilio }}</p>
+			<p class="items"><strong>{% trans "Telefono" %}: </strong> {{ empresa.telefono }}</p>
+			<p class="items"><strong>{% trans "Celular" %}: </strong> {{ empresa.celular }}</p>
+			<p class="items"><strong>{% trans "E-Mail" %}: </strong> {{ empresa.mail }}</p>
+			<p class="items"><strong>{% trans "Descripcion" %}: </strong> {{ empresa.descripcion }}</p>
 		</div>
 		<div class="ficha-empresa" id="logo">
 			{% if empresa.logo %}
 				<img src="{{ empresa.logo.url_80x80 }}" alt="Logo de la empresa" />
-
 			{% else %}				
 				<img src="media/images/no-logo.jpg" alt="Logo de la empresa" />
 			{% endif %}
@@ -55,7 +63,7 @@
    {% endfor %}  
 	</div>
 	{% ifequal empresa.user request.user  %}
-    	<p><a href="{% url nuevo-servicio empresa.slug %}">Agregar Servicios</a></p>
+    	<p><a href="{% url nuevo-servicio empresa.slug %}" id="agregar-servicio">Agregar Servicios</a></p>
 	{% endifequal %}
 
 </div>

@@ -1,14 +1,51 @@
 /******page detail******/
 
+div#company_data p{
+	text-align: right;
+}
+
+p.items {
+	text-align: left !important;
+}
+
 div.ficha-empresa {
 	float: right;
 	width: 300px;	
 }
 
-div#promo-inscripcion {
+div.ficha-empresa h2 {
+	font-size: 14px;
+}
+
+div#promo-resultados-patrocinados {
+	text-align: center;
+}
+
+div#promo-resultados-patrocinados a {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	background: url("/media/images/boton-con-tres-flechas.jpg") no-repeat;
+	width: 200px;
+	height: 60px;
+	display: block;
+	clear: right
+}
+
+div#promo-resultados-patrocinados a span {
+	height: 60px;
+	margin-left: 40px;
+	padding-top: 21px;
+	display: block;
+}
+
+div#promo-inscripcion, div#promo-resultados-patrocinados {
 	width: 200px;
 	height: 300px;
 	padding: 10px 20px;
+}
+
+div#promo-inscripcion {
 	background: url("/media/images/boton-nueva-ficha.jpg") no-repeat 20px 20px;
 }
 
@@ -130,4 +167,15 @@ div.services-results a {
 a.service-name {
 	text-decoration: none;
 	color: #333;
+}
+
+a#agregar-servicio {
+	color: #E15407;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	margin-right: 10px;
+}
+
+a#agregar-servicio:hover {
+	color: #e11107;
 }
