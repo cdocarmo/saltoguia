@@ -45,6 +45,16 @@ div.resultado b {
 	color: #E15407;
 }
 
+div.resultado ul li h4 {
+	margin: 0 !important;
+	padding: 0;
+	text-align: left !important;
+}
+
+div.resultado ul li a {
+	font-size: 16px;
+}
+
 li.resultado-web {
 	color: #008000;
 }

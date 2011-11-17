@@ -29,8 +29,10 @@
 					{% endif %}	   				
 	   			</li>
 	   			<li>
-	   				<a href="{{ servicio.empresa.get_absolute_url }}"> {{ servicio.empresa.nombre }}</a>
+	   				<h4>
+	   					<a href="{{ servicio.empresa.get_absolute_url }}"> {{ servicio.empresa.nombre }}</a>
 	   			- <a href="{{ servicio.get_absolute_url }}"> {{ servicio.nombre }} </a>
+	   				</h4>
 	   			</li>
 	   			<li>
 	   				Direccion.: {{ servicio.empresa.domicilio }}
