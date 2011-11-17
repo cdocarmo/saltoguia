@@ -22,7 +22,11 @@
 	   {% for servicio in servicios %}
 	   		<ul>
 	   			<li class="resultado-logo">
-	   				<img src="/media/images/no-logo.jpg" alt="Sin logo">
+					{% if servicio.empresa.logo %}
+						<img src="{{ servicio.empresa.logo.url_80x80 }}" alt="Logo de la empresa" />
+					{% else %}				
+						<img src="media/images/no-logo.jpg" alt="Sin logo" />
+					{% endif %}	   				
 	   			</li>
 	   			<li>
 	   				<a href="{{ servicio.empresa.get_absolute_url }}"> {{ servicio.empresa.nombre }}</a>
