@@ -201,8 +201,8 @@ div#footer {
 	padding-top: 26px;
 }
 
-div#footer div {
-	width: 48%;
+div#footer div.content {
+	width: 600px;
 }
 
 div#footer p{
@@ -221,4 +221,9 @@ div#footer a {
 
 div#footer div#developers {
 	float: right;
+}
+
+div.social {
+	display: inline-block;
+	width: 32px;
 }
