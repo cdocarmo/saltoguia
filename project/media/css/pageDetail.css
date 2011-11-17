@@ -155,6 +155,21 @@ div.services-results {
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
 }
 
+div.services-results ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+div.services-results ul li {
+	margin: 0;
+	padding: 0;
+}
+
+li.status {
+	float: right;
+}
+
 div.par {
 	background-color: #eef;
 }

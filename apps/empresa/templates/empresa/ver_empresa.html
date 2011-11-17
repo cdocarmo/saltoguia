@@ -55,10 +55,27 @@
 		<h3>Servicios</h3>
    		{% for servicio in servicios %}
    		<div class="services-results {% cycle 'par' 'impar' %}">
-			<a class="service-name" href="{{ servicio.get_absolute_url }}">
-				{{ servicio }}
-			</a>
-			{{ servicio.descripcion }}
+   			<ul>
+   				<li class="status">
+   					{% ifequal servicio.status 1 %}
+					<img src="/media/images/{% cycle 'pendiente_dark.jpg' 'pendiente.jpg' %}" alt="Pendiente" />
+					{% else %}
+					{% ifequal servicio.status 2 %}
+					<img src="/media/images/{% cycle 'confirmado_dark.jpg' 'confirmado.jpg' %}" alt="Confirmado" />
+					{% else %}
+					<img src="/media/images/negada.jpg" alt="Negada" />
+					{% endifequal %}
+					{% endifequal %}
+   				</li>
+   				<li>
+   					<a class="service-name" href="{{ servicio.get_absolute_url }}">
+					{{ servicio }}
+					</a>
+   				</li>
+   				<li>
+   					{{ servicio.descripcion }}
+   				</li>
+			</ul>
 		</div>
    {% endfor %}  
 	</div>
