@@ -44,7 +44,11 @@
 	   				<i>Mail.: {{ servicio.empresa.mail }}</i>
 	   			</li>
 	   			<li class="resultado-web">
-	   				<i><a  href="{{ servicio.empresa.web }}"> {{ servicio.empresa.web }}</a></i>
+	   				{% if servicio.empresa.web %}
+	   					<i><a  href="{{ servicio.empresa.web }}"> {{ servicio.empresa.web }}</a></i>
+	   				{% else %}
+	   					<i>No tiene web</i>
+   					{% endif %}
 	   			</li>
 	   		</ul>
 	   {% endfor %}  			
