@@ -18,6 +18,7 @@ class EmpresaForm(forms.ModelForm):
                                                          'cols': '35', 'rows': '5'}))
     tipo = forms.ChoiceField(choices=Empresa.TIPO_EMPRESA)
     documento = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
+    web = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
     
     def clean_name(self):
         if Empresa.objects.filter(name__iexact=self.cleaned_data["nombre"]).count() > 0:
@@ -30,7 +31,7 @@ class EmpresaForm(forms.ModelForm):
     class Meta:
         model = Empresa
         fields = ('nombre', 'domicilio', 'telefono', 'celular', 
-                  'mail', 'descripcion', 'logo', 'documento', 'tipo')
+                  'mail', 'descripcion', 'logo', 'documento', 'tipo', 'web')
 
 class Empresa_ServicioForm(forms.ModelForm):
     """

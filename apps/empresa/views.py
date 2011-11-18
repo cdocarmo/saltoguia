@@ -120,8 +120,50 @@ def nuevo_servicio(request, empresa_slug):
 def empresa(request, empresa_slug):
     try:        
         empresa = get_object_or_404(Empresa, slug = empresa_slug)
-        servicios = EmpresaServicio.objects.filter(empresa=empresa)
+        if request.user == empresa.user:
+            servicios = EmpresaServicio.objects.filter(empresa=empresa)
+        else:
+            servicios = EmpresaServicio.objects.filter(empresa=empresa, status=EmpresaServicio.ACTIVA)
         return render_to_response('empresa/ver_empresa.html', locals(), 
                                   context_instance=RequestContext(request))
     except ObjectDoesNotExist:        
         raise Http404
+    
+
+@login_required
+def modificar_empresa(request, slug):
+    empresa = get_object_or_404(Empresa, slug = slug)
+    
+    if request.user.is_authenticated() and request.method == "POST":
+
+            form = EmpresaForm(request.POST, request.FILES, instance=empresa)
+            if form.is_valid():
+                #if form.cleaned_data['logo_delete'] == True and empresa.logo:
+                #    entity.logo.delete()
+                empresa = form.save()
+                #if 'logo' in form.changed_data and form.cleaned_data['logo']:
+                #    entity.logo.save(slugify(s=form.cleaned_data['logo'],
+                #                             dot=True),
+                #                             form.cleaned_data['logo'])
+
+                if 'name' in form.changed_data:
+                    empresa.slug = slugify(entity.name, entity, 'slug',
+                                          max_size=50)
+                    empresa.save()
+
+
+                return HttpResponseRedirect(empresa.get_absolute_url())
+
+    else:
+        form = EmpresaForm(instance=empresa)
+                
+    context = {
+        'form': form,
+    }
+    return render_to_response(
+        "empresa/modificar_empresa.html",
+        context,
+        context_instance=RequestContext(request),
+    )
+
+    

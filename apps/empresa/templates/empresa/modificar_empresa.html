@@ -15,11 +15,11 @@
 
 {% block content %}
 
-<h2 id="form-description">¡Ahora ingresa los datos <br /> la nueva empresa!</h2>
+<h2 id="form-description">¡Cambie los datos de la Empresa!</h2>
 
 <form class="forms" method="post" id="form_company_singup" enctype="multipart/form-data">
 	<fieldset id="company_data">
-		<legend>Nueva Empresa</legend>
+		<legend>Modificar Empresa</legend>
 
 		<p class="upload-avatar">
 			{{ form.logo.label_tag }}<br/>
@@ -54,6 +54,8 @@
 
 		{{ form.telefono.label_tag }}<br />
 		{{ form.telefono }}<br />
+		<span>{{ form.telefono.help_text }}</span>
+		{% if form.telefono.errors %}<span class="error_msg">{{ form.telefono.errors|join:"; " }}</span>{% endif %}
 
 		{{ form.celular.label_tag }}<br />
 		{{ form.celular }}<br />
@@ -77,7 +79,7 @@
 
  	{{ form.step }}
   	<p class="form-buttons">
-		<input class="save-button" type="submit" value="{% trans "Agregar Empresa" %}"/>
+		<input class="save-button" type="submit" value="{% trans "Confirmar" %}"/>
 		<a class="cancel-button" href="#">{% trans "Cancel" %}</a>
 	</p>
 	</fieldset>

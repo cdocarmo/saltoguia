@@ -19,6 +19,7 @@
 					<span>¡Haz clic para informarte!</span>
 				</a>
 			</div>	
+			
 			{% else %}
 			<div class="ficha-empresa" id="promo-inscripcion">
 				<a href="#">
@@ -33,7 +34,11 @@
 			<p class="items"><strong>{% trans "Telefono" %}: </strong> {{ empresa.telefono }}</p>
 			<p class="items"><strong>{% trans "Celular" %}: </strong> {{ empresa.celular }}</p>
 			<p class="items"><strong>{% trans "E-Mail" %}: </strong> {{ empresa.mail }}</p>
+			<p class="items"><strong>{% trans "Web" %}: </strong> <a  href="{{ empresa.web }}"> {{ empresa.web }}</a></p>
 			<p class="items"><strong>{% trans "Descripcion" %}: </strong> {{ empresa.descripcion }}</p>
+			{% ifequal empresa.user request.user  %}
+				<p><a href="{% url modificar-empresa empresa.slug %}" id="modificar-empresa">Modificar</a></p>
+			{% endifequal %}			
 		</div>
 		<div class="ficha-empresa" id="logo">
 			{% if empresa.logo %}
@@ -42,6 +47,8 @@
 				<img src="media/images/no-logo.jpg" alt="Logo de la empresa" />
 			{% endif %}
 		</div>
+
+							
 	</div>
 	<div id="tab-service-map">
 		<span class="inbar">
@@ -57,15 +64,16 @@
    		<div class="services-results {% cycle 'par' 'impar' %}">
    			<ul>
    				<li class="status">
-   					{% ifequal servicio.status 1 %}
-					<img src="/media/images/{% cycle 'pendiente_dark.jpg' 'pendiente.jpg' %}" alt="Pendiente" />
+   					{% ifequal servicio.status servicio.PENDIENTE %}
+						<img src="/media/images/{% cycle 'pendiente_dark.jpg' 'pendiente.jpg' %}" alt="Pendiente" />
 					{% else %}
-					{% ifequal servicio.status 2 %}
-					<img src="/media/images/{% cycle 'confirmado_dark.jpg' 'confirmado.jpg' %}" alt="Confirmado" />
-					{% else %}
-					<img src="/media/images/negada.jpg" alt="Negada" />
+						{% ifequal servicio.status servicio.ACTIVA %}
+							<img src="/media/images/{% cycle 'confirmado_dark.jpg' 'confirmado.jpg' %}" alt="Confirmado" />
+						{% else %}
+							<img src="/media/images/negada.jpg" alt="Negada" />
+						{% endifequal %}
 					{% endifequal %}
-					{% endifequal %}
+					
    				</li>
    				<li>
    					<a class="service-name" href="{{ servicio.get_absolute_url }}">

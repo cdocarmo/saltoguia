@@ -45,7 +45,8 @@ class Empresa(models.Model):
     logo = ImageWithThumbsField(upload_to='images/logos', 
                                 sizes=((80,80),(50,50),(125,125),(200,200)),
                                 blank=True, null=True)
-    
+    web = models.URLField(_('Web URL'), verify_exists=True, blank=True, null=True)
+       
     def __unicode__(self):
         return self.nombre
 

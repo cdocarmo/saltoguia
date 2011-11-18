@@ -7,8 +7,10 @@ from datetime import date, datetime, timedelta
 from django.contrib.auth.forms import UserCreationForm
 
 class LoginForm(forms.Form):
-    usuario = forms.CharField(label=_(u'Usuario'), max_length=100, widget=forms.TextInput(attrs={'class':'input-text'}))
-    password = forms.CharField(label=_(u'Password'), widget=forms.PasswordInput(attrs={'class':'input-text'}))
+    usuario = forms.CharField(label=_(u'Usuario'), max_length=100, 
+                              widget=forms.TextInput(attrs={'class':'input-text'}))
+    password = forms.CharField(label=_(u'Password'), 
+                               widget=forms.PasswordInput(attrs={'class':'input-text'}))
 
     def as_br(self):
         """
