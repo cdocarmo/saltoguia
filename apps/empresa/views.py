@@ -139,15 +139,15 @@ def modificar_empresa(request, slug):
             form = EmpresaForm(request.POST, request.FILES, instance=empresa)
             if form.is_valid():
                 #if form.cleaned_data['logo_delete'] == True and empresa.logo:
-                #    entity.logo.delete()
+                #    empresa.logo.delete()
                 empresa = form.save()
                 #if 'logo' in form.changed_data and form.cleaned_data['logo']:
-                #    entity.logo.save(slugify(s=form.cleaned_data['logo'],
+                #    empresa.logo.save(slugify(s=form.cleaned_data['logo'],
                 #                             dot=True),
                 #                             form.cleaned_data['logo'])
 
                 if 'name' in form.changed_data:
-                    empresa.slug = slugify(entity.name, entity, 'slug',
+                    empresa.slug = slugify(entity.name, empresa, 'slug',
                                           max_size=50)
                     empresa.save()
 
