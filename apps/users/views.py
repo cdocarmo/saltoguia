@@ -12,6 +12,7 @@ from django.template import RequestContext
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic.list_detail import object_list
 from django.contrib.auth.forms import UserCreationForm
+from django.core.mail import EmailMessage
 
 
 def login(request):
@@ -53,6 +54,10 @@ def register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             new_user = form.save()
+
+            email = EmailMessage('Asunto','Probando confirmación email', 
+                                 to = ['cdocarmo@cdsoft.com.uy'])
+            email.send()            
             return HttpResponseRedirect("/")
     else:
         form = RegisterForm()
