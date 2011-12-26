@@ -39,7 +39,7 @@
 		{{ form.domicilio.label_tag }}<br />
 		{{ form.domicilio }}<br />
 		<span>{{ form.domicilio.help_text }}</span>
-		{% if form.domicilio.errors %}<span class="error_msg">{{ form.domicilio.errors|join:"; " }}</span>{% endif %}
+		{% if form.domicilio.errors %}<span class="error_msg">{{ form.domicilio.errors|join:"; " }}</span><br />{% endif %}
 
 		{{ form.tipo.label_tag }}<br />
 		{{ form.tipo }}<br />
@@ -63,7 +63,7 @@
 	    {{ form.mail.label_tag }}<br />
 	    {{ form.mail }}<br />
 	    <span>{{ form.mail.help_text }}</span>
-	    {% if form.mail.errors %}<span class="error_msg">{{ form.mail.errors|join:"; " }}</span>{% endif %}
+	    {% if form.mail.errors %}<span class="error_msg">{{ form.mail.errors|join:"; " }}<br /></span>{% endif %}
 
 	    {{ form.web.label_tag }}<br />
 	    {{ form.web }}<br />

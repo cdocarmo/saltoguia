@@ -8,8 +8,8 @@ class EmpresaForm(forms.ModelForm):
     step = forms.IntegerField(widget=forms.HiddenInput, initial=1)
     nombre = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
     domicilio = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
-    telefono = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
-    celular = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
+    telefono = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}), required=False)
+    celular = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}), required=False)
     mail = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
     descripcion = forms.CharField(label="Descripcion", 
                                   required=False, 
@@ -17,16 +17,9 @@ class EmpresaForm(forms.ModelForm):
                                                         {'class':'txt-area', 
                                                          'cols': '35', 'rows': '5'}))
     tipo = forms.ChoiceField(choices=Empresa.TIPO_EMPRESA)
-    documento = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
-    web = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
-    
-    def clean_name(self):
-        if Empresa.objects.filter(name__iexact=self.cleaned_data["nombre"]).count() > 0:
-            if self.cleaned_data["nombre"] == self.instance.name:
-                pass # same instance
-            else:
-                raise forms.ValidationError(_("Ya existe la empresa con ese Nombre"))
-        return self.cleaned_data["nombre"]
+    documento = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}), required=False)
+    web = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}), required=False)
+
 
     class Meta:
         model = Empresa
