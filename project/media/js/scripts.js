@@ -6,17 +6,17 @@
 function detectarNavegador(){
 	
 	//~~~~~~~~~~~~~~Detecta compatibilidad de navegadores~~~~~~~~~~~~~~~~
-	var navName = navigator.appCodeName;
+	//var navName = navigator.appCodeName;
 	var navVersion = navigator.appVersion;
-	var regex = /MSIE 9\.0/;
+	
+	var regex = /MSIE/;
 	var resultado = navVersion.match(regex);
-	if (resultado == null) {
-		crearAdvertencia();
-	}
-	var regex = /MSIE 9\.0/;
-	var resultado = navVersion.match(regex);
-	if (resultado == null) {
-		crearAdvertencia();
+	if (resultado != null) {
+		var regex = /MSIE 9\.0/;
+		var resultado = navVersion.match(regex);
+		if (resultado == null) {
+			crearAdvertencia();
+		}
 	}
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 };
@@ -24,12 +24,11 @@ function detectarNavegador(){
 //~~~~~~~~~~~~~~~~~~~~~~~~~Metodos varios~~~~~~~~~~~~~~~~~~~~~~~~~~
 function crearAdvertencia(){
 	//Crea un div de advertencia cuando se usa un navegador obsoleto
-	var html = '<div class="advertencia">Este sitio no se visualiza correctamente' + 
-	'porque est&aacute;s utilizando un navegador desactualizado' +
-	'que no respeta los est&aacute;ndares Web,' + 
-	'por tal motivo te pedimos encarecidamente que actualices tu navegador haciendo' +
-	'clic en uno de los siguientes enlaces: <a href="">Mozilla Firefox</a>, ' + 
-	'<a href="">Opera</a>, <a href="">Internet Explorer</a><span>X</span>';
+	var html = '<div class="advertencia"><p>Posiblemente no puedes visualizar correctamente' + 
+	' este sitio debido a que usas un navegador desactualizado ' +
+	'por tal motivo te solicitamos que actualices tu navegador haciendo' +
+	'clic en uno de los siguientes enlaces: <a href="http://www.mozilla.org/es-ES/firefox/new/">Firefox</a>, ' + 
+	'<a href="http://www.opera.com/browser/download/">Opera</a>, <a href="http://windows.microsoft.com/es-ES/internet-explorer/products/ie/home">Internet Explorer</a></p><img src="/media/images/cerrar.gif">';
 	$('#wrapper_header').before(html);
 }
 

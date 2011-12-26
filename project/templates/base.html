@@ -33,6 +33,9 @@
 	<link rel="stylesheet" type="text/css" href="media/css/styles.css" media="all">
 	{% block css %}
 	{% endblock %}
+	<!--[if IE 6]>
+		<link rel="stylesheet" type="text/css" href="media/css/ie6.css" media="all">
+	<![endif]-->
 	<!--[if IE 7]>
 		<link rel="stylesheet" type="text/css" href="media/css/ie7.css" media="all">
 	<![endif]-->
@@ -94,6 +97,10 @@
 		$(document).ready(function () {
   			$('#twitter').twitterbutton();
   			detectarNavegador();
+  			$(".advertencia img").click(function(event){
+     			eliminarAdvertencia()
+     			event.preventDefault();
+   			});
 		});
 	</script>
 	{% block js %}
