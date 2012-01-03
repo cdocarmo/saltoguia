@@ -55,11 +55,42 @@ div.resultado ul li a {
 	font-size: 16px;
 }
 
+li.resultado-nombre {
+	list-style-image: url("/media/images/icono-lapiz.jpg");
+}
+
+li.resultado-direccion {
+	list-style-image: url("/media/images/icono-casa.jpg");
+}
+
+li.resultado-tel {
+	list-style-image: url("/media/images/icono-cel.jpg");
+}
+
+li.resultado-mail {
+	list-style-image: url("/media/images/icono-mail.jpg");
+}
+
+li.resultado-web {
+	list-style-image: url("/media/images/icono-web.jpg");
+}
+
 li.resultado-web {
 	color: #008000;
+}
+
+li.resultado-nombre, li.resultado-direccion, li.resultado-tel, li.resultado-mail, li.resultado-web {
+	margin-top: 2px;
+	margin-left: 36px;
+	padding-bottom: 8px !important;
 }
 
 li.resultado-logo {
 	float: right;
 	width: 80px !important;
+}
+
+li.resultado-dato {
+	display: block;
+	float: left !important;
 }
