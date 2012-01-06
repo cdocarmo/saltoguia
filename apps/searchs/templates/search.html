@@ -11,47 +11,45 @@
 {% block content %}
 
 	
+<div>
 	<h3 id="search-h3">Puedes buscar empresas, servicios y profesionales en Salto...</h3>
-	<form action=""  enctype="text/plain" id="search-form">
-		{{ form.search }}
-		<input type="image" value="Go" id="btn-search" src="/media/images/btn_search_dark.jpg"/>
-	</form>
-	<div class="resultados-patrocinados">
-		<h4>...o simplemente ojear la lista de abajo.</h4>
-		<div class="resultado">
-	   {% for servicio in servicios %}
-	   		<ul>
-	   			<li class="resultado-logo">
-					{% if servicio.empresa.logo %}
-						<img src="{{ servicio.empresa.logo.url_80x80 }}" alt="Logo de la empresa" />
-					{% else %}				
-						<img src="media/images/no-logo.jpg" alt="Sin logo" />
-					{% endif %}	   				
-	   			</li>
-	   			<li class="resultado-nombre">
-	   				<h4 class="resultado-dato">
-	   					<a href="{{ servicio.empresa.get_absolute_url }}"> {{ servicio.empresa.nombre }}</a>
-	   			- <a href="{{ servicio.get_absolute_url }}"> {{ servicio.nombre }} </a>
-	   				</h4>
-	   			</li>
-	   			<li class="resultado-direccion">
-	   				Direccion.: {{ servicio.empresa.domicilio }}
-	   			</li>
-	   			<li class="resultado-tel">
-	   				<i class="resultado-dato">Telefono.: {{ servicio.empresa.telefono }} - Celular.: {{ servicio.empresa.celular }}</i>
-	   			</li>
-	   			<li class="resultado-mail">
-	   				<i class="resultado-dato">Mail.: {{ servicio.empresa.mail }}</i>
-	   			</li>
-	   			<li class="resultado-web">
-	   				{% if servicio.empresa.web %}
-	   					<i><a  class="resultado-dato" href="{{ servicio.empresa.web }}"> {{ servicio.empresa.web }}</a></i>
-	   				{% else %}
-	   					<i class="resultado-dato">No tiene web</i>
-   					{% endif %}
-	   			</li>
-	   		</ul>
-	   {% endfor %}  			
+		
+	<input id="search-box" type="text" placeholder="Ingrese el Servicio a buscar.."/>
+	<input type="image" value="Go" id="btn-search" src="/media/images/btn_search_dark.jpg"/>
+	<br/>
+	<div class="margin">
+		<span id="spinner"><img src="media/images/spinner.gif"/></span>
+		<div class="resultados-patrocinados">
+			<h4>...o simplemente ojear la lista de abajo.</h4>
+			<div id="results"></div>
 		</div>
 	</div>
+</div>	
 {% endblock %}
+
+
+{% block js %}
+	
+	
+	<script type="text/javascript">
+	$( document ).ready( function() {
+		$( '#btn-search' ).click( function() {
+			var xResultado = []
+			q = $( '#search-box' ).val();
+			$( '#results' ).html( '&nbsp;' ).load( '/search/servicios?q=' + q );
+                				
+		});
+	});
+	
+
+ 
+	$( document ).ajaxStart( function() {
+		$( '#spinner' ).show();
+	}).ajaxStop( function() {
+		$( '#spinner' ).hide();
+	});
+	
+	</script>
+
+	
+{% endblock %}	

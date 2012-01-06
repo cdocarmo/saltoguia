@@ -1,8 +1,8 @@
 # coding=UTF-8
 
-from django.conf.urls.defaults import url, patterns
+from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
-    url(r'^$', 'searchs.views.search', name='buscar'),
-    
+    url(r'^$', 'searchs.views.index', name='buscar'),
+    url(r'^servicios/$', 'searchs.views.result_search', name = 'demo-search'),    
 )

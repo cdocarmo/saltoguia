@@ -94,3 +94,8 @@ li.resultado-dato {
 	display: block;
 	float: left !important;
 }
+
+#spinner {
+  display: none;
+  position: relative;
+}
