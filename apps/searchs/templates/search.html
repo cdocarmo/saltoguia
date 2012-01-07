@@ -49,6 +49,34 @@
 		$( '#spinner' ).hide();
 	});
 	
+	jQuery(function($){
+	    var list_tags = [];
+	    q = $( '#search-box' ).val();
+	    function get_tags(){
+	        list_tags=[];
+	        var url = 
+	        jQuery.ajax({ 
+	            url:'/search/get_tags/?q=' + q,
+	            dataType: 'json',
+	            async: false,
+	            cache: false,
+	            success: function(rs){
+	               jQuery.each(rs, function(i,json){
+	                   list_tags.push(json.nombre);
+	               });
+	            }
+			
+	        });
+	    }
+	
+
+		$("#search-box").keyup(function(){
+	 		$("#search-box").autocomplete({source: list_tags});
+		});
+		
+	    get_tags();
+	
+	});	
 	</script>
 
 	
