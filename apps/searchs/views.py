@@ -5,7 +5,7 @@ from django.template.context import RequestContext
 from django.db.models import Q
 from django.contrib.auth.models import User
 from django.utils import simplejson
-
+import string
 from empresa.models import Empresa, EmpresaServicio
 
 def search(request):
@@ -46,9 +46,23 @@ def result_search( request ):
             
             
 def cargo_tags_json(request):
-    servicios = EmpresaServicio.objects.filter(status=EmpresaServicio.ACTIVA).values('id', 'nombre')
-
+    servicios = EmpresaServicio.objects.filter(status=EmpresaServicio.ACTIVA).values('id', 'tags')
+    xColNew = []
+    for xV in servicios:
+        for xB in xV['tags'].split(','):
+            xText = string.strip(xB)
+            if not existe_Sericio(xColNew, xText):
+                xColNew.append(xText)
+    
     response=HttpResponse(mimetype="application/javascript")
-    response.write(simplejson.dumps(list(servicios)))
+    response.write(simplejson.dumps(list(xColNew)))
 
-    return response            
+    return response 
+
+def existe_Sericio(xCol, xText):
+    xExiste = False
+    for xR in xCol:
+        if string.strip(xR.lower()) == string.strip(xText.lower()):
+            xExiste = True
+            pass
+    return xExiste           

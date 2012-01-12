@@ -1,7 +1,6 @@
-
 {% if results|length %}   
 	{% for servicio in results %}
-   		<ul>
+   		<ul class="resultado">
    			<li class="resultado-logo">
 				{% if servicio.empresa.logo %}
 					<img src="{{ servicio.empresa.logo.url_80x80 }}" alt="Logo de la empresa" />
@@ -11,7 +10,7 @@
    			</li>
    			<li class="resultado-nombre">
    				<h4 class="resultado-dato">
-   					<a href="{{ servicio.empresa.get_absolute_url }}"> {{ servicio.empresa.nombre }}</a>
+   					<a  href="{{ servicio.empresa.get_absolute_url }}"> {{ servicio.empresa.nombre }}</a>
    			- <a href="{{ servicio.get_absolute_url }}"> {{ servicio.nombre }} </a>
    				</h4>
    			</li>
@@ -37,4 +36,5 @@
 	<div class="note">
 		Your search yielded no results
 	</div>
-{% endif %}   	
+{% endif %}   
+	

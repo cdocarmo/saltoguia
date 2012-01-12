@@ -1,4 +1,4 @@
-form#search-form {
+div#search-form {
 	width: 641px;
 	margin: auto;
 }
@@ -16,17 +16,17 @@ input#btn-search {
 	
 }
 
-div#central-content h3, div#central-content h4 {
+div#search-form h3, div#search-form h4 {
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
 	color: #434343;
 	font-size: 14px;
 	text-shadow: none;
 	font-style: oblique;
 	text-align: center;
-	margin: 22px 0 50px 0;
+	margin: 12px 0 50px 0;
 }
 
-div.resultado ul{
+ul.resultado {
 	list-style: none;	
 	border-top: 1px solid #999;
 	padding: 5px 10px;
@@ -36,7 +36,7 @@ div.resultado ul{
 	font-size: 12px;
 }
 
-div.resultado li {
+li.resultado {
 	padding: 0;
 	width: 400px;
 }
@@ -45,19 +45,25 @@ div.resultado b {
 	color: #E15407;
 }
 
-div.resultado ul li h4 {
+ul.resultado {
 	margin: 0 !important;
 	padding: 0;
 	text-align: left !important;
 }
 
-div.resultado ul li a {
-	font-size: 16px;
+ul.resultado {
+	font-size: 12px;
 }
+
 
 li.resultado-nombre {
 	list-style-image: url("/media/images/icono-lapiz.jpg");
 }
+
+li.resultado-nombre a {
+	font-size: 18px;
+}
+
 
 li.resultado-direccion {
 	list-style-image: url("/media/images/icono-casa.jpg");
@@ -98,4 +104,10 @@ li.resultado-dato {
 #spinner {
   display: none;
   position: relative;
+}
+
+div.note {
+  padding: 15px;
+  background: #FFFFD4;
+  border: 1px solid #DDDDB2;
 }

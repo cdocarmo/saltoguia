@@ -3,15 +3,15 @@
 {% load i18n %}
 
 {% block css%}
-	<link rel="stylesheet" type="text/css" href="media/css/formStyles.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="/media/css/formStyles.css" media="all" />
 	<link rel="stylesheet" type="text/css" href="/media/css/searchStyles.css" media="all" />
-	<link rel="stylesheet" type="text/css" href="media/css/userBrownserStyles.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="/media/css/userBrownserStyles.css" media="all" />
 {% endblock %}
 
 {% block content %}
 
 	
-<div>
+<div id="search-form">
 	<h3 id="search-h3">Puedes buscar empresas, servicios y profesionales en Salto...</h3>
 		
 	<input id="search-box" type="text" placeholder="Ingrese el Servicio a buscar.."/>
@@ -56,13 +56,13 @@
 	        list_tags=[];
 	        var url = 
 	        jQuery.ajax({ 
-	            url:'/search/get_tags/?q=' + q,
+	            url:'/search/get_tags/',
 	            dataType: 'json',
 	            async: false,
 	            cache: false,
 	            success: function(rs){
 	               jQuery.each(rs, function(i,json){
-	                   list_tags.push(json.nombre);
+	                   list_tags.push(json);
 	               });
 	            }
 			
