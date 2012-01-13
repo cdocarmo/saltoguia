@@ -34,10 +34,9 @@
 	<script type="text/javascript">
 	$( document ).ready( function() {
 		$( '#btn-search' ).click( function() {
-			var xResultado = []
 			q = $( '#search-box' ).val();
-			$( '#results' ).html( '&nbsp;' ).load( '/search/servicios?q=' + q );
-                				
+			$( '#results' ).html( '&nbsp;' ).load( '{% url new-search %}?q=' + q );
+            alert('33');				
 		});
 	});
 	

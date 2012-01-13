@@ -6,6 +6,7 @@ div#search-form {
 input#search-box {
 	background-image: url("/media/images/search_big.jpg");
 	background-repeat: no-repeat;
+	border: 0px;
 	width: 580px;
 	height: 39px;
 	font-size: 24px;
@@ -24,6 +25,11 @@ div#search-form h3, div#search-form h4 {
 	font-style: oblique;
 	text-align: center;
 	margin: 12px 0 50px 0;
+}
+
+#spinner {
+  display: none;
+  position: relative;
 }
 
 ul.resultado {
@@ -101,10 +107,6 @@ li.resultado-dato {
 	float: left !important;
 }
 
-#spinner {
-  display: none;
-  position: relative;
-}
 
 div.note {
   padding: 15px;
