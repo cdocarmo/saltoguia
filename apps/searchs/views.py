@@ -31,6 +31,7 @@ def result_search( request ):
     servicios = EmpresaServicio.objects.filter(status=EmpresaServicio.ACTIVA)
     if request.is_ajax():
         q = request.GET.get( 'q' )
+        q = q.replace("-", " ")
         if q is not None:  
             results = servicios.filter(
                                       Q( empresa__nombre__contains = q ) |

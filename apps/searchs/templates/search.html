@@ -35,8 +35,8 @@
 	$( document ).ready( function() {
 		$( '#btn-search' ).click( function() {
 			q = $( '#search-box' ).val();
+			q = q.replace(" ","-");
 			$( '#results' ).html( '&nbsp;' ).load( '{% url new-search %}?q=' + q );
-            alert('33');				
 		});
 	});
 	
