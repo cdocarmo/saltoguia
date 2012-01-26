@@ -47,6 +47,7 @@ input.input-text {
 }
 
 input.save-button {
+	color: #333;
 	border: none;
 	background-image: url("/media/images/bg_input_white_24x280.jpg");
 	background-repeat: no-repeat;
