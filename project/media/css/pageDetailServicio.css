@@ -1,0 +1,64 @@
+/******page detail******/
+
+div#company_data p{
+	text-align: left;
+}
+
+p.items {
+	text-align: left !important;
+}
+
+div.ficha-empresa {
+	width: 300px;	
+}
+
+div.ficha-empresa h2 {
+	font-size: 14px;
+}
+
+div#logo {
+	width: 100px;
+	margin: 20px 30px 0 0;
+}
+
+div#data {
+	width: 490px;
+}
+
+div#data h3 {
+	text-transform: uppercase;
+	padding: 0 0 4px 4px;
+	border-bottom: 1px solid #333;
+}
+
+
+div#data p {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	padding-left: 4px;
+}
+
+div#data p strong {
+	width: 120px;
+	display: inline-block;
+}
+
+span.inbar ul li a span {
+	height: 36px;
+	line-height: 36px;
+	/*margin-left: 20px;
+	padding: 0 20px 0 0;*/
+	padding: 0 30px;
+}
+
+
+a#modificar-servicio {
+	color: #E15407;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	margin-right: 10px;
+}
+
+a#modificar-servicio:hover {
+	color: #e11107;
+}

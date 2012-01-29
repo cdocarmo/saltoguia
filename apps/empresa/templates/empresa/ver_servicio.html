@@ -6,20 +6,29 @@
 {% block css %}
 	<link rel="stylesheet" type="text/css" href="media/css/formStyles.css" media="all" />
 	<link rel="stylesheet" type="text/css" href="media/css/userBrownserStyles.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="media/css/pageDetailServicio.css" media="all" />
 {% endblock %}
 
 {% block content %}
-<div id="company_data">
-    <h3>{{ empresa.nombre }}</h3>
-    <h3>Servicio</h3>
-    <h3>{{ servicio.nombre }}</h3>
-    <p><strong>{% trans "Description" %}: </strong> {{ servicio.descripcion }}</p>
-	<p><strong>{% trans "Tags" %}: </strong> {{ servicio.tags }}</p>
-</div>
-{% ifequal servicio.user request.user  %}
-	<p class="form-buttons">
-		<input class="save-button" type="submit" value="{% trans "Modificar" %}"/>
-		<a class="cancel-button" href="#">{% trans "Cancel" %}</a>
-	</p>
-{% endifequal %}
+	<div id="company_data">
+		<div id="company">
+			<div class="ficha-empresa" id="data">
+			
+			    <h3>{{ empresa.nombre }}</h3>
+	
+			    <p class="items"><strong>{% trans "Servicio" %}: </strong> {{ servicio.nombre }}</p>
+			    <p class="items"><strong>{% trans "Description" %}: </strong> {{ servicio.descripcion }}</p>
+			    <h3>Contacto</h3>
+	    		<p class="items"><strong>{% trans "Domicilio" %}: </strong> {{ empresa.domicilio }}</p>
+				<p class="items"><strong>{% trans "Telefono" %}: </strong> {{ empresa.telefono }}</p>
+				<p class="items"><strong>{% trans "Celular" %}: </strong> {{ empresa.celular }}</p>
+				<p class="items"><strong>{% trans "E-Mail" %}: </strong> {{ empresa.mail }}</p>
+				{% ifequal servicio.user request.user  %}
+					<p><a href="{% url nuevo-servicio empresa.slug %}" id="modificar-servicio">Modificar</a></p>
+				{% endifequal %}
+			</div>
+	
+		</div>
+	</div>	
+
 {% endblock %}
