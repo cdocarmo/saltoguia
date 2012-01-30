@@ -23,27 +23,15 @@
 		<p><strong>{% trans "Empresa" %}: </strong> {{ empresa.nombre }}</p>
 			
 		<h3>Servicios</h3>
-		{{ form.nombre.label_tag }}<br />
-		{{ form.nombre }}<br />
-		<span>{{ form.nombre.help_text }}</span>
-		{% if form.nombre.errors %}<span class="error_msg">{{ form.nombre.errors|join:"; " }}</span>{% endif %}
-
-		{{ form.descripcion.label_tag }}<br />
-		{{ form.descripcion }}<br />
-		<span>{{ form.descripcion.help_text }}</span>
-		{% if form.descripcion.errors %}<span class="error_msg">{{ form.descripcion.errors|join:"; " }}</span>{% endif %}
-
-		{{ form.tags.label_tag }}<br />
-		{{ form.tags }}<br />
-		<span>{{ form.tags.help_text }}</span>
-		{% if form.tags.errors %}<span class="error_msg">{{ form.tags.errors|join:"; " }}</span>{% endif %}
-
-
+		<label>Nombre</label><br />
+		<input type="text" class="input-text" name="nombre" id="nombre" value="{{ nombre }}" /> <br />
+		<label>Descripcion</label><br />
+		<textarea rows="10" class="txt-area" cols="40" name="descripcion"> {{ descripcion }} </textarea><br />
+		<label>Tags</label><br />
+		<textarea rows="10" class="txt-area" cols="40" name="tags"> {{ tags }} </textarea><br />
 	</div>
-	{{ form.step }}
-	{{ form.empresa_id }}
   <p class="form-buttons">
-  <input class="save-button" type="submit" value="Agregar Servicio"/>
+  <input class="save-button" type="submit" value="Modificar Servicio"/>
   <a class="cancel-button" href="javascript:window.history.back();">{% trans "Cancel" %}</a>
   </p>
   	

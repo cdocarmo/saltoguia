@@ -32,8 +32,28 @@ class Empresa_ServicioForm(forms.ModelForm):
     forms.Form ---> cuando es un formulario creado y recibe parametros
     
         """
-    empresa_id = forms.ModelChoiceField(Empresa.objects.all(), widget=forms.HiddenInput)        
+    empresa_id = forms.CharField(widget=forms.HiddenInput)     
     step = forms.IntegerField(widget=forms.HiddenInput, initial=2)
+    nombre = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}), required=True) 
+    descripcion = forms.CharField(label="Descripcion", 
+                                  required=True, 
+                                  widget=forms.Textarea(attrs = 
+                                                        {'class':'txt-area', 
+                                                         'cols': '35', 'rows': '5'}))   
+    tags = forms.CharField(label="Tags", 
+                          required=True, 
+                          widget=forms.Textarea(attrs = 
+                                                {'class':'txt-area', 
+                                                 'cols': '35', 'rows': '5'}))      
     class Meta:
         model = EmpresaServicio
         fields = ('nombre', 'descripcion', 'tags' )
+        
+
+class Modificar_ServicioForm(forms.Form):
+
+   
+    
+    def __init__(self, *args, **kwargs):        
+        super(Modificar_ServicioForm, self).__init__(*args, **kwargs)
+    

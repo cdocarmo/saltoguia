@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.utils.translation import ugettext as _
 from django.core.exceptions import ObjectDoesNotExist
+from utilita.util import unique_slugify
 
 @login_required
 def crear_empresa(request, step=1):
@@ -98,21 +99,16 @@ def nuevo_servicio(request, empresa_slug):
         empresa = Empresa.objects.get(slug = empresa_slug, user = request.user)
     except ObjectDoesNotExist:        
         return HttpResponseRedirect(reverse('crear-empresa'))
-    form = Empresa_ServicioForm(initial={'empresa_id': empresa.id})
-    
+    form = Empresa_ServicioForm(initial={'empresa_id': empresa.id})    
     if request.method == "POST":
-        form_Empresa_ServicioForm = Empresa_ServicioForm(request.POST)
-        
-        if form_Empresa_ServicioForm.is_valid():
-    
+        form_Empresa_ServicioForm = Empresa_ServicioForm(request.POST)        
+        if form_Empresa_ServicioForm.is_valid():    
             empresa_servicio = form_Empresa_ServicioForm.save(commit=False)
             empresa_servicio.user = request.user
-            empresa_servicio.empresa = form_Empresa_ServicioForm.cleaned_data['empresa_id']
+            empresa_servicio.empresa = empresa #form_Empresa_ServicioForm.cleaned_data['empresa_id']
             empresa_servicio.save()                
     
-            return HttpResponseRedirect(reverse('ver-empresa'))
-
-            
+            return HttpResponseRedirect(reverse('ver-empresa'))            
     return render_to_response('empresa/ingreso-de-empresa-servicio.html', 
                               locals(), 
                               context_instance=RequestContext(request))                   
@@ -135,28 +131,16 @@ def modificar_empresa(request, slug):
     empresa = get_object_or_404(Empresa, slug = slug)
     
     if request.user.is_authenticated() and request.method == "POST":
-
             form = EmpresaForm(request.POST, request.FILES, instance=empresa)
             if form.is_valid():
-                #if form.cleaned_data['logo_delete'] == True and empresa.logo:
-                #    empresa.logo.delete()
                 empresa = form.save()
-                #if 'logo' in form.changed_data and form.cleaned_data['logo']:
-                #    empresa.logo.save(slugify(s=form.cleaned_data['logo'],
-                #                             dot=True),
-                #                             form.cleaned_data['logo'])
-
-                if 'name' in form.changed_data:
-                    empresa.slug = slugify(entity.name, empresa, 'slug',
+                if 'nombre' in form.changed_data:
+                    empresa.slug = slugify(empresa.nombre, empresa, 'slug',
                                           max_size=50)
                     empresa.save()
-
-
                 return HttpResponseRedirect(empresa.get_absolute_url())
-
     else:
-        form = EmpresaForm(instance=empresa)
-                
+        form = EmpresaForm(instance=empresa)                
     context = {
         'form': form,
     }
@@ -166,4 +150,30 @@ def modificar_empresa(request, slug):
         context_instance=RequestContext(request),
     )
 
-    
+
+@login_required
+def modificar_servicio(request, slug_Empresa, slug_Servicio):
+    empresa = get_object_or_404(Empresa, slug = slug_Empresa)
+    servicio = EmpresaServicio.objects.get(empresa=empresa, slug=slug_Servicio) 
+    if request.user.is_authenticated() and request.method == "POST":
+        form = Modificar_ServicioForm(request.POST)       
+        #return HttpResponse(str(form))
+        if form.is_valid():
+            post = request.POST.copy()
+            servicio.descripcion = post['descripcion']
+            servicio.nombre =  post['nombre']
+            servicio.tags = post['tags']
+            servicio.save()
+            return HttpResponseRedirect(empresa.get_absolute_url())
+    else:
+        form = Modificar_ServicioForm()
+    context = {
+        'form': form,
+    }    
+    return render_to_response(
+        "empresa/modificar-servicio.html", {'servicio_form': form,
+                                            'nombre': servicio.nombre, 'descripcion': servicio.descripcion,
+                                            'tags': servicio.tags, 'empresa': empresa},
+        context_instance=RequestContext(request),
+    )
+

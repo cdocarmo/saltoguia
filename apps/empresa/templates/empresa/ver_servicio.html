@@ -24,7 +24,7 @@
 				<p class="items"><strong>{% trans "Celular" %}: </strong> {{ empresa.celular }}</p>
 				<p class="items"><strong>{% trans "E-Mail" %}: </strong> {{ empresa.mail }}</p>
 				{% ifequal servicio.user request.user  %}
-					<p><a href="{% url nuevo-servicio empresa.slug %}" id="modificar-servicio">Modificar</a></p>
+					<p><a href="{% url modificar-servicio empresa.slug servicio.slug %}" id="modificar-servicio">Modificar</a></p>
 				{% endifequal %}
 			</div>
 	
