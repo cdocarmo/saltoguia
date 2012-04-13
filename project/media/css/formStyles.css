@@ -44,13 +44,16 @@ input.input-text {
 	width: 310px;
 	height: 28px;
 	padding: 1px 10px;
-	margin-bottom: 10px;
 	font-size: 18px;
 	color: #333333;
 }
 
 input.input-text:focus {
 	background-image: url("/media/images/bg_input_grey_focus_28x320.jpg");
+}
+
+select, input.input-text {
+	margin-bottom: 10px;
 }
 
 input.save-button {
