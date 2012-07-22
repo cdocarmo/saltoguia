@@ -13,6 +13,7 @@
 	<!--<h3>Crear usuario</h3>-->
 	<br />
 	<form action="" method="post" class="forms">
+		{% csrf_token %}
 		<div id="company_data">
 			<fieldset>
 				<legend>{% trans "Registrarse" %}</legend>

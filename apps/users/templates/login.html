@@ -8,6 +8,7 @@
 
 {% block content %}
         <form method="post" action="/login/" id="loginform" class="forms">
+        	{% csrf_token %}
         	<fieldset>
         		<legend>{% trans "Entrar" %}</legend>
         		{% if error %}

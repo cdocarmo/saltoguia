@@ -19,6 +19,7 @@
 <h2 id="form-description">¡Ahora ingresa los datos <br /> para la nueva persona o empresa!</h2>
 
 <form class="forms" method="post" id="form_company_singup" enctype="multipart/form-data">
+	{% csrf_token %}
 	<fieldset id="company_data">
 		<legend>Nueva Persona/Empresa</legend>
 
@@ -77,6 +78,7 @@
 		{% if form.descripcion.errors %}<span class="error_msg">{{ form.descripcion.errors|join:"; " }}</span>{% endif %}
 
  	{{ form.step }}
+ 	
   	<p class="form-buttons">
 		<input class="save-button" type="submit" value="{% trans "Agregar Empresa" %}"/>
 		<a class="cancel-button" href="#">{% trans "Cancel" %}</a>
