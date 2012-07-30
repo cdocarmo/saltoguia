@@ -29,14 +29,14 @@
    				{% if servicio.empresa.web %}
    					<i><a  class="resultado-dato" href="{{ servicio.empresa.web }}"> {{ servicio.empresa.web }}</a></i>
    				{% else %}
-   					<i class="resultado-dato">No tiene web</i>
+   					<i class="resultado-dato">No tiene sitio web</i>
 				{% endif %}
    			</li>
    		</ul>
 	{% endfor %}
 {% else %}
 	<div class="note">
-		Your search yielded no results
+		Lo sentimos, tu b&uacute;squeda no obtuvo resultados.
 	</div>
 {% endif %}   
 	
