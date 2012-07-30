@@ -217,6 +217,7 @@ div#footer p{
 div#footer a {
 	margin: 0 6px;
 	color: #333333;
+	text-decoration: none;
 }
 
 div#footer div#developers {
