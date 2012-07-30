@@ -14,9 +14,9 @@ $.fn.twitterbutton = function(options) {
 		url: 'http://www.saltoguia.com.uy',
 		count_url: false,
 		title: 'SaltoGuia: la guía de Salto',
-		mode: 'insert',
+		mode:'append',
 		layout: 'none', //vertical|horizontal|none
-		action: 'tweet',		//tweet|follow
+		action: 'follow',		//tweet|follow
 		lang: 'es',					//en|de|ja|fr|es
 		hideafterlike:false,
 		googleanalytics:false,							//true|false
@@ -122,9 +122,9 @@ $.fn.twitterbutton = function(options) {
 	  	}
 	  	var counturl = '';
 	  	if(o.count_url!=dynUrl)counturl = 'data-counturl="'+o.count_url+'" ';
-	  	var thtml = '<div><a class="icons" href="http://twitter.com/share" data-url="'+dynUrl+'" '+counturl+''+via+'data-text="'+dynTitle+'" data-lang="'+o.lang+'" '+related+'data-count="'+o.layout+'" onmouseover="sustituteImage(\'media/images/twitter-icon-color.jpg\', \'twitter\')" onmouseout="sustituteImage(\'media/images/twitter-icon.jpg\', \'twitter\')" target="_blank"><img src="/media/images/twitter-icon.jpg" alt="Twittear" /></a></div>';
+	  	var thtml = '<a class="icons" href="http://twitter.com/share" data-url="'+dynUrl+'" '+counturl+''+via+'data-text="'+dynTitle+'" data-lang="'+o.lang+'" '+related+'data-count="'+o.layout+'" onmouseover="sustituteImage(\'media/images/twitter-icon-color.jpg\', \'twitter\')" onmouseout="sustituteImage(\'media/images/twitter-icon.jpg\', \'twitter\')" target="_blank"><img src="/media/images/twitter-icon.jpg" alt="Twittear" id="twitter"/></a>';
 	  } else {
-	  	var thtml = '<div><a class="icons" href="http://twitter.com/'+o.user+'" onmouseover="sustituteImage(\'media/images/twitter-icon-color.jpg\', \'twitter\')" onmouseout="sustituteImage(\'media/images/twitter-icon.jpg\', \'twitter\')" target="_blank"><img src="/media/images/twitter-icon.jpg" alt="Seguir" /></a></div>';
+	  	var thtml = '<a class="icons" href="http://twitter.com/'+o.user+'" onmouseover="sustituteImage(\'media/images/twitter-icon-color.jpg\', \'twitter\')" onmouseout="sustituteImage(\'media/images/twitter-icon.jpg\', \'twitter\')" target="_blank"><img src="/media/images/twitter-icon.jpg" alt="Seguir" id="twitter"/></a>';
 	  }
 	  if(o.mode=='append')$(obj).append(thtml);
 	  else $(obj).html(thtml);
