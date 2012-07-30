@@ -35,6 +35,8 @@ div#search-form h3, div#search-form h4 {
 #spinner {
   display: none;
   position: relative;
+  width: 24px;
+  margin: auto;
 }
 
 ul.resultado {
@@ -117,4 +119,8 @@ div.note {
   padding: 15px;
   background: #FFFFD4;
   border: 1px solid #DDDDB2;
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #444;
 }
