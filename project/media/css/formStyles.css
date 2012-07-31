@@ -4,7 +4,7 @@ input:focus, textarea:focus, isindex:focus, keygen:focus, select:focus {
 }
 fieldset {
 	padding: 20px 10px;
-	width: 840px;;
+	width: 840px;
 }
 
 h2#form-description {
@@ -57,12 +57,14 @@ select, input.input-text {
 }
 
 input.save-button {
+	display: block;
 	color: #333;
 	border: none;
 	background-image: url("/media/images/bg_input_white_24x280.jpg");
 	background-repeat: no-repeat;
 	width: 280px;
 	height: 24px;
+	margin: auto;
 	margin-top: 30px;
 }
 
