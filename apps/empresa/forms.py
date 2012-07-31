@@ -8,10 +8,10 @@ class EmpresaForm(forms.ModelForm):
     step = forms.IntegerField(widget=forms.HiddenInput, initial=1)
     nombre = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
     domicilio = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
-    telefono = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}), required=False)
+    telefono = forms.CharField(label=u'Tel\xe9fono', widget=forms.TextInput(attrs={'class':'input-text'}), required=False)
     celular = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}), required=False)
     mail = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}))
-    descripcion = forms.CharField(label="Descripcion", 
+    descripcion = forms.CharField(label=u"Descripci\xf3n", 
                                   required=False, 
                                   widget=forms.Textarea(attrs = 
                                                         {'class':'txt-area', 
@@ -35,7 +35,7 @@ class Empresa_ServicioForm(forms.ModelForm):
     empresa_id = forms.CharField(widget=forms.HiddenInput)     
     step = forms.IntegerField(widget=forms.HiddenInput, initial=2)
     nombre = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}), required=True) 
-    descripcion = forms.CharField(label="Descripcion", 
+    descripcion = forms.CharField(label=u"Descripci\xf3n", 
                                   required=True, 
                                   widget=forms.Textarea(attrs = 
                                                         {'class':'txt-area', 
