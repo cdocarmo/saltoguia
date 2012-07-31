@@ -114,8 +114,12 @@ li.resultado-dato {
 	float: left !important;
 }
 
+div#results {
+	margin: 12px auto;
+}
 
 div.note {
+  margin: 12px auto;
   padding: 15px;
   background: #FFFFD4;
   border: 1px solid #DDDDB2;
