@@ -13,6 +13,7 @@ class UserProfile(User):
     birthday = models.DateField(null=True, blank=True)    
     location = models.CharField(max_length=255, blank=True, null=True)
     city = models.CharField(max_length=255, blank=True, null=True)
+    validation = models.BooleanField()
     
     
     def __unicode__(self):

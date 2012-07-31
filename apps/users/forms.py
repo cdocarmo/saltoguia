@@ -2,7 +2,7 @@
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django import forms
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from datetime import date, datetime, timedelta
 from django.contrib.auth.forms import UserCreationForm
 
@@ -33,6 +33,8 @@ class RegisterForm(UserCreationForm):
     password1 = forms.CharField(label=_("*Password"), widget=forms.PasswordInput(attrs={'class':'input-text'}))
     password2 = forms.CharField(label=_("*Password confirmation"), widget=forms.PasswordInput(attrs={'class':'input-text'}),
         help_text = _("Enter the same password as above, for verification."))
+    validation = forms.BooleanField(label="*Validacion", widget=forms.CheckboxInput(), help_text = "Acepto que estos datos \
+        sean almacenados en la base de datos de saltoguia.com.uy. (Estos datos pueden ser elimnados en el momento que usted desee.)")
     
     def as_br(self):
         """
