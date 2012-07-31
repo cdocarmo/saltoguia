@@ -28,7 +28,8 @@ class LoginForm(forms.Form):
 
 class RegisterForm(UserCreationForm):
     username = forms.CharField(label=_(u'*Usuario'), max_length=30, widget=forms.TextInput(attrs={'class':'input-text'}))
-    email = forms.EmailField(label = "*Email", widget=forms.TextInput(attrs={'class':'input-text'}))
+    email = forms.EmailField(label = "*Email", widget=forms.TextInput(attrs={'class':'input-text'}), 
+            error_messages={'invalid': 'Escriba una dirección de e-mail válida.'})
     #override password1 and password2 from UserCreationForm
     password1 = forms.CharField(label=_("*Password"), widget=forms.PasswordInput(attrs={'class':'input-text'}))
     password2 = forms.CharField(label=_("*Password confirmation"), widget=forms.PasswordInput(attrs={'class':'input-text'}),

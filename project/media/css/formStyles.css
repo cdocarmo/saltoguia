@@ -5,6 +5,7 @@ input:focus, textarea:focus, isindex:focus, keygen:focus, select:focus {
 fieldset {
 	padding: 20px 10px;
 	width: 840px;
+	border: 0;
 }
 
 h2#form-description {
@@ -87,4 +88,18 @@ form#search-form {
 span.helptext{
 	font-size: 10px;
 	color: #000000;
+}
+
+ul.errorlist {
+	float: right;
+	list-style: none;
+	margin: 22px 0 0 0;
+}
+
+ul.errorlist li {
+	/*background: url('/media/images/bg_error_msg.gif') repeat-x;*/
+	background: #FF0000 url('/media/images/flecha_error.gif') no-repeat;
+	height: 28px;
+	padding: 4px 4px 0 34px;
+	color: white;
 }
