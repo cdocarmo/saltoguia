@@ -15,13 +15,58 @@
 {% endblock %}
 
 {% block content %}
+<div id="form-description">
+	<h2>¡Ahora ingresa los datos <br /> para la nueva persona o empresa!</h2>
+	<p>La informaci&oacute;n que ingreses aqu&iacute; ser&aacute; ofrecida
+		en los resultados de b&uacute;squeda de SaltoGuia.Com.Uy</p>
+	<p class="description" id="help_tipo">{{ form.tipo.help_text }}</p>
+	<p class="description" id="help_nombre">{{ form.nombre.help_text }}</p>
+	<p class="description" id="help_domicilio">{{ form.domicilio.help_text }}</p>
+	<p class="description" id="help_documento">{{ form.documento.help_text }}</p>
+	<p class="description" id="help_celular">{{ form.celular.help_text }}</p>
+	<p class="description" id="help_telefono">{{ form.telefono.help_text }}</p>
+	<p class="description" id="help_mail">{{ form.mail.help_text }}</p>
+	<p class="description" id="help_web">{{ form.web.help_text }}</p>
+	<p class="description" id="help_imagen">Elige una imagen para identificar tu empresa o servicio (por ej. un logo)</p>
+	<p class="description" id="help_descripcion">{{ form.descripcion.help_text }}</p>
+</div>
 
-<h2 id="form-description">¡Ahora ingresa los datos <br /> para la nueva persona o empresa!</h2>
 
 <form class="forms" method="post" id="form_company_singup" enctype="multipart/form-data">
 	{% csrf_token %}
 	<fieldset id="company_data">
 		<legend>Nueva Persona/Empresa</legend>
+		{{ form.tipo.label_tag }}<br />
+		{{ form.tipo }}<br />
+		{% if form.tipo.errors %}<span class="error_msg">{{ form.tipo.errors|join:"; " }}</span>{% endif %}
+		
+		{{ form.nombre.label_tag }}<br />
+		{{ form.nombre }}<br />
+		{% if form.nombre.errors %}<span class="error_msg">{{ form.nombre.errors|join:"; " }}</span>{% endif %}
+
+		{{ form.domicilio.label_tag }}<br />
+		{{ form.domicilio }}<br />
+		{% if form.domicilio.errors %}<span class="error_msg">{{ form.domicilio.errors|join:"; " }}</span><br />{% endif %}
+
+		{{ form.documento.label_tag }}<br />
+		{{ form.documento }}<br />
+		{% if form.documento.errors %}<span class="error_msg">{{ form.documento.errors|join:"; " }}</span>{% endif %}
+
+
+		{{ form.telefono.label_tag }}<br />
+		{{ form.telefono }}<br />
+
+		{{ form.celular.label_tag }}<br />
+		{{ form.celular }}<br />
+		{% if form.celular.errors %}<span class="error_msg">{{ form.celular.errors|join:"; " }}</span>{% endif %}
+
+	    {{ form.mail.label_tag }}<br />
+	    {{ form.mail }}<br />
+	    {% if form.mail.errors %}<span class="error_msg">{{ form.mail.errors|join:"; " }}<br /></span>{% endif %}
+
+	    {{ form.web.label_tag }}<br />
+	    {{ form.web }}<br />
+	    {% if form.web.errors %}<span class="error_msg">{{ form.web.errors|join:"; " }}</span>{% endif %}
 
 		<p class="upload-avatar">
 			{{ form.logo.label_tag }}<br/>
@@ -31,50 +76,10 @@
 			{% if form.logo.errors %} 
 				<span class="error_msg">{{ form.logo.errors|join:"; " }}</span>
 		    {% endif %}  
-		  </p>
-	        
-		{{ form.nombre.label_tag }}<br />
-		{{ form.nombre }}<br />
-		<span>{{ form.nombre.help_text }}</span>
-		{% if form.nombre.errors %}<span class="error_msg">{{ form.nombre.errors|join:"; " }}</span>{% endif %}
-
-		{{ form.domicilio.label_tag }}<br />
-		{{ form.domicilio }}<br />
-		<span>{{ form.domicilio.help_text }}</span>
-		{% if form.domicilio.errors %}<span class="error_msg">{{ form.domicilio.errors|join:"; " }}</span><br />{% endif %}
-
-		{{ form.tipo.label_tag }}<br />
-		{{ form.tipo }}<br />
-		<span>{{ form.tipo.help_text }}</span>
-		{% if form.tipo.errors %}<span class="error_msg">{{ form.tipo.errors|join:"; " }}</span>{% endif %}
-
-		{{ form.documento.label_tag }}<br />
-		{{ form.documento }}<br />
-		<span>{{ form.documento.help_text }}</span>
-		{% if form.documento.errors %}<span class="error_msg">{{ form.documento.errors|join:"; " }}</span>{% endif %}
-
-
-		{{ form.telefono.label_tag }}<br />
-		{{ form.telefono }}<br />
-
-		{{ form.celular.label_tag }}<br />
-		{{ form.celular }}<br />
-		<span>{{ form.celular.help_text }}</span>
-		{% if form.celular.errors %}<span class="error_msg">{{ form.celular.errors|join:"; " }}</span>{% endif %}
-
-	    {{ form.mail.label_tag }}<br />
-	    {{ form.mail }}<br />
-	    <span>{{ form.mail.help_text }}</span>
-	    {% if form.mail.errors %}<span class="error_msg">{{ form.mail.errors|join:"; " }}<br /></span>{% endif %}
-
-	    {{ form.web.label_tag }}<br />
-	    {{ form.web }}<br />
-	    <span>{{ form.web.help_text }}</span>
-	    {% if form.web.errors %}<span class="error_msg">{{ form.web.errors|join:"; " }}</span>{% endif %}
-
+		</p>
+		 
 		{{ form.descripcion.label_tag }}<br />
 		{{ form.descripcion }}<br />
-		<span>{{ form.descripcion.help_text }}</span>
 		{% if form.descripcion.errors %}<span class="error_msg">{{ form.descripcion.errors|join:"; " }}</span>{% endif %}
 
  	{{ form.step }}
@@ -86,4 +91,111 @@
 	</fieldset>
 </form>
 	
+{% endblock %}
+
+{% block js %}
+	<script type="text/javascript" charset="UTF-8">
+		function posicionar_helpers(){
+			var altura = screen.height();
+			var anchura = screen.width();
+			var top = altura / 2;
+			var left = 0;
+			if (anchura <= 800) {
+				 left = 400; 
+			}else{
+				left = anchura / 2;
+			}
+			$("p.description").css({"left":left.toString(),"top":top.toString()});
+		}
+		//MOUSE EVENTS
+		$('#form_company_singup').mouseover(function(){
+			if (init) {
+				posicionar_helpers();
+			}else{
+				init = false;
+			}
+		});
+		$('#id_nombre').mouseover(function(e){
+			aparecer('nombre', e);
+		});
+		$('#id_nombre').mouseout(function(e){
+			desaparecer('nombre', e);
+		});
+		
+		$('#id_tipo').mouseover(function(e){
+			aparecer('tipo', e);
+		});
+		$('#id_tipo').mouseout(function(e){
+			desaparecer('tipo', e);
+		});
+		
+		$('#id_domicilio').mouseover(function(e){
+			aparecer('domicilio', e);
+		});
+		$('#id_domicilio').mouseout(function(e){
+			desaparecer('domicilio', e);
+		});
+		
+		$('#id_documento').mouseover(function(e){
+			aparecer('documento', e);
+		});
+		$('#id_documento').mouseout(function(e){
+			desaparecer('documento', e);
+		});
+		
+		$('#id_celular').mouseover(function(e){
+			aparecer('celular', e);
+		});
+		$('#id_celular').mouseout(function(e){
+			desaparecer('celular', e);
+		});
+		
+		$('#id_telefono').mouseover(function(e){
+			aparecer('telefono', e);
+		});
+		$('#id_telefono').mouseout(function(e){
+			desaparecer('telefono', e);
+		});
+		
+		$('#id_mail').mouseover(function(e){
+			aparecer('mail', e);
+		});
+		$('#id_mail').mouseout(function(e){
+			desaparecer('mail', e);
+		});
+		
+		$('#id_web').mouseover(function(e){
+			aparecer('web', e);
+		});
+		$('#id_web').mouseout(function(e){
+			desaparecer('web', e);
+		});
+		
+		$('#id_imagen').mouseover(function(e){
+			aparecer('imagen', e);
+		});
+		$('#id_imagen').mouseout(function(e){
+			desaparecer('imagen', e);
+		});
+		
+		$('#id_descripcion').mouseover(function(e){
+			aparecer('descripcion', e);
+		});
+		$('#id_descripcion').mouseout(function(e){
+			desaparecer('descripcion', e);
+		});
+		
+		function aparecer(control, e){
+			e.preventDefault();
+			$("#help_"+control).fadeIn("slow");
+		}
+		function desaparecer(control, e){
+			e.preventDefault();
+			$("#help_"+control).fadeOut("fast");
+		}
+		
+		$(document).ready(function(){
+			posicionar_helpers();
+		});
+	</script>
 {% endblock %}

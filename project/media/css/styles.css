@@ -16,7 +16,9 @@ h2 {
 	font-family: 'Terminal Dosis', Arial, sans-serif;
 	font-size: 28px;
 	color: #e15407;
-	float: right;
+	/*float: right; Esto puede afectar otros h2, lo especialicé en
+	 * formStyles linea 11
+	 */
 }
 
 h4 {

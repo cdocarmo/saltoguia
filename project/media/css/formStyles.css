@@ -8,8 +8,38 @@ fieldset {
 	border: 0;
 }
 
-h2#form-description {
-	margin-right: 50px;
+div#form-description {
+	width: 460px; 
+	float: right;
+	margin-right: 10px;
+}
+
+div#form-description p {
+	margin-top: 50px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12;
+	color: #333;
+	font-style: italic;
+}
+
+p.description {
+	position: fixed;
+/* top y left generados dinamicamente con jquery segun resolucion*/
+	display: none;
+	background-color: #E15407;
+	color: white !important;
+	/*border: 1px solid #FF1100;*/
+	padding: 6px 12px;
+	
+	-moz-border-radius: 15px; /* Firefox */
+  	-webkit-border-radius: 15px; /* Safari and Chrome */
+  	border-radius: 15px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
+
+  	-moz-box-shadow: 5px 5px 10px #555; /* Firefox */
+  	-webkit-box-shadow: 5px 5px 10px #555; /* Safari and Chrome */
+  	box-shadow: 5px 5px 10px #555; /* Opera 10.5+, future browsers and IE6+ using IE-CSS3 */
+
+  	behavior: url(ie-css3.htc); /* This lets IE know to call the script on all elements which get the 'box' class */
 }
 
 form.forms h2 {
@@ -69,6 +99,9 @@ input.save-button {
 	margin-top: 30px;
 }
 
+a.cancel-button {
+	float: right;
+}
 textarea.txt-area {
 	border: none;
 	background-image: url("/media/images/bg_textarea.jpg");
