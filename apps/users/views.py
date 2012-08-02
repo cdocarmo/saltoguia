@@ -54,13 +54,13 @@ def register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             new_user = form.save()
-
+            """
             email = EmailMessage('Asunto','Probando confirmación email', 
                                  to = ['cdocarmo@cdsoft.com.uy'])
             email.send()            
+            """
             return HttpResponseRedirect("/")
     else:
         form = RegisterForm()
     return render_to_response("registro/registro.html", {
-        'form': form,
-    })
+        'form': form,}, context_instance=RequestContext(request),)
