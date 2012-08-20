@@ -1,5 +1,5 @@
 from django.contrib.admin import site, ModelAdmin, TabularInline, StackedInline
-from empresa.models import Empresa, EmpresaServicio
+from servicios.models import Servicio
 
 
 
@@ -13,16 +13,16 @@ desactivar_Servicio.short_description = "Desactivar Servicios Seleccionados"
 
     
 
-class EmpresaAdmin(ModelAdmin):
-    list_display = ('nombre', 'domicilio', 'telefono', 'celular', 'mail', 'descripcion')
-    search_fields = ('nombre', 'mail')
+#class EmpresaAdmin(ModelAdmin):
+#    list_display = ('nombre', 'domicilio', 'telefono', 'celular', 'mail', 'descripcion')
+#    search_fields = ('nombre', 'mail')
     
-class EmpresaServicioAdmin(ModelAdmin):
-    list_display = ('nombre', 'empresa', 'descripcion', 'status', 'tags', 'tipo')
+class ServicioAdmin(ModelAdmin):
+    list_display = ('nombre', 'descripcion', 'status', 'tags', 'tipo')
     search_fields = ('nombre', 'tags')
     actions = [activar_Servicio, desactivar_Servicio]
         
-site.register(Empresa, EmpresaAdmin)
-site.register(EmpresaServicio, EmpresaServicioAdmin)
+# site.register(Empresa, EmpresaAdmin)
+site.register(Servicio, ServicioAdmin)
 
     

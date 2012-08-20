@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django import forms
 # from django.contrib.auth.models import User
+from models import UserProfile
 from datetime import date, datetime, timedelta
 from django.contrib.auth.forms import UserCreationForm
 
@@ -80,13 +81,13 @@ class CompleteProfile(forms.Form):
                                   widget=forms.Textarea(attrs = 
                                                         {'class':'txt-area', 
                                                          'cols': '35', 'rows': '5'}))
-    tipo = forms.ChoiceField(help_text=ayudas['tipo'],choices=Empresa.TIPO_EMPRESA)
+    tipo = forms.ChoiceField(help_text=ayudas['tipo'],choices=UserProfile.TIPO_EMPRESA)
     documento = forms.CharField(help_text=ayudas['documento'],widget=forms.TextInput(attrs={'class':'input-text'}), required=False)
     web = forms.CharField(help_text=ayudas['web'],widget=forms.TextInput(attrs={'class':'input-text'}), required=False)
 
 
     class Meta:
-        model = Empresa
+        model = UserProfile
         fields = ('nombre', 'domicilio', 'telefono', 'celular', 
                   'mail', 'descripcion', 'logo', 'documento', 'tipo', 'web')
     

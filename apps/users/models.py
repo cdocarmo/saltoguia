@@ -1,4 +1,6 @@
 # coding=UTF-8
+from utilita.thumbs import ImageWithThumbsField
+
 from django.db import models
 from django.utils.translation import ugettext as _
 

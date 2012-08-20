@@ -6,7 +6,7 @@ from django.db.models import Q
 from django.contrib.auth.models import User
 from django.utils import simplejson
 import string
-from servicios.models import Empresa, EmpresaServicio
+from servicios.models import Servicio
 
 def search(request):
     search_form = SearchForm(request.GET)
