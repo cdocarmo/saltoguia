@@ -85,7 +85,7 @@ def completar_perfil(request, step=1):
                 empresa = form_Empresa.save(commit=False)
                 empresa.user = request.user
              
-                empresa.save()               
+                empresa.save()
                 form = Empresa_ServicioForm(initial={'empresa_id': empresa.id})
                 return render_to_response('empresa/ingreso-de-empresa-servicio.html', 
                                           locals(), 

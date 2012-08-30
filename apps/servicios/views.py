@@ -4,8 +4,8 @@ from django.http import HttpResponseRedirect, HttpResponse, Http404,\
                         HttpResponseGone
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
-from empresa.models import Servicio
-from empresa.forms import *
+from servicios.models import Servicio
+from servicios.forms import *
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.utils.translation import ugettext as _
@@ -36,9 +36,12 @@ def empresa_servicio_detalle(request, empresa_slug, servicio_slug):
     
 
 @login_required
-def nuevo_servicio(request, empresa_slug):
+def nuevo_servicio(request):
+    # le quite el argumento empresa_slug
+    # TODO: Aqui hay que cambiar todos el algoritmo
+    # que antes llamaba a Empresa
     try:
-        empresa = Empresa.objects.get(slug = empresa_slug, user = request.user)
+        usuario = Empresa.objects.get(slug = empresa_slug, user = request.user)
     except ObjectDoesNotExist:        
         return HttpResponseRedirect(reverse('crear-empresa'))
     form = Empresa_ServicioForm(initial={'empresa_id': empresa.id})    

@@ -43,12 +43,12 @@
 		});
 	});
 	
-	function enviar_busqueda(){
+	/*function enviar_busqueda(){
 		q = $( '#search-box' ).val();
 		q = q.replace(" ","-");
 		$( '#results' ).html( '&nbsp;' ).load( '{% url new-search %}?q=' + q );
 	}
- 
+ */
 	$( document ).ajaxStart( function() {
 		$( '#spinner' ).show();
 	}).ajaxStop( function() {

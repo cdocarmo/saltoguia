@@ -19,11 +19,8 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
     url(r'^_admin/', include(admin.site.urls)),
-    # url(r'^empresa/', include('empresa.urls')),
-    url(r'^login/$', 'users.views.login', name='login'),
-    url(r'^registro/$', 'users.views.register', name='registro'),
-    url(r'^logout/$', 'users.views.logout', name='logout'),
-    
+    url(r'^usuario/', include('users.urls')),
+    url(r'^usuario/servicios/', include('servicios.urls')),
 )
 #GF
 if settings.DEBUG and settings.MEDIA_ROOT:
