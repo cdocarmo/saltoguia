@@ -79,13 +79,6 @@ div#header p {
 	padding-top: 40px;
 }
 
-div#central-content {
-	background-color: white;
-	border: 1px solid #333;
-	/*margin: 0 auto 10px auto;*/
-	padding: 10px 20px;
-}
-
 div#central_image {
 	width: 520px;
 	margin: auto;
@@ -101,12 +94,17 @@ div#central_image img {
 }
 
 div#central-content {
+	background-color: white;
+	border: 1px solid #333;
+	/*margin: 0 auto 10px auto;*/
+	padding: 10px 20px;
 	position: relative;
 	width: 880px;
 	left: 50%;
 	top: -34px;
 	margin-left: -440px;
 	z-index: 1;
+	overflow: hidden;
 }
 
 div.content {

@@ -12,25 +12,233 @@
 	
 	<!--<h3>Crear usuario</h3>-->
 	<br />
-	<form action="" method="post" class="forms">
+	<form action="" method="post" class="forms form_company_singup">
 		{% csrf_token %}
-		<div id="company_data">
-			<fieldset id="registro">
+		<!--<div id="company_data">
+			<li id="registro">
 				<legend>{% trans "Registrarse" %}</legend>
 				{{ form_register.as_br }}
   				<input type="button" value="Siguiente" class="save-button">
-			</fieldset>
-			<fieldset id="perfil">
+			</li>
+			<li id="perfil">
 				<legend>{% trans "Completar perfil" %}</legend>
 				{{ form_perfil.as_br }}
   				<input type="button" value="Siguiente" class="save-button">
-			</fieldset>
-			<fieldset id="nuevo_servicio">
+			</li>
+			<li id="nuevo_servicio">
 				<legend>{% trans "Agregar nuevo servicio" %}</legend>
 				{{ form_servicio_nuevo.as_br }}
   				<input type="submit" value="Finalizar" class="save-button">
-			</fieldset>
-		</div>
+			</li>
+		</div>-->
+		<ul id="carrusel">
+			<li id="registro">
+				<legend>{% trans "Registrarse" %}</legend>
+				{{ form_register.as_br }}
+				<div class="primer-form-buttons">
+  					<input type="button" value="Siguiente" class="save-button next">
+  				</div>
+			</li>
+			<li id="perfil">
+				<div class="form-description">
+					<!--<p>La informaci&oacute;n que ingreses aqu&iacute; ser&aacute; ofrecida
+		en los resultados de b&uacute;squeda de SaltoGuia.Com.Uy</p>-->
+					<p class="description" id="help_tipo">{{ form_perfil.tipo.help_text }}</p>
+					<p class="description" id="help_nombre">{{ form_perfil.nombre.help_text }}</p>
+					<p class="description" id="help_domicilio">{{ form_perfil.domicilio.help_text }}</p>
+					<p class="description" id="help_documento">{{ form_perfil.documento.help_text }}</p>
+					<p class="description" id="help_celular">{{ form_perfil.celular.help_text }}</p>
+					<p class="description" id="help_telefono">{{ form_perfil.telefono.help_text }}</p>
+					<p class="description" id="help_mail">{{ form_perfil.mail.help_text }}</p>
+					<p class="description" id="help_web">{{ form_perfil.web.help_text }}</p>
+					<p class="description" id="help_imagen">Elige una imagen para identificar tu empresa o servicio (por ej. un logo)</p>
+					<p class="description" id="help_descripcion">{{ form_perfil.descripcion.help_text }}</p>
+				</div>
+				<legend>{% trans "Completar perfil" %}</legend>
+				<div class="column_form">
+					{{ form_perfil.tipo.label_tag }}<br />
+					{{ form_perfil.tipo }}<br />
+					{% if form_perfil.tipo.errors %}<span class="error_msg">{{ form_perfil.tipo.errors|join:"; " }}</span>{% endif %}
+					
+					{{ form_perfil.nombre.label_tag }}<br />
+					{{ form_perfil.nombre }}<br />
+					{% if form_perfil.nombre.errors %}<span class="error_msg">{{ form_perfil.nombre.errors|join:"; " }}</span>{% endif %}
+			
+					{{ form_perfil.domicilio.label_tag }}<br />
+					{{ form_perfil.domicilio }}<br />
+					{% if form_perfil.domicilio.errors %}<span class="error_msg">{{ form_perfil.domicilio.errors|join:"; " }}</span><br />{% endif %}
+			
+					{{ form_perfil.documento.label_tag }}<br />
+					{{ form_perfil.documento }}<br />
+					{% if form_perfil.documento.errors %}<span class="error_msg">{{ form_perfil.documento.errors|join:"; " }}</span>{% endif %}
+			
+			
+					{{ form_perfil.telefono.label_tag }}<br />
+					{{ form_perfil.telefono }}<br />
+				</div>
+				<div class="column_form">
+					{{ form_perfil.celular.label_tag }}<br />
+					{{ form_perfil.celular }}<br />
+					{% if form_perfil.celular.errors %}<span class="error_msg">{{ form_perfil.celular.errors|join:"; " }}</span>{% endif %}
+			
+				    {{ form_perfil.mail.label_tag }}<br />
+				    {{ form_perfil.mail }}<br />
+				    {% if form_perfil.mail.errors %}<span class="error_msg">{{ form_perfil.mail.errors|join:"; " }}<br /></span>{% endif %}
+			
+				    {{ form_perfil.web.label_tag }}<br />
+				    {{ form_perfil.web }}<br />
+				    {% if form_perfil.web.errors %}<span class="error_msg">{{ form_perfil.web.errors|join:"; " }}</span>{% endif %}
+			
+					<!--<p class="upload-avatar">
+						{{ form_perfil.logo.label_tag }}<br/>
+						
+						{{ form_perfil.logo }}{% if logo.field.required %} <span title="{% trans "This field is required" %}">*</span>{% endif %}<br />
+						<span>{{ form_perfil.logo.help_text }}</span>
+						{% if form_perfil.logo.errors %} 
+							<span class="error_msg">{{ form_perfil.logo.errors|join:"; " }}</span>
+					    {% endif %}  
+					</p>-->
+					 
+					{{ form_perfil.descripcion.label_tag }}<br />
+					{{ form_perfil.descripcion }}<br />
+					{% if form_perfil.descripcion.errors %}<span class="error_msg">{{ form_perfil.descripcion.errors|join:"; " }}</span>{% endif %}
+				</div>
+				<div class="form-buttons">
+					<input type="button" value="Anterior" class="save-button prev">
+  					<input type="button" value="Siguiente" class="save-button next">
+  				</div>
+			</li>
+			<li id="nuevo_servicio">
+				<legend>{% trans "Agregar nuevo servicio" %}</legend>
+				{{ form_servicio_nuevo.as_br }}
+				<div class="form-buttons">
+					<input type="button" value="Anterior" class="save-button prev">
+  					<input type="submit" value="Finalizar" class="save-button">
+  				</div>
+			</li>
+		</ul>
 	</form>
 
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="/media/js/jquery.jcarousel.min.js"></script>	
+<script type="text/javascript">
+		function posicionar_helpers(){
+			var altura = screen.height();
+			var anchura = screen.width();
+			var top = altura - 50;
+			var left = anchura / 3;
+			if (anchura <= 800) {
+				 left = 200; 
+			}
+			$("p.description").css({"left":left.toString(),"top":top.toString()});
+		}
+		//MOUSE EVENTS
+		$('.form_company_singup').mouseover(function(){
+			if (init) {
+				posicionar_helpers();
+			}else{
+				init = false;
+			}
+		});
+		$('#id_nombre').mouseover(function(e){
+			aparecer('nombre', e);
+		});
+		$('#id_nombre').mouseout(function(e){
+			desaparecer('nombre', e);
+		});
+		
+		$('#id_tipo').mouseover(function(e){
+			aparecer('tipo', e);
+		});
+		$('#id_tipo').mouseout(function(e){
+			desaparecer('tipo', e);
+		});
+		
+		$('#id_domicilio').mouseover(function(e){
+			aparecer('domicilio', e);
+		});
+		$('#id_domicilio').mouseout(function(e){
+			desaparecer('domicilio', e);
+		});
+		
+		$('#id_documento').mouseover(function(e){
+			aparecer('documento', e);
+		});
+		$('#id_documento').mouseout(function(e){
+			desaparecer('documento', e);
+		});
+		
+		$('#id_celular').mouseover(function(e){
+			aparecer('celular', e);
+		});
+		$('#id_celular').mouseout(function(e){
+			desaparecer('celular', e);
+		});
+		
+		$('#id_telefono').mouseover(function(e){
+			aparecer('telefono', e);
+		});
+		$('#id_telefono').mouseout(function(e){
+			desaparecer('telefono', e);
+		});
+		
+		$('#id_mail').mouseover(function(e){
+			aparecer('mail', e);
+		});
+		$('#id_mail').mouseout(function(e){
+			desaparecer('mail', e);
+		});
+		
+		$('#id_web').mouseover(function(e){
+			aparecer('web', e);
+		});
+		$('#id_web').mouseout(function(e){
+			desaparecer('web', e);
+		});
+		
+		$('#id_imagen').mouseover(function(e){
+			aparecer('imagen', e);
+		});
+		$('#id_imagen').mouseout(function(e){
+			desaparecer('imagen', e);
+		});
+		
+		$('#id_descripcion').mouseover(function(e){
+			aparecer('descripcion', e);
+		});
+		$('#id_descripcion').mouseout(function(e){
+			desaparecer('descripcion', e);
+		});
+		
+		function aparecer(control, e){
+			e.preventDefault();
+			$("#help_"+control).fadeIn("slow");
+		}
+		function desaparecer(control, e){
+			e.preventDefault();
+			$("#help_"+control).fadeOut("fast");
+		}
+		
+	function carrusel_init (carrusel) {
+		jQuery('.next').bind('click', function() {
+			carrusel.next();
+			return false;
+		});
+		jQuery('.prev').bind('click', function() {
+			carrusel.prev();
+			return false;
+		}); 
+	}
+	jQuery(document).ready(function() {
+	    jQuery('#carrusel').jcarousel({
+	        scroll: 1,
+	        initCallback: carrusel_init,
+	        buttonNextHTML: null,
+	        buttonPrevHTML: null,
+	    });
+    	posicionar_helpers();
+	});	
+</script>
 {% endblock %}

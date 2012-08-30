@@ -68,6 +68,15 @@ form.forms {
 	font-size: 20px;
 }
 
+ul#carrusel {
+	height: 420px;
+}
+
+form.forms li {
+	width: 880px;
+	margin-right: 20px;
+}
+
 input.input-text {
 	border: none;
 	background-image: url("/media/images/bg_input_grey_28x320.jpg");
@@ -88,14 +97,14 @@ select, input.input-text {
 }
 
 input.save-button {
-	display: block;
+	/*display: block;*/
 	color: #333;
 	border: none;
 	background-image: url("/media/images/bg_input_white_24x280.jpg");
 	background-repeat: no-repeat;
 	width: 280px;
 	height: 24px;
-	margin: auto;
+	margin: 0;
 	margin-top: 30px;
 }
 
@@ -135,4 +144,27 @@ ul.errorlist li {
 	height: 28px;
 	padding: 4px 4px 0 34px;
 	color: white;
+}
+
+/*
+ * Como en la primera instancia hay un solo boton, hay
+ * que acomodar el ancho del div
+ * */
+div.primer-form-buttons {
+	width: 280px;
+	margin: auto;
+}
+
+div.form-buttons {
+	width: 566px;
+	margin: auto;
+}
+
+/*
+ * Columnas cuando el formulario es muy largo
+ */
+
+div.column_form {
+	float: left;
+	width: 420px;
 }
