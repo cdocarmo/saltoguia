@@ -15,10 +15,20 @@
 	<form action="" method="post" class="forms">
 		{% csrf_token %}
 		<div id="company_data">
-			<fieldset>
+			<fieldset id="registro">
 				<legend>{% trans "Registrarse" %}</legend>
-				{{ form.as_br }}
-  				<input type="submit" value="Crear" class="save-button">
+				{{ form_register.as_br }}
+  				<input type="button" value="Siguiente" class="save-button">
+			</fieldset>
+			<fieldset id="perfil">
+				<legend>{% trans "Completar perfil" %}</legend>
+				{{ form_perfil.as_br }}
+  				<input type="button" value="Siguiente" class="save-button">
+			</fieldset>
+			<fieldset id="nuevo_servicio">
+				<legend>{% trans "Agregar nuevo servicio" %}</legend>
+				{{ form_servicio_nuevo.as_br }}
+  				<input type="submit" value="Finalizar" class="save-button">
 			</fieldset>
 		</div>
 	</form>

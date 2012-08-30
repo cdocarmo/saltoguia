@@ -25,6 +25,20 @@ class ServicioForm(forms.ModelForm):
                           widget=forms.Textarea(attrs = 
                                                 {'class':'txt-area', 
                                                  'cols': '35', 'rows': '5'}))      
+    
+    def as_br(self):
+        """
+        GF
+        Based in as_p, from superclass forms.py.
+        Returns this form rendered as HTML <br />s.
+        """
+        return self._html_output(
+            normal_row = u'%(label)s <br />%(field)s%(help_text)s <br />',
+            error_row = u'%s',
+            row_ender = '',
+            help_text_html = u' <span class="helptext">%s</span>',
+            errors_on_separate_row = True)
+    
     class Meta:
         model = Servicio
         fields = ('nombre', 'descripcion', 'tags' )

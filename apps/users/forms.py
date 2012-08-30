@@ -85,7 +85,19 @@ class CompleteProfile(forms.Form):
     documento = forms.CharField(help_text=ayudas['documento'],widget=forms.TextInput(attrs={'class':'input-text'}), required=False)
     web = forms.CharField(help_text=ayudas['web'],widget=forms.TextInput(attrs={'class':'input-text'}), required=False)
 
-
+    def as_br(self):
+        """
+        GF
+        Based in as_p, from superclass forms.py.
+        Returns this form rendered as HTML <br />s.
+        """
+        return self._html_output(
+            normal_row = u'%(label)s <br />%(field)s%(help_text)s <br />',
+            error_row = u'%s',
+            row_ender = '',
+            help_text_html = u' <span class="helptext">%s</span>',
+            errors_on_separate_row = True)
+    
     class Meta:
         model = UserProfile
         fields = ('nombre', 'domicilio', 'telefono', 'celular', 

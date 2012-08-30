@@ -8,6 +8,7 @@ from django.contrib import auth
 from models import *
 from datetime import date, datetime, timedelta
 from users.forms import *
+from servicios.forms import ServicioForm
 from django.template import RequestContext
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic.list_detail import object_list
@@ -51,8 +52,10 @@ def logout(request):
 
 def register(request):
     if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
+        form_register = RegisterForm(request.POST)
+        form_perfil = CompleteProfile(request.POST)
+        form_servicio_nuevo = ServicioForm(request.POST)
+        if form_register.is_valid():  # xq es el mas importante y obligatorio para registrarse
             new_user = form.save()
             """
             email = EmailMessage('Asunto','Probando confirmación email', 
@@ -61,9 +64,12 @@ def register(request):
             """
             return HttpResponseRedirect("/")
     else:
-        form = RegisterForm()
+        form_register = RegisterForm()
+        form_perfil = CompleteProfile()
+        form_servicio_nuevo = ServicioForm()
     return render_to_response("registro/registro.html", {
-        'form': form,}, context_instance=RequestContext(request),)
+        'form_register': form_register, 'form_perfil':form_perfil, 'form_servicio_nuevo':form_servicio_nuevo}, 
+                              context_instance=RequestContext(request),)
 
 
 @login_required
