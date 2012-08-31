@@ -124,24 +124,28 @@
 {% block js %}
 <script type="text/javascript" src="/media/js/jquery.jcarousel.min.js"></script>	
 <script type="text/javascript">
+		//var init = true
 		function posicionar_helpers(){
-			var altura = screen.height();
-			var anchura = screen.width();
-			var top = altura - 50;
-			var left = anchura / 3;
+			
+			var top, left, altura, anchura;
+			altura = screen.height;
+			anchura = screen.width;
+			//top = altura / 10;
+			//left = anchura / 4;
+			top = -50;
+			left = 200;
 			if (anchura <= 800) {
 				 left = 200; 
 			}
-			$("p.description").css({"left":left.toString(),"top":top.toString()});
+			$("div.form-description").css({"left":left.toString(),"top":top.toString()});
 		}
 		//MOUSE EVENTS
-		$('.form_company_singup').mouseover(function(){
-			if (init) {
-				posicionar_helpers();
-			}else{
-				init = false;
-			}
-		});
+		//$('.form_company_singup').mouseover(function(){
+		//	if (init) {
+		//		posicionar_helpers();
+		//		init = false;
+		//	}
+		//});
 		$('#id_nombre').mouseover(function(e){
 			aparecer('nombre', e);
 		});
@@ -238,7 +242,7 @@
 	        buttonNextHTML: null,
 	        buttonPrevHTML: null,
 	    });
-    	posicionar_helpers();
+	    //posicionar_helpers();
 	});	
 </script>
 {% endblock %}

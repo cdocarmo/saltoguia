@@ -1,4 +1,5 @@
-/*CSS para formularios*/
+/* CSS para formularios */
+
 input:focus, textarea:focus, isindex:focus, keygen:focus, select:focus {
 	outline: none;
 }
@@ -9,22 +10,24 @@ fieldset {
 }
 
 div#form-description {
+	position: fixed;
 	width: 460px; 
 	float: right;
 	margin-right: 10px;
 }
 
-div#form-description p {
+div.form-description {
+	position: absolute;
+	top : 10px;
+	left: 900px;
+}
+
+p.description {
 	margin-top: 50px;
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
 	font-size: 12;
 	color: #333;
 	font-style: italic;
-}
-
-p.description {
-	position: fixed;
-/* top y left generados dinamicamente con jquery segun resolucion*/
 	display: none;
 	background-color: #E15407;
 	color: white !important;
