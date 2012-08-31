@@ -42,7 +42,7 @@ class UserProfile(User):
     celular = models.CharField(max_length=30, blank=True, null=True)
     tipo = models.IntegerField(choices=TIPO_EMPRESA, default=1)
     documento = models.CharField(max_length=255, blank=True, null=True)
-    mail = models.EmailField(blank=False, unique=True) 
+    mail_profesional = models.EmailField(blank=False, unique=True) 
     domicilio = models.CharField(max_length=255)
     slug = models.SlugField(editable=False)
     descripcion = models.TextField(blank=True, null=True, verbose_name=u'descripci\xf3n')

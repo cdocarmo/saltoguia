@@ -28,15 +28,23 @@ class LoginForm(forms.Form):
 
 
 class RegisterForm(UserCreationForm):
-    username = forms.CharField(label=_(u'*Usuario'), max_length=30, widget=forms.TextInput(attrs={'class':'input-text'}))
-    email = forms.EmailField(label = "*Email", widget=forms.TextInput(attrs={'class':'input-text'}), 
-            error_messages={'invalid': 'Escriba una dirección de e-mail válida.'})
+    
+    ayudas = {
+              'username':u'Ingresa el nombre de tu empresa o el tuyo propio si ofreces un servicio particular.',
+              'email':u'Ingresa una direcci\xf3n, si corresponde.',
+              'password1':u'Escribe un buen password.',
+              'password2':u'Ahora repitelo, para verificar.'
+    }
+    
+    username = forms.CharField(label=_(u'*Usuario'), max_length=30, 
+                               widget=forms.TextInput(attrs={'class':'input-text'}), help_text = ayudas['username'])
+    email = forms.EmailField(label = "*Email personal", widget=forms.TextInput(attrs={'class':'input-text'}), 
+            error_messages={'invalid': 'Escriba una dirección de e-mail válida.'}, help_text = ayudas['email'])
     #override password1 and password2 from UserCreationForm
-    password1 = forms.CharField(label=_("*Password"), widget=forms.PasswordInput(attrs={'class':'input-text'}))
+    password1 = forms.CharField(label=_("*Password"), widget=forms.PasswordInput(attrs={'class':'input-text'}), 
+                                help_text=ayudas['password1'])
     password2 = forms.CharField(label=_("*Password confirmation"), widget=forms.PasswordInput(attrs={'class':'input-text'}),
-        help_text = _("Enter the same password as above, for verification."))
-    validation = forms.BooleanField(label="*Validacion", widget=forms.CheckboxInput(), help_text = "Acepto que estos datos \
-        sean almacenados en la base de datos de saltoguia.com.uy. (Estos datos pueden ser elimnados en el momento que usted desee.)")
+        help_text=ayudas['password2'])
     
     def as_br(self):
         """
@@ -45,7 +53,7 @@ class RegisterForm(UserCreationForm):
         Returns this form rendered as HTML <br />s.
         """
         return self._html_output(
-            normal_row = u'%(label)s <br />%(field)s%(help_text)s <br />',
+            normal_row = u'%(label)s <br />%(field)s<br />',
             error_row = u'%s',
             row_ender = '',
             help_text_html = u' <span class="helptext">%s</span>',
@@ -53,7 +61,7 @@ class RegisterForm(UserCreationForm):
     
     class Meta:
         model = User
-        fields = ("username", "email", )
+        fields = ("username", "email", "password1", "password2")
 
 class CompleteProfile(forms.Form):
     
@@ -62,19 +70,21 @@ class CompleteProfile(forms.Form):
               'domicilio':u'Ingresa una direcci\xf3n, si corresponde.',
               'telefono':u'Ingresa un n\xfamero telef\xf3nico fijo.',
               'celular':u'Ingresa el n\xfamero de tu m\xf3vil.',
-              'mail':u'Ingresa una direcci\xf3n de email de tu empresa o tu servicio.',
+              'mail':u'Ingresa una direcci\xf3n de email profesional, si usas el email personal, d\xe9jalo en blanco.',
               'descripcion':u'Escribe una breve descripci\xf3n de tu empresa o del servicio que ofreces.',
               'tipo':u'Selecciona si eres un empresa o una persona que ofrece alg\xfan servicio.',
               'documento':u'Si eres empresa coloca tu R.U.T. sino tu c\xe9dula.',
               'web':u'Si tienes un sitio web coloca la direcci\xf3n url (tambi\xe9n puede colocar la url de tu p\xe1gina de Facebook o Twitter).'
     }
     
+    validation = forms.BooleanField(label="*Validacion", widget=forms.CheckboxInput(), help_text = "Acepto que estos datos \
+        sean almacenados en la base de datos de saltoguia.com.uy. (Estos datos pueden ser elimnados en el momento que usted desee.)")
     step = forms.IntegerField(widget=forms.HiddenInput, initial=1)
     nombre = forms.CharField(help_text=ayudas['nombre'],widget=forms.TextInput(attrs={'class':'input-text'}))
     domicilio = forms.CharField(help_text=ayudas['domicilio'],widget=forms.TextInput(attrs={'class':'input-text'}))
     telefono = forms.CharField(help_text=ayudas['telefono'],label=u'Tel\xe9fono', widget=forms.TextInput(attrs={'class':'input-text'}), required=False)
     celular = forms.CharField(help_text=ayudas['celular'],widget=forms.TextInput(attrs={'class':'input-text'}), required=False)
-    mail = forms.CharField(help_text=ayudas['mail'],widget=forms.TextInput(attrs={'class':'input-text'}))
+    mail_profesional = forms.EmailField(label='Email de empresa o servicio', help_text=ayudas['mail'],widget=forms.TextInput(attrs={'class':'input-text'}))
     descripcion = forms.CharField(help_text=ayudas['descripcion'],
                                   label=u"Descripci\xf3n", 
                                   required=False, 
@@ -84,22 +94,9 @@ class CompleteProfile(forms.Form):
     tipo = forms.ChoiceField(help_text=ayudas['tipo'],choices=UserProfile.TIPO_EMPRESA)
     documento = forms.CharField(help_text=ayudas['documento'],widget=forms.TextInput(attrs={'class':'input-text'}), required=False)
     web = forms.CharField(help_text=ayudas['web'],widget=forms.TextInput(attrs={'class':'input-text'}), required=False)
-
-    def as_br(self):
-        """
-        GF
-        Based in as_p, from superclass forms.py.
-        Returns this form rendered as HTML <br />s.
-        """
-        return self._html_output(
-            normal_row = u'%(label)s <br />%(field)s%(help_text)s <br />',
-            error_row = u'%s',
-            row_ender = '',
-            help_text_html = u' <span class="helptext">%s</span>',
-            errors_on_separate_row = True)
     
     class Meta:
         model = UserProfile
         fields = ('nombre', 'domicilio', 'telefono', 'celular', 
-                  'mail', 'descripcion', 'logo', 'documento', 'tipo', 'web')
+                  'mail', 'descripcion', 'logo', 'documento', 'tipo', 'web',)
     

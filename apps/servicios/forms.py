@@ -11,20 +11,27 @@ class ServicioForm(forms.ModelForm):
     forms.ModelForm ---> cuando va a ser un formulario en base a un modelo
     forms.Form ---> cuando es un formulario creado y recibe parametros
     
-        """
+    """
+    
+    ayudas = {
+              'nombre':u'Un nombre que describa el servicio, por ej: "Reparaci\xf3n de pc\'s".',
+              'descripcion':u'Una descripci\xf3n mas detallada.',
+              'tags':u'Una lista de palabras claves separadas por como, por ej: "reparacion, pc, notebook, formateo".'
+    }
+    
     empresa_id = forms.CharField(widget=forms.HiddenInput)     
     step = forms.IntegerField(widget=forms.HiddenInput, initial=2)
-    nombre = forms.CharField(widget=forms.TextInput(attrs={'class':'input-text'}), required=True) 
-    descripcion = forms.CharField(label=u"Descripci\xf3n", 
+    nombre_servicio = forms.CharField(label=u"Nombre del servicio",
+                                      widget=forms.TextInput(attrs={'class':'input-text'}), 
+                                      help_text=ayudas['nombre'], required=True) 
+    desc_servicio = forms.CharField(label=u"Descripci\xf3n", 
                                   required=True, 
                                   widget=forms.Textarea(attrs = 
                                                         {'class':'txt-area', 
-                                                         'cols': '35', 'rows': '5'}))   
-    tags = forms.CharField(label="Tags", 
-                          required=True, 
-                          widget=forms.Textarea(attrs = 
-                                                {'class':'txt-area', 
-                                                 'cols': '35', 'rows': '5'}))      
+                                                         'cols': '40', 'rows': '5'}),
+                                  help_text = ayudas['descripcion'])   
+    tags = forms.CharField(label=u"Tags", required=True, widget=forms.Textarea(attrs={'class':'txt-area', 'cols':'40', 'rows':'5'}),
+                           help_text=ayudas['tags'])      
     
     def as_br(self):
         """
@@ -33,7 +40,7 @@ class ServicioForm(forms.ModelForm):
         Returns this form rendered as HTML <br />s.
         """
         return self._html_output(
-            normal_row = u'%(label)s <br />%(field)s%(help_text)s <br />',
+            normal_row = u'%(label)s <br />%(field)s<br />',
             error_row = u'%s',
             row_ender = '',
             help_text_html = u' <span class="helptext">%s</span>',
@@ -41,7 +48,7 @@ class ServicioForm(forms.ModelForm):
     
     class Meta:
         model = Servicio
-        fields = ('nombre', 'descripcion', 'tags' )
+        fields = ('nombre_servicio', 'desc_servicio', 'tags',)
         
 
 class Modificar_ServicioForm(forms.Form):

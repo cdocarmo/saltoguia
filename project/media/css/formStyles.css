@@ -11,15 +11,9 @@ fieldset {
 
 div#form-description {
 	position: fixed;
-	width: 460px; 
-	float: right;
-	margin-right: 10px;
-}
-
-div.form-description {
-	position: absolute;
-	top : 10px;
-	left: 900px;
+	top : 5px;
+	left: 120px;
+	z-index: 10;
 }
 
 p.description {

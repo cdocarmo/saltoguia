@@ -8,6 +8,32 @@
 	<link rel="stylesheet" type="text/css" href="media/css/userBrownserStyles.css" media="all" />
 {% endblock %}
 
+{% block ayudas %}
+<div id="form-description">
+	<!--REGISTRO-->
+	<p class="description" id="help_validation">{{ form_perfil.validation.help_text }}</p>
+	<p class="description" id="help_username">{{ form_register.username.help_text }}</p>
+	<p class="description" id="help_email">{{ form_register.email.help_text }}</p>
+	<p class="description" id="help_pass1">{{ form_register.password1.help_text }}</p>
+	<p class="description" id="help_pass2">{{ form_register.password2.help_text }}</p>
+	<!--PERFIL-->
+	<p class="description" id="help_tipo">{{ form_perfil.tipo.help_text }}</p>
+	<p class="description" id="help_nombre">{{ form_perfil.nombre.help_text }}</p>
+	<p class="description" id="help_domicilio">{{ form_perfil.domicilio.help_text }}</p>
+	<p class="description" id="help_documento">{{ form_perfil.documento.help_text }}</p>
+	<p class="description" id="help_celular">{{ form_perfil.celular.help_text }}</p>
+	<p class="description" id="help_telefono">{{ form_perfil.telefono.help_text }}</p>
+	<p class="description" id="help_mail_prof">{{ form_perfil.mail_profesional.help_text }}</p>
+	<p class="description" id="help_web">{{ form_perfil.web.help_text }}</p>
+	<p class="description" id="help_imagen">Elige una imagen para identificar tu empresa o servicio (por ej. un logo)</p>
+	<p class="description" id="help_descripcion">{{ form_perfil.descripcion.help_text }}</p>
+	<!--SERVICIO-->
+	<p class="description" id="help_nombre_servicio">{{ form_servicio_nuevo.nombre_servicio.help_text }}</p>
+	<p class="description" id="help_desc_servicio">{{ form_servicio_nuevo.desc_servicio.help_text }}</p>
+	<p class="description" id="help_tags">{{ form_servicio_nuevo.tags.help_text }}</p>
+</div>
+{% endblock %}
+
 {% block content %}
 	
 	<!--<h3>Crear usuario</h3>-->
@@ -34,26 +60,16 @@
 		<ul id="carrusel">
 			<li id="registro">
 				<legend>{% trans "Registrarse" %}</legend>
+				{{ form_perfil.validation.label_tag }}<br />
+				{{ form_perfil.validation }}<br />
+				{% if form_perfil.validation.errors %}<span class="error_msg">{{ form_perfil.validation.errors|join:"; " }}</span>{% endif %}
+					
 				{{ form_register.as_br }}
 				<div class="primer-form-buttons">
   					<input type="button" value="Siguiente" class="save-button next">
   				</div>
 			</li>
 			<li id="perfil">
-				<div class="form-description">
-					<!--<p>La informaci&oacute;n que ingreses aqu&iacute; ser&aacute; ofrecida
-		en los resultados de b&uacute;squeda de SaltoGuia.Com.Uy</p>-->
-					<p class="description" id="help_tipo">{{ form_perfil.tipo.help_text }}</p>
-					<p class="description" id="help_nombre">{{ form_perfil.nombre.help_text }}</p>
-					<p class="description" id="help_domicilio">{{ form_perfil.domicilio.help_text }}</p>
-					<p class="description" id="help_documento">{{ form_perfil.documento.help_text }}</p>
-					<p class="description" id="help_celular">{{ form_perfil.celular.help_text }}</p>
-					<p class="description" id="help_telefono">{{ form_perfil.telefono.help_text }}</p>
-					<p class="description" id="help_mail">{{ form_perfil.mail.help_text }}</p>
-					<p class="description" id="help_web">{{ form_perfil.web.help_text }}</p>
-					<p class="description" id="help_imagen">Elige una imagen para identificar tu empresa o servicio (por ej. un logo)</p>
-					<p class="description" id="help_descripcion">{{ form_perfil.descripcion.help_text }}</p>
-				</div>
 				<legend>{% trans "Completar perfil" %}</legend>
 				<div class="column_form">
 					{{ form_perfil.tipo.label_tag }}<br />
@@ -81,9 +97,9 @@
 					{{ form_perfil.celular }}<br />
 					{% if form_perfil.celular.errors %}<span class="error_msg">{{ form_perfil.celular.errors|join:"; " }}</span>{% endif %}
 			
-				    {{ form_perfil.mail.label_tag }}<br />
-				    {{ form_perfil.mail }}<br />
-				    {% if form_perfil.mail.errors %}<span class="error_msg">{{ form_perfil.mail.errors|join:"; " }}<br /></span>{% endif %}
+				    {{ form_perfil.mail_profesional.label_tag }}<br />
+				    {{ form_perfil.mail_profesional }}<br />
+				    {% if form_perfil.mail_profesional.errors %}<span class="error_msg">{{ form_perfil.mail_profesional.errors|join:"; " }}<br /></span>{% endif %}
 			
 				    {{ form_perfil.web.label_tag }}<br />
 				    {{ form_perfil.web }}<br />
@@ -111,6 +127,10 @@
 			<li id="nuevo_servicio">
 				<legend>{% trans "Agregar nuevo servicio" %}</legend>
 				{{ form_servicio_nuevo.as_br }}
+				
+				{{ form_servicio_nuevo.tags.label_tag }}<br />
+					{{ form_servicio_nuevo.tags }}<br />
+					{% if form_servicio_nuevo.tags.errors %}<span class="error_msg">{{ form_servicio_nuevo.tags.errors|join:"; " }}</span>{% endif %}
 				<div class="form-buttons">
 					<input type="button" value="Anterior" class="save-button prev">
   					<input type="submit" value="Finalizar" class="save-button">
@@ -146,6 +166,43 @@
 		//		init = false;
 		//	}
 		//});
+		//REGISTRO//
+		$('#id_validation').mouseover(function(e){
+			aparecer('validation', e);
+		});
+		$('#id_validation').mouseout(function(e){
+			desaparecer('validation', e);
+		});
+		
+		$('#id_username').mouseover(function(e){
+			aparecer('username', e);
+		});
+		$('#id_username').mouseout(function(e){
+			desaparecer('username', e);
+		});
+		
+		$('#id_email').mouseover(function(e){
+			aparecer('email', e);
+		});
+		$('#id_email').mouseout(function(e){
+			desaparecer('email', e);
+		});
+		
+		$('#id_password1').mouseover(function(e){
+			aparecer('pass1', e);
+		});
+		$('#id_password1').mouseout(function(e){
+			desaparecer('pass1', e);
+		});
+		
+		$('#id_password2').mouseover(function(e){
+			aparecer('pass2', e);
+		});
+		$('#id_password2').mouseout(function(e){
+			desaparecer('pass2', e);
+		});
+		
+		//PERFIL//
 		$('#id_nombre').mouseover(function(e){
 			aparecer('nombre', e);
 		});
@@ -188,11 +245,11 @@
 			desaparecer('telefono', e);
 		});
 		
-		$('#id_mail').mouseover(function(e){
-			aparecer('mail', e);
+		$('#id_mail_profesional').mouseover(function(e){
+			aparecer('mail_prof', e);
 		});
-		$('#id_mail').mouseout(function(e){
-			desaparecer('mail', e);
+		$('#id_mail_profesional').mouseout(function(e){
+			desaparecer('mail_prof', e);
 		});
 		
 		$('#id_web').mouseover(function(e){
@@ -214,6 +271,28 @@
 		});
 		$('#id_descripcion').mouseout(function(e){
 			desaparecer('descripcion', e);
+		});
+		
+		//SERVICIO//
+		$('#id_nombre_servicio').mouseover(function(e){
+			aparecer('nombre_servicio', e);
+		});
+		$('#id_nombre_servicio').mouseout(function(e){
+			desaparecer('nombre_servicio', e);
+		});
+		
+		$('#id_desc_servicio').mouseover(function(e){
+			aparecer('desc_servicio', e);
+		});
+		$('#id_desc_servicio').mouseout(function(e){
+			desaparecer('desc_servicio', e);
+		});
+		
+		$('#id_tags').mouseover(function(e){
+			aparecer('tags', e);
+		});
+		$('#id_tags').mouseout(function(e){
+			desaparecer('tags', e);
 		});
 		
 		function aparecer(control, e){
