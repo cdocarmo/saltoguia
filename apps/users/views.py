@@ -56,7 +56,7 @@ def register(request):
         form_perfil = CompleteProfile(request.POST)
         form_servicio_nuevo = ServicioForm(request.POST)
         if form_register.is_valid():  # xq es el mas importante y obligatorio para registrarse
-            new_user = form.save()
+            new_user = form_register.save()
             """
             email = EmailMessage('Asunto','Probando confirmación email', 
                                  to = ['cdocarmo@cdsoft.com.uy'])
