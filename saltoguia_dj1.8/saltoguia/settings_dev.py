@@ -42,3 +42,5 @@ STATICFILES_DIRS = (
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
+
+MEDIA_ROOT=os.path.join(BASE_DIR, 'media/')

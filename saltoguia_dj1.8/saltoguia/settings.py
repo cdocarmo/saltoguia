@@ -26,6 +26,7 @@ try:
     TEMPLATE_DIRS = settings_dev.TEMPLATE_DIRS
     STATIC_URL = settings_dev.STATIC_URL
     STATICFILES_DIRS = settings_dev.STATICFILES_DIRS
+    MEDIA_ROOT = settings_dev.MEDIA_ROOT
 except:
     # Database
     # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -79,7 +80,7 @@ ROOT_URLCONF = 'saltoguia.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
