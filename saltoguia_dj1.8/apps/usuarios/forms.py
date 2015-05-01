@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 from django import forms
 from django.contrib.auth.models import User
-from .models import Servicio
+from .models import Servicio, Rubro, SubRubro, Area
 
 
 
@@ -30,15 +31,17 @@ class AltaUsuarioForm(forms.ModelForm):
     #                              help_text = ayudas['descripcion'])   
     #tags = forms.CharField(label=u"Tags", required=True, widget=forms.Textarea(attrs={'class':'txt-area', 'cols':'40', 'rows':'5'}),
     #                       help_text=ayudas['tags'])
+    qset_areas = Area.objects.all()
+    AREAS = ( (sr.pk, sr.nombre) for sr in qset_areas )
     
     first_name = forms.CharField(label=u'Nombres')
     last_name = forms.CharField(label=u'Apellidos')
     email = forms.CharField(label=u'Email')
-    categoria = forms.ChoiceField(label=u'Categor&iacute;a')
+    categoria = forms.ChoiceField(label=u'Categoría', choices=AREAS)
     avatar = forms.ImageField(label=u'Avatar')
     domicilio = forms.CharField(label=u'Domicilio')
     horarios = forms.CharField(label=u'Horarios de disponibilidad')
-    dias_habiles = forms.CharField(label=u'D&iacute;as de atenci&oacute;n')
+    dias_habiles = forms.CharField(label=u'Días de atención')
     aclaraciones = forms.CharField(label=u'Comentarios')
     
     
@@ -50,19 +53,28 @@ class AltaUsuarioForm(forms.ModelForm):
         
         
 class AltaServicioInlineForm(forms.ModelForm):
+    qset_subrubros = SubRubro.objects.all()
+    SUBRUBROS = ( (sr.pk, sr.nombre) for sr in qset_subrubros )
     
-    descripcion = forms.CharField(label=u'Descripci&oacute;n')
-    telefono = forms.CharField(label=u'Tel&eacute;fono particular para solicitar el servicio')  # max_length=16
+    qset_rubros = Rubro.objects.all()
+    RUBROS = ( (sr.pk, sr.nombre) for sr in qset_rubros )
+    
+    descripcion = forms.CharField(label=u'Descripción')
+    telefono = forms.CharField(label=u'Teléfono particular para solicitar el servicio')  # max_length=16
+    rubro = forms.ChoiceField(widget=forms.Select, choices=RUBROS)
+    subrubro = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=SUBRUBROS)
     
     class Meta:
         model = Servicio
-        fields = ('descripcion', 'telefono',)
+        fields = ('descripcion', 'telefono', 'rubro', 'subrubro',)
+        
         
         
 UsuarioInlineFormSet = forms.inlineformset_factory(User,
     Servicio,
     form=AltaServicioInlineForm,
-    extra=1,
-    can_delete=False,
-    can_order=False
+    extra=1
 )
+
+
+

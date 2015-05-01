@@ -22,10 +22,11 @@
             <form class="form" id="usuario-form" method="POST" enctype="multipart/form-data" action=".">
                 {{ form|bootstrap }}
                 <h3 id="titulo-servicio">Servicio</h3>
+                
                 <div class="servicio-form">
-                    {{ inlines|bootstrap }}
+                    {{ servicio_inlines|bootstrap }}
                 </div>
-                {{ inlines.management_form }}
+                {{ servicio_inlines.management_form }}
                 <input type="submit" class="btn btn-primary" value="Go Go Gadget &rarr;">
             </form>
         </div>

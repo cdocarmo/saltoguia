@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
 from django.contrib.auth.models import User
-from .forms import AltaUsuarioForm, UsuarioInlineFormSet
+from .models import Rubro
+from .forms import AltaUsuarioForm, UsuarioInlineFormSet#, seleccion_rubro
 
 
 class CrearUsuarioView(CreateView):
@@ -32,8 +33,10 @@ class CrearUsuarioView(CreateView):
         ctx = super(CrearUsuarioView, self).get_context_data(**kwargs)
         if self.request.POST:
             ctx['form'] = AltaUsuarioForm(self.request.POST)
-            ctx['inlines'] = UsuarioInlineFormSet(self.request.POST)
+            ctx['servicio_inlines'] = UsuarioInlineFormSet(self.request.POST)
         else:
             ctx['form'] = AltaUsuarioForm()
-            ctx['inlines'] = UsuarioInlineFormSet()
+            ctx['servicio_inlines'] = UsuarioInlineFormSet()
+            #ctx['select_rubros'] = seleccion_rubro
+            
         return ctx

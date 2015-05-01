@@ -1,0 +1,77 @@
+[
+  {
+    "model": "usuarios.area",
+    "pk": 1,
+    "fields": {
+      "nombre": "EMPRESARIAL"
+    }
+  },
+  {
+    "model": "usuarios.area",
+    "pk": 2,
+    "fields": {
+      "nombre": "PROFESIONAL"
+    }
+  },
+  {
+    "model": "usuarios.area",
+    "pk": 3,
+    "fields": {
+      "nombre": "OFICIO"
+    }
+  },
+  {
+    "model": "usuarios.area",
+    "pk": 4,
+    "fields": {
+      "nombre": "MERCANTIL"
+    }
+  },
+  {
+    "model": "usuarios.rubro",
+    "pk": 1,
+    "fields": {
+      "nombre": "Tecnología"
+    }
+  },
+  {
+    "model": "usuarios.rubro_area",
+    "pk": 1,
+    "fields": {
+      "rubro": 1,
+      "area": 2
+    }
+  },
+  {
+    "model": "usuarios.rubro_area",
+    "pk": 2,
+    "fields": {
+      "rubro": 1,
+      "area": 1
+    }
+  },
+  {
+    "model": "usuarios.subrubro",
+    "pk": 1,
+    "fields": {
+      "nombre": "Desarrollo Web",
+      "rubro": 1
+    }
+  },
+  {
+    "model": "usuarios.subrubro",
+    "pk": 2,
+    "fields": {
+      "nombre": "Desarrollo de Software",
+      "rubro": 1
+    }
+  },
+  {
+    "model": "usuarios.subrubro",
+    "pk": 3,
+    "fields": {
+      "nombre": "Venta Equipos Informáticos",
+      "rubro": 1
+    }
+  }
+]
