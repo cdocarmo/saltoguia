@@ -3,7 +3,7 @@
 <head>
     {% load staticfiles %}
     {% load bootstrap %}
-    <title>Crear usuario</title>
+    <title>SaltoGuia</title>
     <!-- Bootstrap core CSS -->
     <link href={% static "css/bootstrap.min.css" %} rel="stylesheet">
 
@@ -17,16 +17,22 @@
     <![endif]-->
 </head>
     <body>
+        <div id="barra-superior">
+            <ul class="list-inline pull-right" id="botones-usuario">
+                <li><a class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;Publicar</a></li>
+                <li><a class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Acceder</a></li>
+            </ul>
+        </div>
         <div class="row">
             <h1 class="col-md-12 col-lg-12" id="logo-superior">
                 <img src={% static "img/salto_guia.png" %} alt="Salto Gu&iacute;a">
             </h1>
         </div>
-        <div class="row">
+        <div class="row" id="contenedor-principal">
             <div class="col-md-3 col-lg-3"></div>
             <div class="col-md-6 col-lg-6">
                 <form class="form" id="busqueda-form" method="GET" enctype="multipart/form-data" action=".">
-                    {{ csrf_token }}
+                    {% csrf_token %}
                     <div class="form-group">
                         <label for="caja-busqueda">Busc&aacute; lo que necesit&aacute;s:</label>
                         <input type="text" class="form-control input-lg" id="caja-busqueda">
@@ -36,11 +42,29 @@
             </div>
             <div class="col-md-3 col-lg-3"></div>
         </div>
+        <div class="row" id="phone-markets">
+            <div class="col-md-2 col-lg-2"></div>
+            <div class="col-md-2 col-lg-2"><img src={% static "img/firefox.png" %} alt="Firefox MarketPlace"></div>
+            <div class="col-md-2 col-lg-2"><img src={% static "img/apple.png" %} alt="App Store"></div>
+            <div class="col-md-2 col-lg-2"><img src={% static "img/windowsphone.png" %} alt="Windows Phone Store"></div>
+            <div class="col-md-2 col-lg-2"><img src={% static "img/android.png" %} alt="Google Play"></div>
+            <div class="col-md-2 col-lg-2"></div>
+        </div>
         
-        <footer>
+        <footer class="text-center">
             <div class="row">
                 <div class="col-md-12 col-lg-12">
-                    PIE
+                    <ul class="list-inline" id="pie-template">
+                        <li><a>Contacta</a></li>
+                        <li>|</li>
+                        <li><a>Desarrollo</a></li>
+                        <li>|</li>
+                        <li><a>Acerca de...</a></li>
+                        <li>|</li>
+                        <li><a>Condiciones de uso</a></li>
+                    </ul>
+                    <hr>
+                    <p><b>Copyright &copy; SaltoGuia.</b> El contenido provisto por los anunciantes no es responsabilidad de SaltoGuia.</p>
                 </div>
             </div>
         </footer>

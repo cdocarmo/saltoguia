@@ -161,9 +161,45 @@ nav a:hover {
     text-align: center;
 }
 
+/*TEMPLATE BASE*/
+#barra-superior {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+#phone-markets img {
+    width: 100%;
+}
+
+footer {
+    margin: 4.5% auto 5px auto;
+    font-size: 0.75em;
+}
+
+footer p {
+    margin-bottom: 1px !important;
+}
+
+footer hr {
+    margin: 2px auto;
+}
+
+#pie-template {
+    margin-bottom: 1px !important;
+}
+
+#pie-template li {
+    padding: 1px 4px;
+}
+
 /*INDEX*/
+#contenedor-principal {
+    margin-bottom: 12%;   
+}
+
 #busqueda-form {
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 
