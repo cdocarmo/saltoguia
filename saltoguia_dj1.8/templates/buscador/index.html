@@ -25,24 +25,25 @@
         <div class="row">
             <div class="col-md-3 col-lg-3"></div>
             <div class="col-md-6 col-lg-6">
-                <h1>Crear usuario</h1>
-                <form class="form" id="usuario-form" method="POST" enctype="multipart/form-data" action=".">{% csrf_token %}
-                    {{ form|bootstrap }}
-
-                    <div class="servicio-form panel panel-warning">
-                        <div class="panel-heading">
-                            <h3 id="titulo-servicio">Servicio/s ofrecido/s</h3>
-                        </div>
-                        <div class="panel-body">
-                            {{ servicio_inlines|bootstrap }}
-                        </div>
+                <form class="form" id="busqueda-form" method="GET" enctype="multipart/form-data" action=".">
+                    {{ csrf_token }}
+                    <div class="form-group">
+                        <label for="caja-busqueda">Busc&aacute; lo que necesit&aacute;s:</label>
+                        <input type="text" class="form-control input-lg" id="caja-busqueda">
                     </div>
-                    {{ servicio_inlines.management_form }}
-                    <input type="submit" class="btn btn-danger pull-right" value="Guardar &rarr;">
+                    <input type="submit" class="btn btn-danger btn-block pull-right" value="Buscar !!!">
                 </form>
             </div>
             <div class="col-md-3 col-lg-3"></div>
         </div>
+        
+        <footer>
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+                    PIE
+                </div>
+            </div>
+        </footer>
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->

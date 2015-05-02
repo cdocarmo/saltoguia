@@ -157,15 +157,14 @@ nav a:hover {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
-.fila-dato {
-    cursor: pointer;
+#logo-superior {
+    text-align: center;
 }
 
-.fila-dato:hover td {
-    background-color: bisque;   
+/*INDEX*/
+#busqueda-form {
+    margin-top: 10%;
 }
-
 
 
 
