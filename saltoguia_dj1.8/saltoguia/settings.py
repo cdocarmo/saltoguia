@@ -63,6 +63,7 @@ INSTALLED_APPS = (
     'bootstrapform',
     'apps.usuarios',
     'apps.buscador',
+    'apps.atencionalcliente',
 )
 
 MIDDLEWARE_CLASSES = (

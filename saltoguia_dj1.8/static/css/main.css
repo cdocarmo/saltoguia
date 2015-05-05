@@ -157,19 +157,32 @@ nav a:hover {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+
+/*TEMPLATE BASE*/
+body {
+    position: absolute;
+    min-height: 100%;
+    left: 0;
+    right: 0;
+}
+
+#main-container {
+    /*min-height:100%;
+	position:relative;*/
+}
+
 #logo-superior {
     text-align: center;
 }
 
-/*TEMPLATE BASE*/
 #barra-superior {
     position: fixed;
     top: 0;
     right: 0;
 }
 
-#phone-markets img {
-    width: 90%;
+#contents {
+    margin-bottom: 8%;
 }
 
 footer {
@@ -206,7 +219,9 @@ footer hr {
     margin-top: 5%;
 }
 
-
+#phone-markets img {
+    width: 90%;
+}
 
 
 

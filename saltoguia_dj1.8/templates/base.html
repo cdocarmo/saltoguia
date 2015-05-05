@@ -17,38 +17,40 @@
     <![endif]-->
 </head>
     <body>
-        <div id="barra-superior">
-            <ul class="list-inline pull-right" id="botones-usuario">
-                <li><a class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;Publicar</a></li>
-                <li><a class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Acceder</a></li>
-            </ul>
-        </div>
-        <div class="row">
-            <h1 class="col-md-12 col-lg-12" id="logo-superior">
-                <a href="{% url 'index' %}"><img src={% static "img/salto_guia.png" %} alt="Salto Gu&iacute;a"></a>
-            </h1>
-        </div>
-        
-        {% block contenido %}
-        {% endblock %}
-        
-        <footer class="text-center">
-            <div class="row">
-                <div class="col-md-12 col-lg-12">
-                    <ul class="list-inline" id="pie-template">
-                        <li><a href="{% url 'contacto' %}">Contacta</a></li>
-                        <li>|</li>
-                        <li><a href="{% url 'desarrollo' %}">Desarrollo</a></li>
-                        <li>|</li>
-                        <li><a href="{% url 'acerca-de' %}">Acerca de...</a></li>
-                        <li>|</li>
-                        <li><a href="{% url 'condiciones' %}">Condiciones de uso</a></li>
-                    </ul>
-                    <hr>
-                    <p><b>Copyright &copy; SaltoGuia.</b> El contenido provisto por los anunciantes no es responsabilidad de SaltoGuia.</p>
-                </div>
+        <div id="main-container">
+            <div id="barra-superior">
+                <ul class="list-inline pull-right" id="botones-usuario">
+                    <li><a class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;Publicar</a></li>
+                    <li><a class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Acceder</a></li>
+                </ul>
             </div>
-        </footer>
+            <div class="row">
+                <h1 class="col-md-12 col-lg-12" id="logo-superior">
+                    <a href="{% url 'index' %}"><img src={% static "img/salto_guia.png" %} alt="Salto Gu&iacute;a"></a>
+                </h1>
+            </div>
+
+            {% block contenido %}
+            {% endblock %}
+
+            <footer class="text-center">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <ul class="list-inline" id="pie-template">
+                            <li><a href="{% url 'contacto' %}">Contacta</a></li>
+                            <li>|</li>
+                            <li><a href="{% url 'desarrollo' %}">Desarrollo</a></li>
+                            <li>|</li>
+                            <li><a href="{% url 'acerca-de' %}">Acerca de...</a></li>
+                            <li>|</li>
+                            <li><a href="{% url 'condiciones' %}">Condiciones de uso</a></li>
+                        </ul>
+                        <hr>
+                        <p><b>Copyright &copy; SaltoGuia.</b> El contenido provisto por los anunciantes no es responsabilidad de SaltoGuia.</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->

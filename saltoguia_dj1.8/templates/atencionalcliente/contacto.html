@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block contenido %}
+{% load staticfiles %}
+{% load bootstrap %}
+        <div class="row" id="contents">
+            <div class="col-md-3 col-lg-3"></div>
+            <div class="col-md-6 col-lg-6">
+                <h2>Contacta con nosotros</h2>
+                <form class="form" id="contacto-form" method="POST" enctype="multipart/form-data" action=".">{% csrf_token %}
+                    {{ form|bootstrap }}
+                    <input type="submit" class="btn btn-danger pull-right" value="Enviar &rarr;">
+                </form>
+            </div>
+            <div class="col-md-3 col-lg-3"></div>
+        </div>
+{% endblock %}
