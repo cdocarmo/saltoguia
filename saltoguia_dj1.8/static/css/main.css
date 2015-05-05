@@ -196,6 +196,7 @@ footer {
 
 footer p {
     margin-bottom: 1px !important;
+    color: dimgray;
 }
 
 footer hr {
