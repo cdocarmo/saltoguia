@@ -64,6 +64,7 @@ INSTALLED_APPS = (
     'apps.usuarios',
     'apps.buscador',
     'apps.atencionalcliente',
+    'apps.acceso',
 )
 
 MIDDLEWARE_CLASSES = (
