@@ -7,6 +7,11 @@ from apps.usuarios.models import Servicio
 class IndexView(TemplateView):
     template_name = "buscador/index.html"
 
+    def get_context_data(self, *args, **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
+        print "args {}".format(args)
+        #context['usuario'] = request.user
+        return context
 
 class ResultadosView(ListView):
     template_name = 'buscador/resultados.html'

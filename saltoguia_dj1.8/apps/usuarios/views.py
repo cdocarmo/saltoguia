@@ -1,9 +1,14 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.utils.decorators import method_decorator
+from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.base import TemplateView  # temporal
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from .models import Rubro
 from .forms import AltaUsuarioForm, UsuarioInlineFormSet#, seleccion_rubro
 
+# IMPORTANTE: los usuarios nunca publican, solo agregan servicios, el mensaje:
+# "Publicar" en la web es lo mismo que Alta de usuario.
 
 class CrearUsuarioView(CreateView):
     template_name = 'usuarios/crear-usuario.html'
@@ -40,3 +45,13 @@ class CrearUsuarioView(CreateView):
             #ctx['select_rubros'] = seleccion_rubro
             
         return ctx
+    
+    
+class ModificarView(TemplateView):
+    template_name = 'usuarios/modificar.html'
+    
+    @method_decorator(login_required)
+    def get(self, request, *args, **kwargs):
+        ret = super(ModificarView, self).get(request, *args, **kwargs)
+        return ret
+        

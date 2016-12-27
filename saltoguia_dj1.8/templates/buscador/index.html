@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
-{% block contenido %}
 {% load staticfiles %}
+{% block autenticado %}
+    {% if user.is_authenticated %}
+        <li>{{ user.get_full_name }}</li>
+    {% else %}
+        <li>No autenticado</li>
+    {% endif %}
+    <li>joda</li>
+{% endblock %}
+{% block contenido %}
         <div class="row" id="contenedor-principal">
             <div class="col-md-3 col-lg-3"></div>
             <div class="col-md-6 col-lg-6">

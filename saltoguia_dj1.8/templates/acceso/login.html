@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block contenido %}
+{% load staticfiles %}
+        <div class="row" id="contenedor-principal">
+            <div class="col-md-3 col-lg-3"></div>
+            <div class="col-md-6 col-lg-6">
+                <form class="form" id="login-form" method="POST" enctype="multipart/form-data" action="{% url 'acceder' %}">
+                    {% csrf_token %}
+                    <h2 class="form-signin-heading">Ingresar</h2>
+                    <label for="input-email" class="sr-only">Email</label>
+                    <input type="email" id="input-email" class="form-control" placeholder="Email" name="email"  required autofocus>
+                    <br>
+                    <label for="input-password" class="sr-only">Password</label>
+                    <input type="password" id="input-password" class="form-control" placeholder="Password" name="password" required>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" value="remember-me"> Recordarme
+                      </label>
+                    </div>
+                    <input type="submit" class="btn btn-default btn-block pull-right" value="Ingresar &rarr;">
+                </form>
+            </div>
+            <div class="col-md-3 col-lg-3"></div>
+        </div>
+{% endblock %}

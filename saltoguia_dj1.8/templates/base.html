@@ -23,8 +23,10 @@
         <div id="main-container">
             <div id="barra-superior">
                 <ul class="list-inline pull-right" id="botones-usuario">
+                    {% block autenticado %}
+                    {% endblock %}
                     <li><a class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;Publicar</a></li>
-                    <li><a class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Acceder</a></li>
+                    <li><a class="btn btn-primary btn-xs" href="{% url 'login' %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Acceder</a></li>
                 </ul>
             </div>
             <div class="row">
